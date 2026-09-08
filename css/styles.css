@@ -1,0 +1,441 @@
+/* CYMOR Super Speciality Dental Clinic - Particles, Text & Transition System */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root {
+  --primary: #00666c;
+  --primary-hover: #005256;
+  --primary-light: #e0f2f1;
+  --primary-subtle: #f0fdfa;
+  --secondary: #ba0222;
+  --secondary-hover: #9c021c;
+  --surface-base: #fafbfc;
+  --surface-card: #ffffff;
+  --surface-tint: #f4f9f9;
+  --text-main: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  --border-teal: #ccfbf1;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: var(--surface-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==================== PARTICLE CANVAS ==================== */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+/* Ensure content sits cleanly above the ambient particle canvas */
+header, main, footer, aside, .modal-backdrop, #toast-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* ==================== TEXT TRANSITION & REVEAL ANIMATIONS ==================== */
+
+/* Text Shimmer Effect for Brand Accents */
+@keyframes textShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.text-shimmer {
+  color: #00666c;
+  background: linear-gradient(90deg, #00666c 0%, #00897b 35%, #0284c7 50%, #00897b 65%, #00666c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 6s linear infinite;
+  display: inline-block;
+}
+
+/* Animated Text Underline Expander */
+.hover-underline-animate {
+  position: relative;
+  display: inline-block;
+}
+.hover-underline-animate::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-underline-animate:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Smooth Typography Transitions on Hover */
+h1, h2, h3, h4, h5, h6, p, span, a, label {
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Section Heading Reveal Effect */
+.reveal-text {
+  opacity: 1; /* Default to visible for robustness */
+  transform: translateY(0);
+  filter: blur(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal .reveal-text:not(.reveal-active) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-text.reveal-active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
+}
+
+/* ==================== GLOBAL SCROLL REVEAL ANIMATIONS ==================== */
+
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal .reveal:not(.reveal-active) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal.reveal-active {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.reveal-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal .reveal-left:not(.reveal-active) {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.reveal-left.reveal-active {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal .reveal-right:not(.reveal-active) {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+.reveal-right.reveal-active {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+.reveal-scale {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal .reveal-scale:not(.reveal-active) {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.reveal-scale.reveal-active {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Stagger Delay Helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* Floating Element Animations */
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatAnim 4.5s ease-in-out infinite 1.5s;
+}
+
+/* Ambient Pulse Animations */
+@keyframes emergencyPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(186, 2, 34, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(186, 2, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(186, 2, 34, 0);
+  }
+}
+
+.emergency-pulse {
+  animation: emergencyPulse 2.2s infinite;
+}
+
+/* Micro-interaction Hover Lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px -8px rgba(0, 102, 108, 0.14), 0 8px 12px -4px rgba(15, 23, 42, 0.04);
+}
+
+/* Button Click Press Effect */
+button, .btn-action {
+  transition: transform 0.18s ease, background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+button:active, .btn-action:active {
+  transform: scale(0.96);
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  transition: all 0.3s ease;
+}
+
+/* Modal Animations */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  animation: modalPop 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+  display: block;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Before After Comparison Range Slider */
+#comparison-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+#comparison-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  cursor: ew-resize;
+}
+#comparison-range::-moz-range-thumb {
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  border: none;
+  cursor: ew-resize;
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 420px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #00666c;
+  border-radius: 1rem;
+  padding: 0.875rem 1.125rem;
+  box-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-item.error {
+  border-left-color: #ba0222;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Material Symbols vertical alignment */
+.material-symbols-outlined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Form input focus styles */
+input, select, textarea {
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #00666c !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 108, 0.15) !important;
+}
+
+/* Dot Pattern Background */
+.bg-dot-pattern {
+  background-image: radial-gradient(#00666c 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
+/* Hide scrollbar for clean mobile pill carousels */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile Touch Slider Optimization */
+#comparison-container {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #appointment-receipt-modal, #appointment-receipt-modal * {
+    visibility: visible;
+  }
+  #appointment-receipt-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

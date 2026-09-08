@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>CYMOR Super Speciality Dental Clinic | Ponnani, Kerala</title>
+  <meta name="description" content="Super-speciality dental clinic in Ponnani, Kerala led by Dr. Nazeer P. Chittayil (MDS Orthodontics). Precision aligners, painless root canals, computer-guided dental implants, and 24/7 emergency triage."/>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..600,0..1,-25..200" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="css/styles.css"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#00666c",
+            "primary-hover": "#005256",
+            "primary-dark": "#003b3e",
+            "primary-light": "#e0f2f1",
+            "primary-subtle": "#f0fdfa",
+            "secondary": "#ba0222",
+            "secondary-hover": "#99001a",
+            "surface-base": "#fafbfc",
+            "surface-card": "#ffffff",
+            "surface-tint": "#f4f9f9",
+            "text-main": "#0f172a",
+            "text-body": "#334155",
+            "text-muted": "#64748b",
+            "border-subtle": "#e2e8f0",
+            "border-teal": "#ccfbf1",
+            "accent-star": "#f59e0b"
+          },
+          fontFamily: {
+            sans: ["'Plus Jakarta Sans'", "sans-serif"]
+          },
+          spacing: {
+            "container-max": "80rem"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface-base font-sans text-text-body antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
+
+  <!-- ==================== BACKGROUND PARTICLES CANVAS ==================== -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all">
+    <!-- Top Contact Bar (Desktop Only) -->
+    <div class="bg-primary-subtle border-b border-border-teal text-text-muted text-[13px] hidden lg:block">
+      <div class="max-w-container-max mx-auto px-6 h-10 flex items-center justify-between">
+        <!-- Location & Timings -->
+        <div class="flex items-center gap-6">
+          <span class="inline-flex items-center gap-1.5 text-text-body font-medium">
+            <span class="material-symbols-outlined text-primary text-[17px]">location_on</span>
+            <span>Marva Building, Near AV Higher Secondary School, Ponnani, Kerala</span>
+          </span>
+          <span class="text-slate-300">|</span>
+          <span class="inline-flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-primary text-[17px]">schedule</span>
+            <span>Mon - Sat: 9:00 AM - 7:00 PM (Sunday: Emergency Only)</span>
+          </span>
+        </div>
+
+        <!-- Emergency Hotline & Phone -->
+        <div class="flex items-center gap-5">
+          <button onclick="openEmergencyModal()" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-50 text-secondary border border-red-200 text-[11px] font-bold uppercase tracking-wider hover:bg-secondary hover:text-white transition-all cursor-pointer">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            <span>24/7 Dental Emergency Triage</span>
+          </button>
+          <a class="inline-flex items-center gap-1 text-text-muted hover:text-primary transition-colors font-medium" href="tel:04952665366">
+            <span class="material-symbols-outlined text-[15px]">call</span>
+            <span>0495 2665366</span>
+          </a>
+          <a class="inline-flex items-center gap-1 text-primary font-bold hover:text-primary-dark transition-colors" href="tel:+919995268787">
+            <span class="material-symbols-outlined text-[16px]">phone_iphone</span>
+            <span>+91 99952 68787</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="glass-header shadow-sm">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+        
+        <!-- Official Brand Logo -->
+        <a href="#hero-section" class="flex items-center group shrink-0 py-1" aria-label="CYMOR Super Speciality Dental Clinic">
+          <img alt="CYMOR Super Speciality Dental Clinic Logo" class="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" src="images/logo.png"/>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden xl:flex items-center gap-1 text-[14px] font-semibold text-text-body">
+          <a class="px-3.5 py-2 rounded-full text-primary bg-primary-subtle font-bold transition-all hover:text-primary" href="#hero-section">Home</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#about-section">About Us</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#treatments-section">Services</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#doctors-section">Doctors</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#transformations-section">Patients</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#testimonials-section">Reviews</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#tourism-section">Dental Tourism</a>
+          <a class="px-3.5 py-2 rounded-full text-text-body hover:text-primary hover:bg-primary-subtle transition-all" href="#contact-section">Contact</a>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="flex items-center gap-2.5 sm:gap-3.5">
+          <!-- "My Bookings" Button -->
+          <button id="view-my-appointments-btn" class="hidden md:inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-tint border border-border-teal text-primary text-[13px] font-bold hover:bg-primary hover:text-white transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-[17px]">receipt_long</span>
+            <span>My Bookings</span>
+          </button>
+
+          <!-- Book Appointment Primary CTA -->
+          <a href="#appointment-section" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white text-[14px] font-bold transition-all shadow-[0_4px_14px_rgba(0,102,108,0.25)] hover:shadow-[0_6px_20px_rgba(0,102,108,0.35)] shrink-0">
+            <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+            <span class="hidden sm:inline">Book Appointment</span>
+            <span class="sm:hidden">Book</span>
+          </a>
+
+          <!-- Mobile Menu Hamburger Button -->
+          <button id="mobile-menu-toggle" class="xl:hidden w-10 h-10 rounded-xl bg-surface-tint border border-border-subtle text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="Toggle Mobile Menu">
+            <span class="material-symbols-outlined text-[22px]">menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu Modal Overlay -->
+    <div id="mobile-menu-drawer" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex-col justify-start p-4 sm:p-6">
+      <div class="bg-surface-card rounded-3xl p-6 shadow-2xl flex flex-col gap-4 max-h-[90vh] overflow-y-auto border border-border-subtle">
+        <div class="flex items-center justify-between pb-3.5 border-b border-border-subtle">
+          <div class="flex items-center">
+            <img alt="CYMOR Super Speciality Dental Clinic Logo" class="h-9 w-auto object-contain" src="images/logo.png"/>
+          </div>
+          <button id="close-mobile-menu" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-1.5 text-[15px] font-semibold text-text-body">
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#hero-section">Home</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#about-section">About Us</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#treatments-section">Services &amp; Treatments</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#doctors-section">Specialist Doctors</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#transformations-section">Smile Transformations</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#testimonials-section">Patient Reviews</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#tourism-section">Dental Tourism (NRI Care)</a>
+          <a class="p-3 rounded-xl hover:bg-primary-subtle hover:text-primary transition-colors" href="#contact-section">Clinic Locations &amp; Timings</a>
+        </nav>
+
+        <div class="pt-3.5 border-t border-border-subtle flex flex-col gap-2.5">
+          <button onclick="openMyAppointmentsModal()" class="w-full py-3 px-4 rounded-xl bg-primary-subtle text-primary text-[14px] font-bold flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[19px]">receipt_long</span>
+            <span>View My Appointments</span>
+          </button>
+          <a href="tel:+919995268787" class="w-full py-3 px-4 rounded-xl bg-secondary hover:bg-secondary-hover text-white text-[14px] font-bold flex items-center justify-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-[19px]">emergency</span>
+            <span>24/7 Dental Emergency Hotline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="w-full pt-20 lg:pt-[7.5rem] flex-grow">
+
+    <!-- SECTION 1: TOP EMERGENCY BANNER -->
+    <aside aria-label="Dental Emergency Hotline" class="bg-secondary text-white py-2.5 px-4 sm:px-6 shadow-sm relative z-10">
+      <div class="max-w-container-max mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+        <div class="flex items-center gap-2 text-[13px] font-medium">
+          <span class="inline-flex h-2.5 w-2.5 rounded-full bg-white animate-ping"></span>
+          <span class="font-extrabold tracking-wide uppercase">Immediate Dental Emergency Triage</span>
+          <span class="hidden md:inline text-white/80">| Acute Toothache, Avulsed Tooth, Bleeding &amp; Trauma Relief</span>
+        </div>
+        <div class="flex items-center gap-3 text-[13px]">
+          <a class="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full text-white font-bold transition-all" href="tel:+919995268787">
+            <span class="material-symbols-outlined text-[16px]">phone_in_talk</span>
+            <span>Hotline: +91 99952 68787</span>
+          </a>
+          <button onclick="openEmergencyModal()" class="hidden lg:inline-flex items-center text-white/90 hover:text-white underline decoration-white/40 cursor-pointer text-[12px] font-semibold">
+            First-Aid Protocol
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- SECTION 2: HERO SECTION -->
+    <section id="hero-section" class="relative bg-gradient-to-b from-surface-tint via-white to-surface-base overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24">
+      <div class="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-teal-100/40 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-10 left-10 w-96 h-96 rounded-full bg-emerald-50/50 blur-2xl pointer-events-none"></div>
+
+      <!-- Floating Health Cross (+) Brand Accents -->
+      <div class="absolute top-16 left-6 sm:left-14 text-primary/25 animate-float pointer-events-none select-none">
+        <svg class="w-7 h-7 sm:w-9 sm:h-9 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+      </div>
+      <div class="absolute top-1/4 right-6 sm:right-16 text-teal-400/30 animate-float-delayed pointer-events-none select-none">
+        <svg class="w-8 h-8 sm:w-11 sm:h-11 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+      </div>
+      <div class="absolute bottom-12 left-1/3 text-emerald-500/20 animate-float pointer-events-none select-none hidden sm:block">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+      </div>
+      
+      <div class="max-w-container-max mx-auto px-4 sm:px-6 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Left Column -->
+          <div class="lg:col-span-7 flex flex-col items-start text-left">
+            
+            <!-- Top Excellence Pill Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 text-primary text-xs font-extrabold uppercase tracking-wider mb-5 shadow-2xs">
+              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span>Excellence in Modern Dentistry</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-main tracking-tight leading-[1.12] mb-5">
+              Crafting Confident <br/>
+              <span class="text-shimmer relative inline-block">
+                Smiles
+                <span class="absolute left-0 -bottom-1 w-full h-1.5 bg-primary/30 rounded-full"></span>
+              </span> for Life.
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed mb-8 font-normal">
+              We combine 20+ years of advanced dental technology with a gentle touch to provide exceptional, painless care for you and your family in Ponnani, Kerala.
+            </p>
+
+            <!-- Action Buttons Group -->
+            <div class="flex flex-wrap items-center gap-4 mb-12">
+              <a class="inline-flex items-center justify-center gap-2.5 bg-primary hover:bg-primary-hover text-white text-[15px] font-bold px-8 py-3.5 rounded-full transition-all shadow-[0_6px_20px_rgba(0,102,108,0.25)] hover:shadow-[0_8px_25px_rgba(0,102,108,0.35)] hover:-translate-y-0.5" href="#appointment-section">
+                <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                <span>Book Appointment</span>
+              </a>
+            </div>
+
+            <!-- 4 Features Horizontal Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-border-subtle w-full">
+              <div class="flex items-center gap-2.5 hover-lift">
+                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">dentistry</span>
+                </div>
+                <span class="text-[13px] font-bold text-text-main leading-snug">Modern<br/>Technology</span>
+              </div>
+
+              <div class="flex items-center gap-2.5 hover-lift">
+                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">verified_user</span>
+                </div>
+                <span class="text-[13px] font-bold text-text-main leading-snug">Safe &amp;<br/>Trusted</span>
+              </div>
+
+              <div class="flex items-center gap-2.5 hover-lift">
+                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">groups</span>
+                </div>
+                <span class="text-[13px] font-bold text-text-main leading-snug">Experienced<br/>Team</span>
+              </div>
+
+              <div class="flex items-center gap-2.5 hover-lift">
+                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">favorite</span>
+                </div>
+                <span class="text-[13px] font-bold text-text-main leading-snug">Comfortable<br/>Care</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column -->
+          <div class="lg:col-span-5 relative mt-4 lg:mt-0 reveal-right">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              
+              <div class="absolute -right-4 -bottom-6 w-32 h-32 bg-dot-pattern opacity-30 pointer-events-none"></div>
+
+              <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-primary-subtle border-4 border-white">
+                <img class="w-full h-[400px] sm:h-[480px] object-cover object-center" alt="Dr. Nazeer P. Chittayil with child dental patient" src="images/dr-nazeer-with-kid.jpg"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent"></div>
+                
+                <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-surface-card/95 backdrop-blur-md shadow-lg border border-white/60 flex items-center justify-between">
+                  <div class="pr-2">
+                    <p class="text-[13px] font-bold text-primary leading-snug">Dr. Nazeer P. Chittayil</p>
+                    <p class="text-[11px] text-text-muted mt-0.5">Founder &amp; Chief Specialist &bull; Gentle Family Care</p>
+                  </div>
+                  <button onclick="selectDoctorAndBook('orthodontics', 'Dr. Nazeer P. Chittayil')" class="w-9 h-9 rounded-full bg-primary hover:bg-primary-hover text-white flex items-center justify-center shrink-0 shadow-sm transition-colors cursor-pointer" aria-label="Book with Dr. Nazeer">
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Floating Trust Badges -->
+              <div class="animate-float absolute -top-3 left-2 sm:-top-4 sm:-left-4 bg-surface-card/95 backdrop-blur-md shadow-lg p-2.5 sm:p-3 rounded-2xl border border-border-subtle flex items-center gap-2.5 sm:gap-3 z-20">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary text-white flex items-center justify-center text-sm sm:text-base font-black">
+                  20+
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight">Years of Trust</span>
+                  <span class="text-[10px] sm:text-[11px] text-text-muted">Since 2002</span>
+                </div>
+              </div>
+
+              <div class="animate-float-delayed absolute top-1/4 right-2 sm:-right-4 bg-surface-card/95 backdrop-blur-md shadow-lg px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl border border-border-subtle flex items-center gap-2 sm:gap-2.5 z-20">
+                <span class="material-symbols-outlined text-accent-star text-[18px] sm:text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <div class="flex flex-col">
+                  <span class="text-[12px] sm:text-[14px] font-extrabold text-text-main leading-tight">4.9 / 5.0</span>
+                  <span class="text-[10px] sm:text-[11px] text-text-muted">1,850+ Smiles</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TRUST STRIP & KEY METRICS (WITH NUMBER COUNTERS) -->
+    <section class="bg-surface-card border-y border-border-subtle py-10 shadow-xs relative z-10 reveal">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 text-left">
+          
+          <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle/80 flex flex-col justify-between hover-lift">
+            <div>
+              <span class="text-3xl font-extrabold text-primary block mb-1 font-mono" data-counter="2002">2002</span>
+              <span class="text-[15px] font-bold text-text-main block mb-1">Established</span>
+            </div>
+            <p class="text-[12px] text-text-muted leading-relaxed">Founded on 28th April 2002 in Ponnani, Kerala.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle/80 flex flex-col justify-between hover-lift">
+            <div>
+              <span class="text-3xl font-extrabold text-primary block mb-1 font-mono" data-counter="7" data-suffix="+">7+</span>
+              <span class="text-[15px] font-bold text-text-main block mb-1">Specialists</span>
+            </div>
+            <p class="text-[12px] text-text-muted leading-relaxed">Consortium of certified MDS &amp; BDS dental surgeons.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle/80 flex flex-col justify-between hover-lift">
+            <div>
+              <span class="text-3xl font-extrabold text-primary block mb-1 font-mono" data-counter="4">4</span>
+              <span class="text-[15px] font-bold text-text-main block mb-1">Clinic Centres</span>
+            </div>
+            <p class="text-[12px] text-text-muted leading-relaxed">Ponnani, Purangu, Naripparambu &amp; Mandalamkunnu.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle/80 flex flex-col justify-between hover-lift">
+            <div>
+              <span class="text-3xl font-extrabold text-primary block mb-1 font-mono" data-counter="100" data-suffix="%">100%</span>
+              <span class="text-[15px] font-bold text-text-main block mb-1">Painless Care</span>
+            </div>
+            <p class="text-[12px] text-text-muted leading-relaxed">Advanced anesthesia, lasers, and gentle techniques.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle/80 flex flex-col justify-between col-span-2 md:col-span-1 hover-lift">
+            <div>
+              <span class="text-3xl font-extrabold text-secondary block mb-1 font-mono">24/7</span>
+              <span class="text-[15px] font-bold text-text-main block mb-1">Emergency Call</span>
+            </div>
+            <p class="text-[12px] text-text-muted leading-relaxed">Instant on-call doctor triage for acute pain.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ABOUT CYMOR & FOUNDING STORY -->
+    <section id="about-section" class="py-16 md:py-24 bg-surface-base scroll-mt-16 reveal">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          
+          <!-- Story Visual with Overlap Card -->
+          <div class="lg:col-span-5 relative order-2 lg:order-1 reveal-left">
+            <div class="rounded-3xl overflow-hidden shadow-md bg-primary-subtle border border-border-subtle">
+              <img class="w-full h-80 sm:h-96 md:h-[440px] object-cover" alt="CYMOR Clinic operatory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMTnehuJlAabbvqpU_I7f0TVz-UQ40qiD98aUzSHrETHw2WXoCTuT0Gf6UIAjph-i07osGyIP0hgIZ6F0vuKBME4_yVKSOAz_QrudMBgl_okaBpS9aRA8v9yvYYs5TN4XdjyMPcJashdLV8Hwxi6bq7GUkA_8MEolVrUJ7ppjniNgUjZGJHRkh8UpCfxJq_UonBqzvfAijNjfRhprCs9kKTBOl1Gcn_vJ94-nwXmPDGwcRAbsSw30o"/>
+            </div>
+            <div class="p-5 rounded-2xl bg-surface-card shadow-lg -mt-10 mx-4 relative z-10 border border-border-subtle hover-lift">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="material-symbols-outlined text-primary text-[26px]">medical_services</span>
+                <h4 class="text-base font-bold text-text-main">Consortium of Specialists</h4>
+              </div>
+              <p class="text-[13px] text-text-muted leading-relaxed">
+                Every patient receives specialized evaluation: Orthodontists, Endodontists, Periodontists, and Oral Surgeons working collaboratively under one roof.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story Content & 4 Pillars Grid -->
+          <div class="lg:col-span-7 flex flex-col items-start order-1 lg:order-2 reveal-right">
+            <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-2 block">About Our Clinic</span>
+            <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight leading-tight mb-4">
+              Why Choose CYMOR Super Speciality Clinic?
+            </h2>
+            <p class="text-base text-text-body mb-4 leading-relaxed">
+              Located in the heart of Ponnani, near AV Higher Secondary School (Marva Building), CYMOR was established on <strong class="text-text-main">28th April 2002</strong> by <strong class="text-text-main">Dr. Nazeer P. Chittayil</strong>. What started as an ambitious dental facility has grown over two decades into an acknowledged Super Speciality Dental Centre.
+            </p>
+            <p class="text-[14px] text-text-muted leading-relaxed mb-6">
+              Following 7 successful initial years of clinical practice, Dr. Nazeer completed post-graduate specialization in Orthodontics. By 2012, CYMOR cemented its identity as a premier centre for <span class="text-primary font-bold">Orthodontics &amp; Dentofacial Orthopaedics</span>, subsequently opening 3 branch clinics across Kerala in Purangu, Naripparambu, and Mandalamkunnu.
+            </p>
+
+            <!-- 4 Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full mb-6">
+              <div class="p-4 rounded-2xl bg-surface-card border border-border-subtle shadow-2xs flex items-start gap-3 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">person_outline</span>
+                </div>
+                <div>
+                  <h4 class="text-[14px] font-bold text-text-main mb-0.5">One-on-One Consults</h4>
+                  <p class="text-[12px] text-text-muted">Direct specialist assessment without rushed handoffs.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-surface-card border border-border-subtle shadow-2xs flex items-start gap-3 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                </div>
+                <div>
+                  <h4 class="text-[14px] font-bold text-text-main mb-0.5">Transparent Pricing</h4>
+                  <p class="text-[12px] text-text-muted">Clear estimates beforehand with zero surprise fees.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-surface-card border border-border-subtle shadow-2xs flex items-start gap-3 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">devices</span>
+                </div>
+                <div>
+                  <h4 class="text-[14px] font-bold text-text-main mb-0.5">Digital Diagnostics</h4>
+                  <p class="text-[12px] text-text-muted">Low-radiation digital radiography and 3D scans.</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-surface-card border border-border-subtle shadow-2xs flex items-start gap-3 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">payments</span>
+                </div>
+                <div>
+                  <h4 class="text-[14px] font-bold text-text-main mb-0.5">Digital UPI &amp; Cards</h4>
+                  <p class="text-[12px] text-text-muted">Seamless payments and insurance billing receipts.</p>
+                </div>
+              </div>
+            </div>
+
+            <a class="inline-flex items-center gap-1.5 text-primary hover:text-primary-dark font-bold text-[14px] group" href="#appointment-section">
+              <span>Schedule your specialist evaluation</span>
+              <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: INTERACTIVE TREATMENT & SERVICES DIRECTORY -->
+    <section class="py-16 md:py-24 bg-surface-tint scroll-mt-16 border-y border-border-subtle reveal" id="treatments-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
+          <div>
+            <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-1 block">Our Services</span>
+            <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight">
+              Comprehensive Dental Care for Every Smile
+            </h2>
+            <p class="text-sm text-text-muted max-w-xl mt-2 leading-relaxed">
+              From pediatric preventive dentistry to complex surgical dental implants, every treatment follows international sterilization protocols.
+            </p>
+          </div>
+
+          <!-- Filter Pill Controls -->
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full scrollbar-none bg-surface-card p-1.5 rounded-2xl sm:rounded-full border border-border-subtle shadow-xs" id="treatment-filter-bar">
+            <button class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold bg-primary text-white transition-all cursor-pointer" data-filter="all">All Services</button>
+            <button class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold text-text-muted hover:bg-primary-subtle hover:text-primary transition-all cursor-pointer" data-filter="ortho">Orthodontics</button>
+            <button class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold text-text-muted hover:bg-primary-subtle hover:text-primary transition-all cursor-pointer" data-filter="restorative">Root Canal &amp; Restorative</button>
+            <button class="filter-btn shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-[13px] font-bold text-text-muted hover:bg-primary-subtle hover:text-primary transition-all cursor-pointer" data-filter="surgery">Surgical &amp; Implants</button>
+          </div>
+        </div>
+
+        <!-- Treatment Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="treatment-grid">
+          
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="ortho">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">grid_goldenratio</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Chief Speciality</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Orthodontics &amp; Clear Aligners</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Metal, ceramic self-ligating braces, and custom clear aligners for crooked teeth, deep bites, and jaw realignment supervised by Dr. Nazeer (MDS).
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="ortho-aligners" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('ortho')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="surgery">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">hardware</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Titanium Fixtures</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Dental Implants &amp; Bridges</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Permanent natural-looking replacements for single or multiple missing teeth using biocompatible titanium screws and zirconia ceramic crowns.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="dental-implants" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('surgery')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="restorative">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">healing</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Painless Single-Sitting</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Root Canal Treatment (RCT)</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Eliminate severe toothache and infected nerve tissue while salvaging the natural tooth. Performed by specialist endodontist Dr. Sharath Gopinath.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="root-canal" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('restorative')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="restorative">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">sentiment_satisfied</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Aesthetic Design</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Smile Makeovers &amp; Veneers</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Custom ceramic laminate veneers, professional in-office teeth whitening, composite bonding, and aesthetic contouring for a radiant smile.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="cosmetic-smile" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('restorative')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="surgery">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">water_drop</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Gum Speciality</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Periodontics &amp; Gum Care</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Laser treatment for bleeding gums, pyorrhea therapy, ultrasonic deep scaling, bone augmentation, and flap surgeries by Dr. Mohammed Najeer.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="periodontics-gum" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('surgery')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+          <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="all">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-[26px]">child_care</span>
+              </div>
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Kid Friendly</span>
+              <h3 class="text-lg font-bold text-text-main mb-2">Pediatric Dental Care</h3>
+              <p class="text-sm text-text-muted leading-relaxed mb-6">
+                Fear-free visits for children, pit and fissure cavity sealants, topical fluoride, habit-breaking appliances, and interceptive orthodontic guidance.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+              <button data-treatment-modal="pediatric-dentistry" class="text-primary font-bold text-[13px] hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Learn More</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              </button>
+              <button onclick="selectTreatmentAndBook('general')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                Book Slot
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: REAL SMILE TRANSFORMATIONS (BEFORE & AFTER COMPARISON SLIDER) -->
+    <section class="py-16 md:py-24 bg-surface-base scroll-mt-16 reveal" id="transformations-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-1 block">Clinical Evidence &amp; Smile Results</span>
+          <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight mb-2">
+            Real Smile Transformations
+          </h2>
+          <p class="text-sm text-text-muted">
+            Experience actual patient transformations delivered through digital ortho-planning, minimally invasive aligners, and aesthetic restorations.
+          </p>
+        </div>
+
+        <!-- Case Switcher Tabs -->
+        <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 -mx-4 sm:mx-0 px-4 sm:px-0 scrollbar-none mb-6 sm:mb-8" id="case-tabs-container">
+          <!-- Populated via js/app.js -->
+        </div>
+
+        <!-- Main Comparison Showcase Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-surface-card p-6 sm:p-8 rounded-3xl shadow-sm border border-border-subtle">
+          
+          <div class="lg:col-span-7 flex flex-col gap-4">
+            <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[460px] rounded-2xl overflow-hidden shadow-lg select-none border border-border-subtle group" id="comparison-container" style="--pos: 50%;">
+              <img alt="After treatment: Restored Smile" class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none" id="after-img" src="images/cases/ortho-after.jpg"/>
+              
+              <div class="absolute inset-0 overflow-hidden select-none pointer-events-none" id="before-wrapper" style="clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);">
+                <img alt="Before treatment: Initial Condition" id="before-img" class="w-full h-full object-cover select-none pointer-events-none max-w-none" src="images/cases/ortho-before.jpg" style="width: 100%; height: 100%;"/>
+              </div>
+
+              <!-- Divider Handle Line -->
+              <div class="absolute top-0 bottom-0 pointer-events-none flex items-center justify-center z-20" id="slider-handle" style="left: var(--pos, 50%); transform: translateX(-50%);">
+                <div class="w-0.5 h-full bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)]"></div>
+                <div class="absolute w-11 h-11 rounded-full bg-surface-card border-2 border-primary text-primary shadow-xl flex items-center justify-center gap-0.5 transition-transform group-hover:scale-105">
+                  <span class="material-symbols-outlined text-[15px] select-none font-bold">arrow_left</span>
+                  <span class="material-symbols-outlined text-[15px] select-none font-bold">arrow_right</span>
+                </div>
+              </div>
+
+              <div class="absolute top-4 left-4 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-900/75 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase border border-white/20 shadow-xs">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                  BEFORE
+                </span>
+              </div>
+              <div class="absolute top-4 right-4 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase border border-white/20 shadow-xs">
+                  <span class="material-symbols-outlined text-[13px]">verified</span>
+                  AFTER
+                </span>
+              </div>
+
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+                <span class="px-3.5 py-1.5 rounded-full bg-slate-900/75 backdrop-blur-md text-white text-[12px] font-medium flex items-center gap-1.5 shadow-md">
+                  <span class="material-symbols-outlined text-[16px]">drag_indicator</span>
+                  <span>Drag slider or tap presets</span>
+                </span>
+              </div>
+
+              <input aria-label="Before and after comparison slider" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 m-0 p-0" id="comparison-range" max="100" min="0" step="0.2" type="range" value="50"/>
+            </div>
+
+            <!-- Preset Quick Toggle Buttons -->
+            <div class="flex items-center justify-between gap-2 flex-wrap pt-1">
+              <div class="flex items-center gap-2">
+                <button class="preset-btn px-3.5 py-1.5 rounded-xl text-[13px] font-bold bg-surface-tint hover:bg-primary-subtle text-text-body hover:text-primary transition-all border border-border-subtle cursor-pointer" data-target="0">
+                  Show Before (100%)
+                </button>
+                <button class="preset-btn px-3.5 py-1.5 rounded-xl text-[13px] font-bold bg-primary text-white transition-all shadow-xs cursor-pointer" data-target="50">
+                  50/50 Compare
+                </button>
+                <button class="preset-btn px-3.5 py-1.5 rounded-xl text-[13px] font-bold bg-surface-tint hover:bg-primary-subtle text-text-body hover:text-primary transition-all border border-border-subtle cursor-pointer" data-target="100">
+                  Show After (100%)
+                </button>
+              </div>
+              <div class="flex items-center gap-1 text-[12px] text-text-muted">
+                <span class="material-symbols-outlined text-[16px] text-primary">auto_fix_high</span>
+                <span>Microscopic clinical photos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Study Details and Consultation CTA -->
+          <div class="lg:col-span-5 flex flex-col items-start">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-subtle text-primary text-[12px] font-bold mb-3 border border-border-teal">
+              <span class="material-symbols-outlined text-[16px]">dentistry</span>
+              <span>Featured Smile Case</span>
+            </div>
+            
+            <h3 id="case-title" class="text-xl font-bold text-text-main mb-2 leading-snug">
+              Complete Arch Realignment &amp; Enamel Whitening
+            </h3>
+            
+            <p id="case-desc" class="text-sm text-text-muted mb-4 leading-relaxed">
+              Adult patient presented with significant anterior crowding, incisal wear, and chronic enamel discoloration. A customized digital alignment plan was formulated using intraoral scans with no extractions required.
+            </p>
+
+            <div class="grid grid-cols-2 gap-3 w-full mb-4">
+              <div class="p-3 rounded-2xl bg-surface-tint border border-border-subtle">
+                <span class="text-[11px] text-text-muted uppercase font-bold block mb-0.5">Treatment Time</span>
+                <span id="case-duration" class="text-base font-extrabold text-primary">8 Months</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-surface-tint border border-border-subtle">
+                <span class="text-[11px] text-text-muted uppercase font-bold block mb-0.5">Technique</span>
+                <span id="case-technique" class="text-[13px] font-bold text-text-main">3D Aligners &amp; Whitening</span>
+              </div>
+              <div class="p-3 rounded-2xl bg-surface-tint border border-border-subtle col-span-2">
+                <span class="text-[11px] text-text-muted uppercase font-bold block mb-0.5">Supervising Specialist</span>
+                <span id="case-doctor" class="text-[13px] font-bold text-text-main">Dr. Nazeer P. Chittayil (MDS Orthodontics)</span>
+              </div>
+            </div>
+
+            <div id="case-quote" class="p-3.5 rounded-2xl bg-primary-subtle border-l-4 border-primary text-text-body text-[13px] mb-5 italic leading-relaxed">
+              "I hated showing my teeth in family photos. Within 8 months with Dr. Nazeer's aligners, I can't stop smiling. Painless and completely transparent."
+            </div>
+
+            <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white text-[14px] font-bold px-6 py-3 rounded-full transition-all shadow-md hover:shadow-lg" href="#appointment-section">
+              <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+              <span>Book a Smile Consultation</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: MEET OUR SPECIALISTS -->
+    <section class="py-16 md:py-24 bg-surface-tint scroll-mt-16 border-y border-border-subtle reveal" id="doctors-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-1 block">Clinical Expertise</span>
+          <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight mb-2">
+            Meet Our Specialist Dental Doctors
+          </h2>
+          <p class="text-sm text-text-muted">
+            A dedicated consortium of MDS and BDS dental practitioners ensuring focused, specialized treatment plans for every oral concern.
+          </p>
+        </div>
+
+        <!-- Doctor Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Doctor 1: Dr. Nazeer P. Chittayil (Official Photo) -->
+          <div class="hover-lift bg-surface-card rounded-3xl p-5 border border-border-subtle shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="rounded-2xl overflow-hidden bg-primary-subtle mb-4 aspect-[4/5] relative border border-border-subtle">
+                <img class="w-full h-full object-cover object-top" alt="Dr Nazeer P Chittayil" src="images/dr-nazeer.png"/>
+                <span class="absolute bottom-2.5 left-2.5 bg-primary text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-sm">Founder &amp; Chief</span>
+              </div>
+              <h4 class="text-base font-bold text-text-main">Dr. Nazeer P. Chittayil</h4>
+              <p class="text-[12px] text-primary font-bold mb-2">BDS, MDS (Orthodontics)</p>
+              <p class="text-[13px] text-text-muted leading-relaxed mb-4">
+                Chief Orthodontist &amp; Dentofacial Orthopaedics Specialist with 20+ years clinical experience.
+              </p>
+            </div>
+            <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between">
+              <button data-doctor-modal="dr-nazeer" class="text-primary font-bold text-[13px] hover:underline cursor-pointer">View Bio</button>
+              <button onclick="selectDoctorAndBook('orthodontics', 'Dr. Nazeer P. Chittayil')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">Book</button>
+            </div>
+          </div>
+
+          <!-- Doctor 2: Dr. Vinu K Cheriyan -->
+          <div class="hover-lift bg-surface-card rounded-3xl p-5 border border-border-subtle shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="rounded-2xl overflow-hidden bg-primary-subtle mb-4 aspect-[4/5] relative border border-border-subtle">
+                <img class="w-full h-full object-cover" alt="Dr Vinu K Cheriyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQv4vuezhRndNyvyOyKI6LMIP5N1Anhmqqb17WKHHtkGgXcUTF3XoeMtfwaa3i7MWxoSuAkJLJ6ZYjBnwOIkru1CYbkyscSYdYhCV9CLF1lgPOLVHCoErFfb8_QGQOWjAVXGUMeh3jo9NhZekA_zSXfKfFlDt2nqgv4sLxVvbG4ZPu8fKYnREsFgf2jxT895v4Mba6PitiRxreXLCz-0wMsYSmmrOQggZ9E5FwrwovPWgo96L0PzVn"/>
+                <span class="absolute bottom-2.5 left-2.5 bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-sm">Chief Dental Surgeon</span>
+              </div>
+              <h4 class="text-base font-bold text-text-main">Dr. Vinu K. Cheriyan</h4>
+              <p class="text-[12px] text-primary font-bold mb-2">BDS (Dental Surgery)</p>
+              <p class="text-[13px] text-text-muted leading-relaxed mb-4">
+                Expert in restorative dentistry, surgical extractions, crown bridge prosthetics, and patient diagnostics.
+              </p>
+            </div>
+            <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between">
+              <button data-doctor-modal="dr-vinu" class="text-primary font-bold text-[13px] hover:underline cursor-pointer">View Bio</button>
+              <button onclick="selectDoctorAndBook('general', 'Dr. Vinu K. Cheriyan')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">Book</button>
+            </div>
+          </div>
+
+          <!-- Doctor 3: Dr. Sharath Gopinath -->
+          <div class="hover-lift bg-surface-card rounded-3xl p-5 border border-border-subtle shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="rounded-2xl overflow-hidden bg-primary-subtle mb-4 aspect-[4/5] relative border border-border-subtle">
+                <img class="w-full h-full object-cover" alt="Dr Sharath Gopinath" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCmTPqcAnkyKN1-B5DWrj_J3chr2EaVwIN-ACvNXIRK8MTJzZBhLlQmLFbBKaKDeyccM6zT-Le_sM4o1zlAYh4pn2Zee1Vmk2TPN8360_ir3NQmqGoA-CKVcDL_olvM_YpJn0Mpekv2aMauY0z7vJA9DArGITtLIoq7V3Z1r22gC_nKdcEcVOJk2yV6jOgK1HHrTf7IbYqD2YudmEE8xdomHq3hv6XKt1glv0G7l5h18-QHxl_6CPa"/>
+                <span class="absolute bottom-2.5 left-2.5 bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-sm">Endodontist</span>
+              </div>
+              <h4 class="text-base font-bold text-text-main">Dr. Sharath Gopinath</h4>
+              <p class="text-[12px] text-primary font-bold mb-2">MDS (Endodontics)</p>
+              <p class="text-[13px] text-text-muted leading-relaxed mb-4">
+                Specialist in microscopic painless root canals, re-RCT, and conservative aesthetic restorations.
+              </p>
+            </div>
+            <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between">
+              <button data-doctor-modal="dr-sharath" class="text-primary font-bold text-[13px] hover:underline cursor-pointer">View Bio</button>
+              <button onclick="selectDoctorAndBook('rct', 'Dr. Sharath Gopinath')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">Book</button>
+            </div>
+          </div>
+
+          <!-- Doctor 4: Dr. Mohammed Najeer -->
+          <div class="hover-lift bg-surface-card rounded-3xl p-5 border border-border-subtle shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="rounded-2xl overflow-hidden bg-primary-subtle mb-4 aspect-[4/5] relative border border-border-subtle">
+                <img class="w-full h-full object-cover" alt="Dr Mohammed Najeer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI31imSsEyppsncRrlGhVlz0ZcVy8G6X8AoWhM--bR_aq-Qz06FVqvmRK6MJ0tK24dkdxYgdhQXVP95A08iVQDcCm4qNyWjbUC0VgP-2lF5JEM-B0ICqYnamlTGICM6e3MRLBYmfqFeVTnfPDgVfs8lsSoYa_xQ5VvYOiBlZ7GtJbSWMVSHsJZibs2NWG-qqAp4kDJ4bdrM66hWrUSI-UAFzeNkVsb0OV618zyISNNr0fcUrWkO-OL"/>
+                <span class="absolute bottom-2.5 left-2.5 bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-sm">Periodontics &amp; Implants</span>
+              </div>
+              <h4 class="text-base font-bold text-text-main">Dr. Mohammed Najeer</h4>
+              <p class="text-[12px] text-primary font-bold mb-2">MDS (Periodontics)</p>
+              <p class="text-[13px] text-text-muted leading-relaxed mb-4">
+                Specialist in surgical periodontology, laser gum surgeries, bone grafting, and dental implant placement.
+              </p>
+            </div>
+            <div class="pt-3.5 border-t border-border-subtle flex items-center justify-between">
+              <button data-doctor-modal="dr-najeer" class="text-primary font-bold text-[13px] hover:underline cursor-pointer">View Bio</button>
+              <button onclick="selectDoctorAndBook('implants', 'Dr. Mohammed Najeer')" class="px-3.5 py-1.5 rounded-full bg-primary-subtle text-primary text-[12px] font-bold hover:bg-primary hover:text-white transition-colors cursor-pointer">Book</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-8 p-6 rounded-3xl bg-surface-card border border-border-teal shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px]">groups</span>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-text-main">Supporting Associate Dental Surgeons</h4>
+              <p class="text-sm text-text-muted mt-0.5">
+                Dr. Shahin, Dr. Veena R. Vinu, and Dr. Shebin Rahman provide round-the-clock emergency support &amp; comprehensive dental reviews.
+              </p>
+            </div>
+          </div>
+          <a class="shrink-0 px-5 py-2.5 rounded-full bg-primary text-white font-bold text-[13px] hover:bg-primary-hover transition-all shadow-xs" href="#appointment-section">
+            Consult Full Dental Team
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: DENTAL TOURISM IN KERALA -->
+    <section id="tourism-section" class="py-16 md:py-24 bg-gradient-to-br from-primary-dark via-primary to-[#004f53] text-white relative overflow-hidden scroll-mt-16 reveal">
+      <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none"></div>
+      
+      <!-- Floating Health Cross (+) Accents -->
+      <div class="absolute top-12 right-12 text-white/10 animate-float pointer-events-none select-none hidden sm:block">
+        <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+      </div>
+      <div class="absolute bottom-16 left-10 text-teal-300/15 animate-float-delayed pointer-events-none select-none hidden sm:block">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+      </div>
+
+      <div class="max-w-container-max mx-auto px-4 sm:px-6 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-12">
+          
+          <div class="lg:col-span-7 flex flex-col items-start text-left reveal-left">
+            <div class="inline-flex items-center gap-1.5 bg-white/10 text-white border border-white/20 px-3.5 py-1 rounded-full text-[12px] font-bold mb-4">
+              <span class="material-symbols-outlined text-[16px]">flight</span>
+              <span>Kerala Dental Tourism Facilitation</span>
+            </div>
+
+            <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              World-Class Smiles. <br/>Save up to 80% in God's Own Country.
+            </h2>
+
+            <p class="text-base text-white/90 leading-relaxed mb-6">
+              CYMOR welcomes Non-Resident Indians (NRIs) from Gulf countries (UAE, Saudi Arabia, Oman, Qatar, Kuwait, Bahrain) and travelers seeking world-standard dental implants, complete smile restorations, and clear aligner therapies at exceptional value.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full mb-8">
+              <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/15 hover-lift">
+                <span class="material-symbols-outlined text-teal-300 text-[22px] mb-1">contactless</span>
+                <h4 class="text-[14px] font-bold text-white mb-0.5">Pre-Visit Teleconsultation</h4>
+                <p class="text-[12px] text-white/80">Send your OPG X-rays over WhatsApp for preliminary treatment planning.</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/15 hover-lift">
+                <span class="material-symbols-outlined text-teal-300 text-[22px] mb-1">schedule_send</span>
+                <h4 class="text-[14px] font-bold text-white mb-0.5">Compressed Schedules</h4>
+                <p class="text-[12px] text-white/80">Priority appointment clustering tailored around your flight dates.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+              <a class="inline-flex items-center justify-center gap-2 bg-surface-card hover:bg-slate-100 text-primary text-[14px] font-bold px-6 py-3 rounded-full shadow-md transition-all" href="mailto:cymordental@gmail.com?subject=Dental%20Tourism%20Inquiry%20from%20Website">
+                <span class="material-symbols-outlined text-[18px]">mail</span>
+                <span>Email Tourism Coordinator</span>
+              </a>
+              <a class="inline-flex items-center justify-center gap-2 bg-transparent border border-white/40 hover:bg-white/10 text-white text-[14px] font-bold px-6 py-3 rounded-full transition-all" href="https://wa.me/919995268787?text=Hello%20CYMOR%20Dental,%20I%20am%20interested%20in%20Dental%20Tourism%20in%20Kerala" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined text-[18px] text-[#25D366]">chat</span>
+                <span>WhatsApp NRI Pre-Consult</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 reveal-right">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 border border-white/20">
+              <img class="w-full h-80 object-cover" alt="Kerala Dental Tourism" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLbwurWxXpENH5VyGtej-07rgErt3KGs4rObaAQS7thbYle8UvPyuaEpxP6cepVo0gWPHneiS8WCmrLUCitcVRLF--aj8iPz_uCu-INQ0EblCdBYDW3gUD60ouKZ8jjrVd4rtbAhpi7ntOk4dRcl9h6plVa1z4f6_PbnZkIja7Sfz36id0RIQ2PfKmmZ1x48oZqrjhuLzq0y94XsERXpvMNgWHLBYAmXtxdZsrYcx-yH6Ok-H9uF0u"/>
+              <div class="p-5 bg-surface-card text-text-main">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-[14px] font-bold text-primary">Distance from Calicut Airport (CCJ)</span>
+                  <span class="text-[11px] font-bold bg-primary-subtle text-primary px-2.5 py-0.5 rounded-full">~1.5 Hours</span>
+                </div>
+                <p class="text-[12px] text-text-muted leading-relaxed">
+                  We assist with local taxi pickups, partner hotel recommendations, and multilingual care coordination (English, Malayalam, Hindi, Arabic).
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- International Cost Comparison Table Card -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl reveal-scale">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Estimated Treatment Cost Comparison</h3>
+              <p class="text-xs sm:text-sm text-white/80 mt-0.5">Identical international standard materials (Straumann, Nobel Biocare, 3M, E-Max) at significant savings.</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/20 text-white text-[12px] font-bold self-start sm:self-auto">INR vs GCC Benchmark</span>
+          </div>
+          <div id="tourism-pricing-table">
+            <!-- Rendered via js/app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9: PATIENT TESTIMONIALS (REVIEWS) -->
+    <section class="py-16 md:py-24 bg-surface-base reveal" id="testimonials-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-1 block">Patient Experiences</span>
+          <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight">
+            Real Stories, Real Smiles
+          </h2>
+          <p class="text-sm text-text-muted mt-2">
+            Read verified feedback from families and visitors treated at CYMOR dental clinic.
+          </p>
+        </div>
+
+        <!-- Testimonial Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="hover-lift p-6 rounded-3xl bg-surface-card shadow-xs border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-0.5 text-accent-star mb-3">
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-sm text-text-body mb-4 italic leading-relaxed">
+                "Thank you for the outstanding dental work that you provided for me. The services are really superb. It really helped to improve my dental and oral health."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-3.5 border-t border-border-subtle">
+              <div class="w-9 h-9 rounded-full bg-primary-subtle text-primary flex items-center justify-center font-bold text-sm">
+                S
+              </div>
+              <div>
+                <p class="text-[14px] font-bold text-text-main leading-tight">Shahad</p>
+                <span class="text-[11px] text-text-muted">Calicut, Kerala</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hover-lift p-6 rounded-3xl bg-surface-card shadow-xs border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-0.5 text-accent-star mb-3">
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-sm text-text-body mb-4 italic leading-relaxed">
+                "The treatments of the Cymor dental clinic are outstanding, I would like to thank the doctors and staffs for their efforts for making me more cheerful."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-3.5 border-t border-border-subtle">
+              <div class="w-9 h-9 rounded-full bg-primary-subtle text-primary flex items-center justify-center font-bold text-sm">
+                R
+              </div>
+              <div>
+                <p class="text-[14px] font-bold text-text-main leading-tight">Rakesh</p>
+                <span class="text-[11px] text-text-muted">Tirur, Kerala</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hover-lift p-6 rounded-3xl bg-surface-card shadow-xs border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-0.5 text-accent-star mb-3">
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-sm text-text-body mb-4 italic leading-relaxed">
+                "I searched all over and looked at many different clinics to decide where to go, and Cymor was by far the best choice. Outstanding care and results."
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-3.5 border-t border-border-subtle">
+              <div class="w-9 h-9 rounded-full bg-primary-subtle text-primary flex items-center justify-center font-bold text-sm">
+                U
+              </div>
+              <div>
+                <p class="text-[14px] font-bold text-text-main leading-tight">Usha</p>
+                <span class="text-[11px] text-text-muted">Manjeri, Kerala</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hover-lift p-6 rounded-3xl bg-surface-card shadow-xs border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-0.5 text-accent-star mb-3">
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              </div>
+              <p class="text-sm text-text-body mb-4 italic leading-relaxed">
+                "Professional, patient, and modern clinic in Ponnani. The doctors explain every step clearly and transparently. Highly recommended!"
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-3.5 border-t border-border-subtle">
+              <div class="w-9 h-9 rounded-full bg-primary-subtle text-primary flex items-center justify-center font-bold text-sm">
+                D
+              </div>
+              <div>
+                <p class="text-[14px] font-bold text-text-main leading-tight">Dasan</p>
+                <span class="text-[11px] text-text-muted">Thrissur, Kerala</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: APPOINTMENT BANNER & INTERACTIVE BOOKING FORM -->
+    <section class="py-16 md:py-24 bg-surface-tint scroll-mt-16 border-t border-border-subtle reveal" id="appointment-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="bg-surface-card rounded-3xl shadow-xl overflow-hidden border border-border-subtle">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 bg-gradient-to-br from-primary-dark via-primary to-[#004f53] text-white p-8 md:p-10 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-1.5 bg-white/10 px-3.5 py-1 rounded-full text-[12px] font-bold mb-4 border border-white/20">
+                  <span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+                  <span>Priority Clinical Scheduling</span>
+                </div>
+                
+                <h3 class="reveal-text text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight mb-3">
+                  Ready to Love Your Smile?
+                </h3>
+                
+                <p class="text-sm text-white/90 leading-relaxed mb-8">
+                  Schedule your appointment today and take the first step toward a healthier, happier you. We confirm dates via WhatsApp and phone call.
+                </p>
+
+                <div class="flex flex-col gap-4 mb-8 text-sm">
+                  <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <span class="material-symbols-outlined text-[17px]">location_on</span>
+                    </div>
+                    <div>
+                      <span class="font-bold block">Flagship Centre</span>
+                      <span class="text-white/80 text-[13px]">Marva Building, Near AV Higher Secondary School, Ponnani, Kerala</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+                      <span class="material-symbols-outlined text-[17px]">phone</span>
+                    </div>
+                    <div>
+                      <span class="font-bold block">Direct Call Support</span>
+                      <span class="text-white/80 text-[13px]">+91 99952 68787 | 0495 2665366</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+                      <span class="material-symbols-outlined text-[17px]">mail</span>
+                    </div>
+                    <div>
+                      <span class="font-bold block">Official Inquiries</span>
+                      <span class="text-white/80 text-[13px]">cymordental@gmail.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-teal-200 block mb-1">Emergency Policy</span>
+                <p class="text-[12px] text-white/85 leading-relaxed">
+                  Patients suffering acute trauma, swelling, or extreme toothache receive fast-track emergency care with zero advance wait times.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Booking Form Card -->
+            <div class="lg:col-span-7 p-6 sm:p-8 md:p-10 bg-surface-card">
+              <form class="flex flex-col gap-4" id="dental-appointment-form">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="patient-name">Patient Full Name *</label>
+                    <input class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="patient-name" placeholder="e.g. Mohammed Farooq" required="" type="text"/>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="patient-phone">Mobile Phone Number *</label>
+                    <input class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="patient-phone" placeholder="+91 98765 43210" required="" type="tel"/>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="preferred-clinic">Preferred Clinic Branch *</label>
+                    <select class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="preferred-clinic" required="">
+                      <option value="ponnani">Ponnani (Main Flagship)</option>
+                      <option value="purangu">Purangu Clinic</option>
+                      <option value="naripparambu">Naripparambu Clinic</option>
+                      <option value="mandalamkunnu">Mandalamkunnu Clinic</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="treatment-type">Treatment / Speciality</label>
+                    <select class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="treatment-type">
+                      <option value="general">General Checkup &amp; Cleaning</option>
+                      <option value="orthodontics">Orthodontics &amp; Braces (Dr. Nazeer)</option>
+                      <option value="implants">Dental Implants &amp; Surgery (Dr. Najeer)</option>
+                      <option value="rct">Root Canal Therapy (Dr. Sharath)</option>
+                      <option value="cosmetic">Smile Designing &amp; Whitening</option>
+                      <option value="pediatric">Pediatric Dental Care</option>
+                      <option value="emergency">Emergency / Acute Pain Relief</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="preferred-date">Preferred Appointment Date *</label>
+                    <input class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="preferred-date" required="" type="date"/>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[13px] font-bold text-text-main" for="preferred-time">Preferred Time Slot</label>
+                    <select class="h-11 px-3.5 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all" id="preferred-time">
+                      <option value="morning">Morning (10:00 AM - 1:00 PM)</option>
+                      <option value="afternoon">Afternoon (2:00 PM - 5:00 PM)</option>
+                      <option value="evening">Evening (5:00 PM - 7:00 PM)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-[13px] font-bold text-text-main" for="patient-notes">Symptoms or Questions (Optional)</label>
+                  <textarea class="p-3 rounded-xl bg-surface-base text-text-main text-[14px] border border-border-subtle focus:outline-none transition-all resize-none" id="patient-notes" placeholder="Describe your dental concern, tooth sensitivity, or specific treatment query..." rows="3"></textarea>
+                </div>
+
+                <div class="flex items-center gap-1.5 text-[12px] text-text-muted">
+                  <span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+                  <span>Your medical information is held strictly confidential under dental ethics.</span>
+                </div>
+
+                <button class="w-full h-12 bg-primary hover:bg-primary-hover text-white text-[15px] font-bold rounded-full shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-2 cursor-pointer" type="submit">
+                  <span class="material-symbols-outlined text-[19px]">check</span>
+                  <span>Confirm &amp; Generate Appointment Pass</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 11: LOCATION, SCHEDULE & CONTACT MATRIX -->
+    <section class="py-16 md:py-24 bg-surface-base scroll-mt-16 reveal" id="contact-section">
+      <div class="max-w-container-max mx-auto px-4 sm:px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase block mb-1">Kerala Centres</span>
+            <h3 class="reveal-text text-2xl sm:text-3xl font-extrabold text-text-main tracking-tight">Our Clinic Locations &amp; Hours</h3>
+          </div>
+          <a class="inline-flex items-center gap-1.5 text-primary font-bold text-[13px] bg-primary-subtle border border-border-teal px-4 py-2 rounded-full shadow-2xs hover:bg-primary hover:text-white transition-all self-start md:self-auto" href="https://maps.google.com/?q=CYMOR+Dental+Clinic+Ponnani" rel="noopener noreferrer" target="_blank">
+            <span class="material-symbols-outlined text-[17px]">map</span>
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+
+        <!-- All 4 Kerala Centres Directory -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8" id="branch-cards-container">
+          <!-- Populated via js/app.js -->
+        </div>
+
+        <!-- Ponnani Flagship Map & Operating Schedule -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-xs border border-border-subtle relative min-h-[300px] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAb30BprxOxWxpi8bWLb8t1wxnqlL8Ebtg4DO3rqXqMe-bssnOHHTIqEo77v6j61xHFTf4js0OOunE6cbmKTnEMRA-y_wygngOLHac71QJtmAXVkKLE0R4fDjzDtw1P4uEhqT4C48Obe0oCYt0DbGYlDqelRSlv4Q6dMMzakfkIJkNEj6W_SzwbdkS-8vRwEeLe7HijilyWsI6ubBSdwNVFla1KU1VRiWGvVKPETkComyF3cG3P8ULb')">
+            <div class="absolute inset-0 bg-slate-900/10"></div>
+            <div class="absolute top-4 left-4 p-4 rounded-2xl bg-surface-card/95 backdrop-blur-md shadow-md border border-border-subtle max-w-xs">
+              <div class="flex items-center gap-1.5 text-primary text-[14px] font-bold mb-1">
+                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                <span>CYMOR Dental Clinic</span>
+              </div>
+              <p class="text-[12px] text-text-muted leading-relaxed">
+                Marva Building, Near AV Higher Secondary School, Ponnani, Malappuram - 679577
+              </p>
+            </div>
+          </div>
+
+          <!-- Operating Hours Card -->
+          <div class="lg:col-span-5 bg-surface-card rounded-3xl p-6 sm:p-8 shadow-xs border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-primary mb-2">
+                <span class="material-symbols-outlined text-[22px]">schedule</span>
+                <h3 class="text-lg font-bold text-text-main">Operating Hours</h3>
+              </div>
+              <p class="text-[13px] text-text-muted mb-4">
+                We maintain predictable scheduling to minimize patient waiting times.
+              </p>
+              <div class="flex flex-col gap-2 mb-6">
+                <div class="flex items-center justify-between py-2 border-b border-border-subtle text-[13px]">
+                  <span class="font-bold text-text-main">Monday – Friday</span>
+                  <span class="text-primary font-bold">10:00 AM – 6:00 PM</span>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b border-border-subtle text-[13px]">
+                  <span class="font-bold text-text-main">Saturday</span>
+                  <span class="text-primary font-bold">10:00 AM – 4:00 PM</span>
+                </div>
+                <div class="flex items-center justify-between py-2 text-[13px]">
+                  <span class="font-bold text-text-main">Sunday</span>
+                  <span class="text-secondary font-bold">Emergency On-Call Only</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emergency Direct Call Box -->
+            <div class="p-4 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] font-extrabold text-secondary uppercase tracking-wider block mb-0.5">Sudden Dental Pain?</span>
+                <span class="text-base font-extrabold text-text-main">+91 99952 68787</span>
+              </div>
+              <a class="w-10 h-10 rounded-full bg-secondary hover:bg-secondary-hover text-white flex items-center justify-center shadow-md transition-all" href="tel:+919995268787">
+                <span class="material-symbols-outlined text-[19px]">call</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING QUICK EMERGENCY SOS BUTTON -->
+  <div class="fixed bottom-6 left-6 z-40">
+    <button id="open-emergency-sos-btn" class="emergency-pulse inline-flex items-center gap-2 px-4 py-3 rounded-full bg-secondary hover:bg-secondary-hover text-white text-[13px] font-extrabold shadow-xl transition-all cursor-pointer">
+      <span class="material-symbols-outlined text-[20px]">emergency</span>
+      <span class="hidden sm:inline">24/7 Emergency SOS</span>
+      <span class="sm:hidden">SOS</span>
+    </button>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="w-full bg-surface-card border-t border-border-subtle">
+    <div class="max-w-container-max mx-auto px-4 sm:px-6 pt-16 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center">
+            <img alt="CYMOR Super Speciality Dental Clinic Logo" class="h-11 w-auto object-contain" src="images/logo.png"/>
+          </div>
+          <p class="text-[13px] text-text-muted leading-relaxed">
+            Over 20+ years of clinical excellence since 2002. Serving Kerala families and international dental tourists with gentle, multi-disciplinary surgical facilities.
+          </p>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-subtle text-primary text-[12px] font-bold border border-border-teal">
+              <span class="material-symbols-outlined text-[15px]">verified</span>
+              <span>Kerala Certified Clinic</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3 class="text-[15px] font-bold text-text-main">Services</h3>
+          <ul class="flex flex-col gap-2 text-[13px] text-text-muted">
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="selectTreatmentAndBook('ortho')">Orthodontics &amp; Clear Aligners</a></li>
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="selectTreatmentAndBook('surgery')">Dental Implants &amp; Bridges</a></li>
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="selectTreatmentAndBook('restorative')">Root Canal &amp; Endodontics</a></li>
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="selectTreatmentAndBook('restorative')">Cosmetic Smile Designing</a></li>
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="selectTreatmentAndBook('general')">Pediatric Dental Care</a></li>
+            <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="openEmergencyModal()">24/7 Dental Emergency Care</a></li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3 class="text-[15px] font-bold text-text-main">Clinic Info</h3>
+          <div class="flex flex-col gap-2.5 text-[13px] text-text-muted">
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">pin_drop</span>
+              <span>Marva Building, Near AV Higher Secondary School, Ponnani, Malappuram - 679577</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px] shrink-0">mail</span>
+              <a class="hover:text-primary transition-colors" href="mailto:cymordental@gmail.com">cymordental@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px] shrink-0">phone</span>
+              <a class="hover:text-primary transition-colors" href="tel:+919995268787">+91 99952 68787</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px] shrink-0">call</span>
+              <a class="hover:text-primary transition-colors" href="tel:04952665366">0495 2665366</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3 class="text-[15px] font-bold text-text-main">Hours &amp; Tourism</h3>
+          <div class="flex flex-col gap-1.5 text-[13px] text-text-muted">
+            <p><strong class="text-text-main">Mon - Sat:</strong> 9:00 AM - 7:00 PM</p>
+            <p><strong class="text-text-main">Sunday:</strong> Emergency On-Call Care</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-surface-tint border border-border-subtle flex flex-col gap-1 mt-1">
+            <span class="text-[11px] text-primary uppercase font-bold">International Patients</span>
+            <p class="text-[12px] text-text-muted leading-relaxed">Dedicated dental tourism assistance with airport pickups &amp; hotel accommodation in Kerala.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between text-[12px] text-text-muted gap-3">
+        <p>© 2002 - 2026 CYMOR DENTAL CLINIC. All Rights Reserved.</p>
+        <div class="flex items-center gap-5 font-medium">
+          <a class="hover:text-primary transition-colors" href="#hero-section">Privacy Policy</a>
+          <a class="hover:text-primary transition-colors" href="#hero-section">Terms of Treatment</a>
+          <a class="hover:text-primary transition-colors" href="#hero-section">Patient Rights</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING CIRCULAR ACTION BUTTONS (BOTTOM RIGHT) ==================== -->
+  <aside aria-label="Quick Communication Actions" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2.5 sm:gap-3">
+    
+    <!-- Circular Quick Call Button -->
+    <a href="tel:+919995268787" class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-primary hover:bg-primary-hover text-white flex items-center justify-center shadow-[0_6px_20px_rgba(0,102,108,0.4)] hover:shadow-[0_8px_25px_rgba(0,102,108,0.55)] hover:scale-110 active:scale-95 transition-all group relative border-2 border-white/90 cursor-pointer" aria-label="Call CYMOR Dental Clinic">
+      <span class="material-symbols-outlined text-[22px] sm:text-[24px]">call</span>
+      <span class="absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-[12px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg border border-white/10 hidden sm:block">
+        Call Clinic (+91 99952 68787)
+      </span>
+    </a>
+
+    <!-- Circular Floating WhatsApp Button with Pulsing Badge -->
+    <a href="https://wa.me/919995268787?text=Hello%20CYMOR%20Super%20Speciality%20Dental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20dental%20consultation" target="_blank" rel="noopener noreferrer" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-[0_8px_25px_rgba(37,211,102,0.45)] hover:shadow-[0_10px_30px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all group relative border-2 border-white cursor-pointer" aria-label="Chat with CYMOR Clinic on WhatsApp">
+      <span class="absolute -top-0.5 -right-0.5 flex h-4 w-4">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white"></span>
+      </span>
+      <svg class="w-7 h-7 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.031 2C6.51 2 2 6.51 2 12.031c0 1.954.562 3.778 1.533 5.32L2 22l4.802-1.503c1.488.887 3.23 1.403 5.229 1.403 5.521 0 10.031-4.51 10.031-10.031S17.552 2 12.031 2zm5.795 14.195c-.244.686-1.42 1.31-1.958 1.393-.518.08-1.189.115-1.921-.122-.445-.144-1.018-.337-1.758-.66-3.1-1.353-5.114-4.48-5.27-4.687-.156-.207-1.258-1.677-1.258-3.2 0-1.523.794-2.274 1.077-2.585.283-.312.617-.39.822-.39.206 0 .412.002.593.011.19.01.444-.073.694.527.258.62.88 2.146.958 2.302.078.156.13.338.026.545-.104.207-.156.338-.312.519-.156.182-.329.406-.47.545-.156.155-.318.324-.136.636.182.312.81 1.336 1.737 2.162 1.192 1.062 2.197 1.391 2.509 1.547.312.156.494.13.676-.078.182-.208.78-.91 1.014-1.222.234-.312.468-.26.78-.156.312.104 1.974.93 2.312 1.099.338.169.563.25.645.39.082.14.082.814-.162 1.5z"/>
+      </svg>
+      <span class="absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-[12px] font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg border border-white/10 hidden sm:block">
+        Chat on WhatsApp
+      </span>
+    </a>
+
+  </aside>
+
+  <!-- GENERIC MODAL CONTAINER -->
+  <div id="generic-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-surface-card rounded-3xl p-6 shadow-2xl max-w-2xl w-full border border-border-subtle modal-content" id="generic-modal-body">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+
+  <!-- APPOINTMENT RECEIPT MODAL -->
+  <div id="appointment-receipt-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-surface-card rounded-3xl p-6 shadow-2xl max-w-lg w-full border border-border-subtle modal-content" id="receipt-modal-content">
+      <!-- Injected dynamically on booking submission -->
+    </div>
+  </div>
+
+  <!-- VIDEO TOUR MODAL -->
+  <div id="video-tour-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4">
+    <div class="bg-surface-card rounded-3xl p-6 shadow-2xl max-w-2xl w-full border border-border-subtle modal-content">
+      <div class="flex items-center justify-between pb-3 border-b border-border-subtle mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[24px]">play_circle</span>
+          <h3 class="text-lg font-bold text-text-main">CYMOR Dental Clinic Virtual Tour</h3>
+        </div>
+        <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 mb-4 flex items-center justify-center">
+        <img alt="CYMOR Clinic operatory tour preview" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLmD-U4c9r7s6G5f4E3d2C1b0A9z8Y7x6W5v4U3t2S1r0Q9p8O7n6M5l4K3j2I1h0G9f8E7d6C5b4A3z2Y1x0W9v8U7t6S5r4Q3p2O1n0M9l8K7j6I5h4"/>
+        <div class="absolute inset-0 bg-slate-900/40 flex flex-col items-center justify-center gap-3 text-center p-4">
+          <div class="w-16 h-16 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-xl">
+            <span class="material-symbols-outlined text-[36px] translate-x-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+          </div>
+          <div>
+            <h4 class="text-white font-bold text-lg">Experience Painless Dentistry at CYMOR</h4>
+            <p class="text-white/80 text-xs">Ponnani Flagship • Established 2002</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-between pt-2">
+        <span class="text-xs text-text-muted">Take a walkthrough of our Class-B sterilized operatory units.</span>
+        <button onclick="closeVideoModal(); selectDoctorAndBook('orthodontics', 'Dr. Nazeer P. Chittayil');" class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-primary-hover transition-colors">
+          Book Consultation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
