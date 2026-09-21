@@ -50,6 +50,58 @@
 </head>
 <body class="bg-surface-base font-sans text-text-body antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
 
+  <!-- ==================== CYMOR WELCOME & LOADING SCREEN ==================== -->
+  <div id="cymor-welcome-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white select-none" role="status" aria-label="CYMOR Super Speciality Dental Clinic">
+    <!-- Subtle clinical gradient backdrop -->
+    <div class="absolute inset-0 bg-gradient-to-b from-teal-50/50 via-white to-surface-base pointer-events-none"></div>
+
+    <!-- Central Content Container -->
+    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-sm w-full">
+      
+      <!-- Prominent Official CYMOR Logo -->
+      <div class="welcome-logo-container flex flex-col items-center mb-6">
+        <img alt="CYMOR Super Speciality Dental Clinic Logo" class="h-16 sm:h-20 w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,102,108,0.1)] mb-3" src="images/logo.png"/>
+        <p class="text-[12px] sm:text-[13px] font-bold tracking-[0.22em] uppercase text-primary font-sans">
+          Super Speciality Dental Clinic
+        </p>
+      </div>
+
+      <!-- Custom Dental SVG Animation: Tooth Outline -> Sparkle -> Smile Curve -->
+      <div class="relative w-36 h-28 sm:w-40 sm:h-32 flex items-center justify-center mb-2">
+        <svg class="w-full h-full text-primary" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Step 1: Elegant Tooth Vector Outline & Sparkle Glint -->
+          <g class="tooth-vector-group">
+            <path class="tooth-draw-path" d="M 50,26 C 43,18 31,18 26,28 C 21,38 23,54 28,66 C 32,76 36,86 39,86 C 42,86 44,74 50,62 C 56,74 58,86 61,86 C 64,86 68,76 72,66 C 77,54 79,38 74,28 C 69,18 57,18 50,26 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <!-- Step 2: Traveling Medical Glint / Sparkle -->
+            <g class="tooth-sparkle-glint">
+              <path d="M 0,-7 Q 0,0 7,0 Q 0,0 0,7 Q 0,0 -7,0 Q 0,0 0,-7 Z" fill="#00838f"/>
+              <circle cx="0" cy="0" r="1.5" fill="#ffffff"/>
+            </g>
+          </g>
+
+          <!-- Step 3: Subtle Smile Curve with Signature Brand Accent -->
+          <g>
+            <path class="smile-curve-vector" d="M 22,50 Q 50,75 78,50" stroke="#00666c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle class="smile-dot-accent" cx="78" cy="50" r="2.2" fill="#ba0222"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Step 4 & 5: Minimal Progress Bar Indicator -->
+      <div class="welcome-progress-track w-44 sm:w-52 h-1 bg-slate-100 rounded-full overflow-hidden border border-slate-200/70 shadow-2xs">
+        <div class="welcome-progress-bar h-full bg-gradient-to-r from-primary via-[#00838f] to-primary rounded-full"></div>
+      </div>
+
+      <!-- Subtle Status Indicator -->
+      <div class="welcome-status-line mt-4 flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        <span class="text-[11px] tracking-wider uppercase text-text-muted font-bold">Excellence in Dental Care</span>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ==================== BACKGROUND PARTICLES CANVAS ==================== -->
   <canvas id="particles-canvas"></canvas>
 

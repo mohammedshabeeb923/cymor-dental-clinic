@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  initWelcomeScreen();
   initParticles();
   initNumberCounters();
   initDateRestrictions();
@@ -1226,6 +1227,31 @@ function initNumberCounters() {
   } else {
     counterElements.forEach(el => countUp(el));
   }
+}
+
+// 15. INITIAL WELCOME & DENTAL PRELOADER SCREEN
+function initWelcomeScreen() {
+  const welcomeScreen = document.getElementById('cymor-welcome-screen');
+  if (!welcomeScreen) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targetDuration = prefersReducedMotion ? 400 : 2250;
+
+  function dismissWelcome() {
+    if (welcomeScreen.classList.contains('welcome-dismissed')) return;
+    welcomeScreen.classList.add('welcome-dismissed');
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+    }, 700);
+  }
+
+  // Allow natural animation to complete in ~2.2 seconds
+  setTimeout(dismissWelcome, targetDuration);
+
+  // Safety fallback: ensure screen is dismissed if page load completes
+  window.addEventListener('load', () => {
+    setTimeout(dismissWelcome, targetDuration);
+  });
 }
 
 

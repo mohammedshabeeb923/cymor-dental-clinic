@@ -439,3 +439,232 @@ input:focus, select:focus, textarea:focus {
     display: none !important;
   }
 }
+
+/* ==================== CYMOR WELCOME / LOADING SCREEN ==================== */
+#cymor-welcome-screen {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease;
+  will-change: opacity, visibility;
+}
+
+#cymor-welcome-screen.welcome-dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Logo & Subtitle Entrance */
+.welcome-logo-container {
+  animation: welcomeLogoIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes welcomeLogoIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 1. Tooth Outline Drawing */
+.tooth-draw-path {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: drawToothStroke 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.15s forwards;
+}
+
+@keyframes drawToothStroke {
+  0% {
+    stroke-dashoffset: 240;
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* 2. Sparkle / Glint Traveling */
+.tooth-sparkle-glint {
+  opacity: 0;
+  transform-origin: center;
+  animation: sparkleTravel 0.85s cubic-bezier(0.25, 1, 0.5, 1) 0.75s forwards;
+}
+
+@keyframes sparkleTravel {
+  0% {
+    opacity: 0;
+    transform: translate(26px, 28px) scale(0.3) rotate(0deg);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(38px, 22px) scale(1.2) rotate(45deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(58px, 23px) scale(1.25) rotate(90deg);
+  }
+  85% {
+    opacity: 0.85;
+    transform: translate(70px, 28px) scale(0.8) rotate(135deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(75px, 32px) scale(0.2) rotate(180deg);
+  }
+}
+
+/* 3. Tooth Fading Out to Smile Curve */
+.tooth-vector-group {
+  animation: fadeOutTooth 0.5s ease-in-out 1.25s forwards;
+}
+
+@keyframes fadeOutTooth {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* 4. Smile Curve Emerging */
+.smile-curve-vector {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+  animation: drawSmileArc 0.65s cubic-bezier(0.16, 1, 0.3, 1) 1.25s forwards, fadeOutSmileArc 0.35s ease 2.05s forwards;
+}
+
+@keyframes drawSmileArc {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutSmileArc {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+}
+
+.smile-dot-accent {
+  opacity: 0;
+  animation: popSmileDot 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.55s forwards, fadeOutSmileArc 0.35s ease 2.05s forwards;
+}
+
+@keyframes popSmileDot {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 5. Minimal Progress Indicator */
+.welcome-progress-track {
+  opacity: 0;
+  transform: translateY(4px);
+  animation: showWelcomeProgress 0.35s ease 1.35s forwards, hideWelcomeProgress 0.35s ease 2.15s forwards;
+}
+
+@keyframes showWelcomeProgress {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hideWelcomeProgress {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
+.welcome-progress-bar {
+  width: 0%;
+  animation: fillWelcomeBar 0.75s cubic-bezier(0.4, 0, 0.2, 1) 1.4s forwards;
+}
+
+@keyframes fillWelcomeBar {
+  0% {
+    width: 0%;
+  }
+  65% {
+    width: 80%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.welcome-status-line {
+  animation: fadeInStatus 0.5s ease 0.3s forwards;
+}
+
+@keyframes fadeInStatus {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #cymor-welcome-screen {
+    transition: opacity 0.35s ease !important;
+  }
+  .welcome-logo-container,
+  .tooth-draw-path,
+  .tooth-sparkle-glint,
+  .tooth-vector-group,
+  .smile-curve-vector,
+  .smile-dot-accent,
+  .welcome-progress-track,
+  .welcome-progress-bar,
+  .welcome-status-line {
+    animation: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+}
