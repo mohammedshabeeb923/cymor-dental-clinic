@@ -143,7 +143,7 @@ const CYMOR_DATA = {
       specialties: ["Periodontics & Gum Care", "Laser Gum Depigmentation", "Bone Grafting & Implants"],
       regNo: "17316",
       experience: "Consultant Periodontist",
-      image: "images/doctors/dr-najeer.svg",
+      image: "images/doctors/dr-najeer.jpg",
       bio: "Specializing in periodontal surgeries, laser gum treatments, and computer-guided implantology, Dr. Mohammed Najeer restores long-term gum and bone foundation.",
       availability: "Consultant Specialist (By Appointment)",
       treatmentKey: "implants"
