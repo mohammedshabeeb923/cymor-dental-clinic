@@ -130,7 +130,7 @@ const CYMOR_DATA = {
       specialties: ["Microscopic Root Canal Therapy", "Single-Sitting RCT", "Endodontic Retreatment"],
       regNo: "7488",
       experience: "Consultant Endodontist",
-      image: "images/doctors/dr-sarath.svg",
+      image: "images/doctors/dr-sarath.jpg",
       bio: "A master in painless root canal treatments, Dr. Sarath Gopinath utilizes operating microscopes and rotary nickel-titanium instrumentation to salvage damaged teeth comfortably in single visits.",
       availability: "Consultant Specialist (By Appointment)",
       treatmentKey: "rct"
