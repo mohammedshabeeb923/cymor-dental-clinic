@@ -91,7 +91,7 @@ const CYMOR_DATA = {
       specialties: ["Conservative Restorations", "Extractions", "Crown & Bridge Prosthetics"],
       regNo: "28600",
       experience: "Dental Surgeon",
-      image: "images/doctors/dr-akthar.svg",
+      image: "images/doctors/dr-akthar.jpg",
       bio: "Dr. Mohamed Akthar Hashim delivers meticulous dental diagnostics, painless extractions, and crown & bridge prosthetic solutions tailored to optimal oral health.",
       availability: "Monday to Saturday",
       treatmentKey: "general"
@@ -117,7 +117,7 @@ const CYMOR_DATA = {
       specialties: ["Pediatric Oral Care", "Cosmetic Fillings", "Preventive Care"],
       regNo: "21240",
       experience: "Dental Surgeon",
-      image: "images/doctors/dr-arya.svg",
+      image: "images/doctors/dr-arya.jpg",
       bio: "Dr. Arya Krishna K. focuses on preventive dental treatments, cavity management, and pediatric oral health in a comfortable, relaxing clinical environment.",
       availability: "Monday to Saturday",
       treatmentKey: "general"
