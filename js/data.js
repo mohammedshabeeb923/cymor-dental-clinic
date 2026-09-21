@@ -86,15 +86,68 @@ const CYMOR_DATA = {
     {
       id: "dr-akthar",
       name: "Dr. Mohamed Akthar Hashim",
-      qualification: "BDS",
+      qualification: "Bachelor of Dental Surgery (BDS)",
       role: "Dental Surgeon",
-      specialties: ["Conservative Restorations", "Extractions", "Crown & Bridge Prosthetics"],
       regNo: "28600",
       experience: "Dental Surgeon",
       image: "images/doctors/dr-akthar.jpg",
-      bio: "Dr. Mohamed Akthar Hashim delivers meticulous dental diagnostics, painless extractions, and crown & bridge prosthetic solutions tailored to optimal oral health.",
       availability: "Monday to Saturday",
-      treatmentKey: "general"
+      treatmentKey: "general",
+      qualificationsList: [
+        {
+          degree: "Bachelor of Dental Surgery (BDS)",
+          institution: "Government Dental College, Kottayam",
+          university: "KUHS University"
+        }
+      ],
+      professionalExperience: [
+        {
+          title: "Compulsory Rotatory Resident Internship",
+          details: "Government Dental College, Kottayam",
+          duration: "20 April 2020 – 20 April 2021"
+        },
+        {
+          title: "Non-Academic Junior Resident",
+          details: "Government Dental College and Medical College, Kottayam",
+          duration: "3 months after internship"
+        },
+        {
+          title: "CHC/PHC, Ettumanoor, Kottayam",
+          details: "",
+          duration: "1 month"
+        },
+        {
+          title: "ABS Dental Clinic and Implant Center",
+          details: "Kooroppada, Kottayam",
+          duration: ""
+        },
+        {
+          title: "Cheruvil Speciality Dental Care",
+          details: "Ettumanoor, Kottayam",
+          duration: ""
+        },
+        {
+          title: "Perfect Smile Dental Clinic",
+          details: "Pallickathodu, Kottayam",
+          duration: ""
+        }
+      ],
+      clinicalExperience: [
+        "250+ tooth extractions, including third molars",
+        "Assisted in 20+ impaction cases",
+        "Anterior composite restorations",
+        "Anterior RCT cases",
+        "Amalgam and GIC restorations",
+        "Complete denture cases",
+        "Removable partial denture (RPD) cases",
+        "Removable orthodontic appliances",
+        "Scaling and root planing",
+        "Pediatric dental management",
+        "Diagnosis of oral lesions",
+        "Dental emergency and trauma management",
+        "Intraoral and extraoral suturing"
+      ],
+      bio: "Bachelor of Dental Surgery (BDS) from Government Dental College, Kottayam (KUHS University). Dedicated Dental Surgeon with hospital residency, primary health center, and clinical dental care experience."
     },
     {
       id: "dr-favas",

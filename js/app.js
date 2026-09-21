@@ -318,6 +318,9 @@ function openDoctorModal(doctorId) {
   const modalBody = document.getElementById('generic-modal-body');
   if (!modal || !modalBody) return;
 
+  // Custom CV structure for Dr. Mohamed Akthar Hashim
+  const isStructuredCV = Boolean(doctor.qualificationsList && doctor.clinicalExperience);
+
   modalBody.innerHTML = `
     <div class="flex items-start justify-between gap-4 pb-4 border-b border-border-subtle">
       <div class="flex items-center gap-4">
@@ -333,11 +336,11 @@ function openDoctorModal(doctorId) {
       </button>
     </div>
 
-    <div class="py-4 space-y-4 max-h-[65vh] overflow-y-auto modal-scroll pr-2">
-      <div class="p-3.5 rounded-2xl bg-primary-subtle flex items-center justify-between text-[13px] border border-border-teal">
+    <div class="py-4 space-y-4 max-h-[68vh] overflow-y-auto modal-scroll pr-1.5">
+      <div class="p-3.5 rounded-2xl bg-primary-subtle flex flex-wrap items-center justify-between gap-2 text-[13px] border border-border-teal">
         <span class="font-bold text-primary flex items-center gap-1.5">
           <span class="material-symbols-outlined text-[18px]">verified</span>
-          <span>${doctor.experience}</span>
+          <span>${doctor.id === 'dr-akthar' ? 'Registered Dental Surgeon' : doctor.experience}</span>
         </span>
         <span class="text-text-muted flex items-center gap-1">
           <span class="material-symbols-outlined text-[18px]">schedule</span>
@@ -345,19 +348,102 @@ function openDoctorModal(doctorId) {
         </span>
       </div>
 
-      <p class="text-[14px] text-text-body leading-relaxed">${doctor.bio}</p>
-
-      <div>
-        <h4 class="text-sm font-bold text-text-main mb-2">Areas of Clinical Focus</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          ${doctor.specialties.map(spec => `
-            <div class="flex items-center gap-2 p-2.5 rounded-xl bg-surface-tint border border-border-subtle text-[13px] text-text-main">
-              <span class="material-symbols-outlined text-primary text-[16px]">check</span>
-              <span class="font-medium">${spec}</span>
-            </div>
-          `).join('')}
+      ${isStructuredCV ? `
+        <!-- QUALIFICATION -->
+        <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-primary mb-2.5 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">school</span>
+            <span>Qualification</span>
+          </h4>
+          <div class="space-y-1 text-[13px] text-text-main">
+            <p class="font-bold text-[14px] text-text-main">Bachelor of Dental Surgery (BDS)</p>
+            <p class="text-text-muted">Government Dental College, Kottayam</p>
+            <p class="text-text-muted">KUHS University</p>
+          </div>
         </div>
-      </div>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-primary mb-3 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">work_history</span>
+            <span>Professional Experience</span>
+          </h4>
+          <ul class="space-y-3 text-[13px]">
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">Compulsory Rotatory Resident Internship</span>
+                <p class="text-text-muted text-[12px]">Government Dental College, Kottayam • 20 April 2020 – 20 April 2021</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">Non-Academic Junior Resident</span>
+                <p class="text-text-muted text-[12px]">Government Dental College and Medical College, Kottayam • 3 months after internship</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">CHC/PHC, Ettumanoor, Kottayam</span>
+                <p class="text-text-muted text-[12px]">1 month</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">ABS Dental Clinic and Implant Center</span>
+                <p class="text-text-muted text-[12px]">Kooroppada, Kottayam</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">Cheruvil Speciality Dental Care</span>
+                <p class="text-text-muted text-[12px]">Ettumanoor, Kottayam</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></span>
+              <div>
+                <span class="font-bold text-text-main">Perfect Smile Dental Clinic</span>
+                <p class="text-text-muted text-[12px]">Pallickathodu, Kottayam</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CLINICAL EXPERIENCE -->
+        <div class="p-4 rounded-2xl bg-surface-tint border border-border-subtle">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-primary mb-3 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">medical_services</span>
+            <span>Clinical Experience</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            ${doctor.clinicalExperience.map(item => `
+              <div class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-border-subtle text-[12.5px] text-text-main shadow-2xs">
+                <span class="material-symbols-outlined text-primary text-[16px] shrink-0">check_circle</span>
+                <span>${item}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : `
+        <p class="text-[14px] text-text-body leading-relaxed">${doctor.bio}</p>
+
+        <div>
+          <h4 class="text-sm font-bold text-text-main mb-2">Areas of Clinical Focus</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            ${(doctor.specialties || []).map(spec => `
+              <div class="flex items-center gap-2 p-2.5 rounded-xl bg-surface-tint border border-border-subtle text-[13px] text-text-main">
+                <span class="material-symbols-outlined text-primary text-[16px]">check</span>
+                <span class="font-medium">${spec}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `}
     </div>
 
     <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-3">
