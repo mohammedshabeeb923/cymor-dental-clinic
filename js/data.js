@@ -157,7 +157,7 @@ const CYMOR_DATA = {
       specialties: ["Aesthetic Restorations", "Routine Extractions", "Preventive Dentistry"],
       regNo: "32061",
       experience: "Dental Surgeon",
-      image: "images/doctors/dr-favas.svg",
+      image: "images/doctors/dr-favas.jpg",
       bio: "Dr. Muhammed Favas P.V. specializes in modern aesthetic tooth fillings, periodontal maintenance, and compassionate general dental surgery.",
       availability: "Monday to Saturday",
       treatmentKey: "general"
