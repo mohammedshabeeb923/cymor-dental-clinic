@@ -325,7 +325,7 @@ function openDoctorModal(doctorId) {
         <div>
           <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase mb-1">${doctor.role}</span>
           <h3 class="text-xl font-bold text-text-main">${doctor.name}</h3>
-          <p class="text-[13px] text-primary font-bold">${doctor.qualification}</p>
+          <p class="text-[13px] text-primary font-bold">${doctor.qualification} <span class="text-text-muted font-semibold text-[12px] ml-1.5">• Reg. No: ${doctor.regNo}</span></p>
         </div>
       </div>
       <button onclick="closeGenericModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer">

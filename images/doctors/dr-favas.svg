@@ -1,0 +1,57 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-dr-favas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdfa"/>
+      <stop offset="50%" stop-color="#e6f7f7"/>
+      <stop offset="100%" stop-color="#d5f0ef"/>
+    </linearGradient>
+    <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00838f"/>
+      <stop offset="100%" stop-color="#00666c"/>
+    </linearGradient>
+    <pattern id="grid-pattern-dr-favas" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#00666c" fill-opacity="0.08"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#bg-grad-dr-favas)"/>
+  <rect width="400" height="500" fill="url(#grid-pattern-dr-favas)"/>
+  
+  <!-- Subtle Medical Cross Watermark -->
+  <g opacity="0.06" fill="#00666c">
+    <rect x="175" y="60" width="50" height="150" rx="10"/>
+    <rect x="125" y="110" width="150" height="50" rx="10"/>
+  </g>
+  
+  <!-- Outer Glow Ring -->
+  <circle cx="200" cy="185" r="95" fill="none" stroke="#00666c" stroke-width="2" stroke-opacity="0.15" stroke-dasharray="6,6"/>
+  <circle cx="200" cy="185" r="85" fill="#ffffff" fill-opacity="0.8" stroke="#00666c" stroke-width="1.5" stroke-opacity="0.2"/>
+  
+  <!-- Doctor Avatar Silhouette -->
+  <!-- Head -->
+  <circle cx="200" cy="155" r="42" fill="url(#avatar-grad)"/>
+  
+  <!-- Torso & Doctor Coat Collar -->
+  <path d="M120 270 C120 215, 150 198, 200 198 C250 198, 280 215, 280 270 Z" fill="url(#avatar-grad)"/>
+  <!-- Coat Lapels / V-Neck -->
+  <polygon points="200,215 180,270 220,270" fill="#ffffff" opacity="0.95"/>
+  <path d="M185 220 L200 248 L215 220" fill="none" stroke="#00666c" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Stethoscope Outline -->
+  <path d="M172 230 C172 260, 228 260, 228 230" fill="none" stroke="#ba0222" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="200" cy="256" r="5" fill="#ba0222" opacity="0.85"/>
+  
+  <!-- Initials Badge -->
+  <g transform="translate(200, 310)">
+    <rect x="-40" y="-18" width="80" height="36" rx="18" fill="#00666c" filter="drop-shadow(0 4px 6px rgba(0,102,108,0.2))"/>
+    <text text-anchor="middle" y="6" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" letter-spacing="1">MF</text>
+  </g>
+  
+  <!-- Placeholder Notice Banner at Bottom -->
+  <g transform="translate(200, 420)">
+    <rect x="-140" y="-22" width="280" height="44" rx="14" fill="#ffffff" fill-opacity="0.9" stroke="#00666c" stroke-width="1" stroke-opacity="0.25"/>
+    <text text-anchor="middle" y="-2" fill="#00666c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Official Portrait Coming Soon</text>
+    <text text-anchor="middle" y="14" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="500">CYMOR Medical Board Verified</text>
+  </g>
+</svg>
