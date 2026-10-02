@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initEmergencyWizard();
   initBranchSelector();
   initMobileMenu();
+  initNavbarScrollSpy();
   initAppointmentsViewer();
   initScrollReveal();
 });
@@ -1056,6 +1057,97 @@ function initMobileMenu() {
       }
     });
   });
+}
+
+// 9b. NAVBAR SCROLLSPY & DYNAMIC ACTIVE SECTION HIGHLIGHTING
+function initNavbarScrollSpy() {
+  const header = document.querySelector('header');
+  const desktopNavLinks = document.querySelectorAll('#desktop-nav a');
+  const mobileNavLinks = document.querySelectorAll('#mobile-nav a');
+  
+  // Section IDs in exact visual order
+  const sectionIds = [
+    'hero-section',
+    'about-section',
+    'treatments-section',
+    'transformations-section',
+    'doctors-section',
+    'tourism-section',
+    'testimonials-section',
+    'contact-section'
+  ];
+
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActiveNavLink(currentId) {
+    desktopNavLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${currentId}`) {
+        link.className = 'nav-link px-3.5 py-2 rounded-full text-primary bg-primary-subtle font-bold transition-all shadow-2xs';
+      } else {
+        link.className = 'nav-link px-3.5 py-2 rounded-full text-text-body font-semibold hover:text-primary hover:bg-primary-subtle transition-all';
+      }
+    });
+
+    mobileNavLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${currentId}`) {
+        link.className = 'p-3 rounded-xl bg-primary-subtle text-primary font-bold transition-colors';
+      } else {
+        link.className = 'p-3 rounded-xl hover:bg-primary-subtle hover:text-primary font-semibold text-text-body transition-colors';
+      }
+    });
+  }
+
+  function handleScroll() {
+    const scrollPos = window.scrollY || window.pageYOffset;
+
+    // Header elevation and backdrop adaptation on scroll
+    if (header) {
+      if (scrollPos > 30) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }
+
+    // Check if scrolled near the bottom of the page
+    if ((window.innerHeight + scrollPos) >= document.body.offsetHeight - 120) {
+      setActiveNavLink('contact-section');
+      return;
+    }
+
+    // Determine current section in view with offset for fixed header
+    const offset = 140;
+    let currentSectionId = sectionIds[0];
+
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const top = section.offsetTop - offset;
+      const bottom = top + section.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        currentSectionId = section.id;
+        break;
+      }
+    }
+
+    setActiveNavLink(currentSectionId);
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Also on smooth navigation clicks, update immediately
+  [...desktopNavLinks, ...mobileNavLinks].forEach(link => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        setActiveNavLink(targetId);
+      }
+    });
+  });
+
+  handleScroll(); // Initial check on load
 }
 
 // 10. "MY APPOINTMENTS" LOCAL VIEWER
