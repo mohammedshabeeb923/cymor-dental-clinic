@@ -62,130 +62,185 @@ function initDateRestrictions() {
   }
 }
 
-// 2. INTERACTIVE BEFORE & AFTER SLIDER + MULTI-CASE SWITCHER
-let currentCaseIndex = 0;
-function initComparisonSlider() {
-  const container = document.getElementById('comparison-container');
-  const rangeInput = document.getElementById('comparison-range');
-  const presetBtns = document.querySelectorAll('.preset-btn');
-  const beforeImg = document.getElementById('before-img');
-  const afterImg = document.getElementById('after-img');
-  const caseTitle = document.getElementById('case-title');
-  const caseDesc = document.getElementById('case-desc');
-  const caseDuration = document.getElementById('case-duration');
-  const caseTechnique = document.getElementById('case-technique');
-  const caseDoctor = document.getElementById('case-doctor');
-  const caseQuote = document.getElementById('case-quote');
-  const caseTabsContainer = document.getElementById('case-tabs-container');
+// 2. CLINICAL CASE GALLERY (BEFORE & AFTER REAL SMILE TRANSFORMATIONS)
+function initCaseGallery() {
+  const galleryGrid = document.getElementById('cases-gallery-grid');
+  const filterContainer = document.getElementById('case-gallery-filter');
 
-  // Render Case Switcher Tabs
-  if (caseTabsContainer && CYMOR_DATA.cases) {
-    caseTabsContainer.innerHTML = CYMOR_DATA.cases.map((c, idx) => `
-      <button class="case-tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-[13px] font-bold transition-all cursor-pointer ${idx === 0 ? 'bg-primary text-white shadow-xs' : 'bg-surface-tint text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle'}" data-index="${idx}">
-        ${c.treatmentType}
-      </button>
+  if (!galleryGrid || !CYMOR_DATA.cases) return;
+
+  function renderCases(filteredCases) {
+    galleryGrid.innerHTML = filteredCases.map((c) => `
+      <div class="case-card hover-lift p-5 sm:p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between transition-all" data-category="${c.category}">
+        <div>
+          <!-- Tag & Duration -->
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
+              ${c.tag || 'Clinical Result'}
+            </span>
+            <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+              ${c.duration}
+            </span>
+          </div>
+
+          <h3 class="text-base font-bold text-text-main mb-3 leading-snug">${c.title}</h3>
+
+          <!-- Side-by-side Before & After Images -->
+          <div class="grid grid-cols-2 gap-2.5 mb-4">
+            <!-- BEFORE -->
+            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-border-subtle group cursor-pointer" onclick="openCaseLightbox('${c.id}', 'before')">
+              <img src="${c.beforeImg}" alt="Before: ${c.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/80 text-white text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-xs">
+                BEFORE
+              </span>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <span class="material-symbols-outlined text-white text-[20px] drop-shadow-md">zoom_in</span>
+              </div>
+            </div>
+
+            <!-- AFTER -->
+            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-primary/20 group cursor-pointer" onclick="openCaseLightbox('${c.id}', 'after')">
+              <img src="${c.afterImg}" alt="After: ${c.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-primary text-white text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
+                AFTER
+              </span>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <span class="material-symbols-outlined text-white text-[20px] drop-shadow-md">zoom_in</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-[13px] text-text-muted leading-relaxed mb-4">
+            ${c.description}
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
+            <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
+            <span class="truncate">${c.doctor}</span>
+          </div>
+          <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
+            Consult
+          </a>
+        </div>
+      </div>
     `).join('');
+  }
 
-    const tabBtns = caseTabsContainer.querySelectorAll('.case-tab-btn');
-    tabBtns.forEach(btn => {
+  // Initial render
+  renderCases(CYMOR_DATA.cases);
+
+  // Filter interaction
+  if (filterContainer) {
+    const filterBtns = filterContainer.querySelectorAll('.case-filter-btn');
+    filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const idx = parseInt(btn.getAttribute('data-index'), 10);
-        loadCase(idx);
-        tabBtns.forEach(b => {
+        const filter = btn.getAttribute('data-filter');
+        filterBtns.forEach(b => {
           b.classList.remove('bg-primary', 'text-white', 'shadow-xs');
-          b.classList.add('bg-surface-tint', 'text-text-muted', 'border', 'border-border-subtle');
+          b.classList.add('bg-surface-card', 'text-text-muted', 'border', 'border-border-subtle');
         });
         btn.classList.add('bg-primary', 'text-white', 'shadow-xs');
-        btn.classList.remove('bg-surface-tint', 'text-text-muted', 'border', 'border-border-subtle');
+        btn.classList.remove('bg-surface-card', 'text-text-muted', 'border', 'border-border-subtle');
+
+        if (filter === 'all') {
+          renderCases(CYMOR_DATA.cases);
+        } else {
+          const filtered = CYMOR_DATA.cases.filter(c => c.category === filter);
+          renderCases(filtered);
+        }
       });
     });
   }
+}
 
-  function loadCase(index) {
-    const c = CYMOR_DATA.cases[index];
-    if (!c) return;
-    currentCaseIndex = index;
-    if (beforeImg) beforeImg.src = c.beforeImg;
-    if (afterImg) afterImg.src = c.afterImg;
-    if (caseTitle) caseTitle.textContent = c.title;
-    if (caseDesc) caseDesc.textContent = c.description;
-    if (caseDuration) caseDuration.textContent = c.duration;
-    if (caseTechnique) caseTechnique.textContent = c.technique;
-    if (caseDoctor) caseDoctor.textContent = c.doctor;
-    if (caseQuote) caseQuote.textContent = `"${c.patientQuote}"`;
-    updateSliderPosition(50);
-  }
+function openCaseLightbox(caseId, activeType) {
+  const c = CYMOR_DATA.cases.find(item => item.id === caseId);
+  if (!c) return;
 
-  function updateSliderPosition(value) {
-    if (!container) return;
-    const clamped = Math.max(0, Math.min(100, value));
-    container.style.setProperty('--pos', `${clamped}%`);
-    if (rangeInput) rangeInput.value = clamped;
+  const modal = document.getElementById('generic-modal');
+  const modalBody = document.getElementById('generic-modal-body');
+  if (!modal || !modalBody) return;
 
-    presetBtns.forEach(btn => {
-      const target = parseFloat(btn.getAttribute('data-target'));
-      if (Math.abs(target - clamped) < 2) {
-        btn.classList.add('bg-primary', 'text-white');
-        btn.classList.remove('bg-surface-tint', 'text-text-body');
-      } else {
-        btn.classList.remove('bg-primary', 'text-white');
-        btn.classList.add('bg-surface-tint', 'text-text-body');
-      }
-    });
-  }
+  modalBody.innerHTML = `
+    <div class="flex items-start justify-between gap-4 pb-4 border-b border-border-subtle">
+      <div>
+        <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-1">${c.tag}</span>
+        <h3 class="text-xl font-bold text-text-main">${c.title}</h3>
+      </div>
+      <button onclick="closeGenericModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
 
-  if (rangeInput) {
-    rangeInput.addEventListener('input', (e) => {
-      updateSliderPosition(e.target.value);
-    });
-  }
+    <div class="py-4 space-y-4 max-h-[70vh] overflow-y-auto modal-scroll pr-1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Before View -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Initial State</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-white text-[10px] font-extrabold">BEFORE</span>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-border-subtle shadow-sm">
+            <img src="${c.beforeImg}" alt="Before: ${c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+          </div>
+        </div>
 
-  // Direct touch & mouse drag on image container for mobile & desktop
-  if (container) {
-    let isDragging = false;
-    const calculatePosition = (clientX) => {
-      const rect = container.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const pct = (x / rect.width) * 100;
-      updateSliderPosition(pct);
-    };
+        <!-- After View -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Treatment Result</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-extrabold">AFTER</span>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border-2 border-primary/30 shadow-sm">
+            <img src="${c.afterImg}" alt="After: ${c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+          </div>
+        </div>
+      </div>
 
-    container.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      if (e.touches.length > 0) calculatePosition(e.touches[0].clientX);
-    }, { passive: true });
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-3.5 rounded-2xl bg-surface-tint border border-border-subtle">
+          <span class="text-[11px] text-text-muted uppercase font-bold block mb-1">Duration</span>
+          <span class="text-[14px] font-bold text-primary">${c.duration}</span>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-surface-tint border border-border-subtle">
+          <span class="text-[11px] text-text-muted uppercase font-bold block mb-1">Technique</span>
+          <span class="text-[13px] font-bold text-text-main">${c.technique}</span>
+        </div>
+      </div>
 
-    container.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      if (e.touches.length > 0) calculatePosition(e.touches[0].clientX);
-    }, { passive: true });
+      <div class="p-3.5 rounded-2xl bg-surface-tint border border-border-subtle">
+        <span class="text-[11px] text-text-muted uppercase font-bold block mb-1">Supervising Specialist</span>
+        <span class="text-[13px] font-bold text-text-main">${c.doctor}</span>
+      </div>
 
-    window.addEventListener('touchend', () => { isDragging = false; });
-    window.addEventListener('touchcancel', () => { isDragging = false; });
+      <p class="text-[13px] text-text-body leading-relaxed">${c.description}</p>
+      
+      ${c.patientQuote ? `
+        <div class="p-3.5 rounded-2xl bg-primary-subtle border-l-4 border-primary text-text-body text-[13px] italic leading-relaxed">
+          "${c.patientQuote}"
+        </div>
+      ` : ''}
+    </div>
 
-    container.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      calculatePosition(e.clientX);
-    });
+    <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+      <button onclick="closeGenericModal()" class="px-4 py-2 rounded-xl text-text-muted font-bold text-[13px] hover:bg-slate-100 cursor-pointer">Close</button>
+      <a href="#appointment-section" onclick="closeGenericModal()" class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-[13px] flex items-center gap-2 shadow-md cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+        <span>Book Consultation</span>
+      </a>
+    </div>
+  `;
 
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      calculatePosition(e.clientX);
-    });
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+window.openCaseLightbox = openCaseLightbox;
 
-    window.addEventListener('mouseup', () => { isDragging = false; });
-  }
-
-  presetBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetVal = parseFloat(btn.getAttribute('data-target'));
-      updateSliderPosition(targetVal);
-    });
-  });
-
-  if (CYMOR_DATA.cases && CYMOR_DATA.cases.length > 0) {
-    loadCase(0);
-  }
+function initComparisonSlider() {
+  initCaseGallery();
 }
 
 // 3. TREATMENT DIRECTORY FILTERING
@@ -260,6 +315,11 @@ function openTreatmentModal(treatmentId) {
     </div>
 
     <div class="py-4 space-y-4 max-h-[65vh] overflow-y-auto modal-scroll pr-2">
+      ${treatment.image ? `
+        <div class="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden mb-3 border border-border-subtle bg-surface-tint">
+          <img src="${treatment.image}" alt="${treatment.title}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+        </div>
+      ` : ''}
       <p class="text-[14px] text-text-body leading-relaxed">${treatment.fullDesc}</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -780,9 +840,9 @@ function openEmergencyModal(e) {
       <div class="p-4 rounded-2xl bg-red-50/70 border border-red-200 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div>
           <span class="text-[11px] uppercase font-bold text-secondary block">On-Call Duty Doctor Line</span>
-          <span class="text-lg font-black text-text-main">+91 99952 68787</span>
+          <span class="text-lg font-black text-text-main">+91 73807 74477</span>
         </div>
-        <a href="tel:+919995268787" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-secondary hover:bg-secondary-hover text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-sm">
+        <a href="tel:+917380774477" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-secondary hover:bg-secondary-hover text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-sm">
           <span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
           <span>Call Doctor Now</span>
         </a>

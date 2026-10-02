@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="caseBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0F9F9"/>
+      <stop offset="100%" stop-color="#E2F2F2"/>
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00666C"/>
+      <stop offset="100%" stop-color="#008080"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="450" fill="url(#caseBg)"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <g opacity="0.35" stroke="#B0D5D6" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="0" y1="90" x2="600" y2="90"/>
+    <line x1="0" y1="180" x2="600" y2="180"/>
+    <line x1="0" y1="270" x2="600" y2="270"/>
+    <line x1="0" y1="360" x2="600" y2="360"/>
+    <line x1="120" y1="0" x2="120" y2="450"/>
+    <line x1="240" y1="0" x2="240" y2="450"/>
+    <line x1="360" y1="0" x2="360" y2="450"/>
+    <line x1="480" y1="0" x2="480" y2="450"/>
+  </g>
+  
+  <!-- Central Icon Container -->
+  <g transform="translate(300, 185)">
+    <circle r="52" fill="#FFFFFF" filter="drop-shadow(0px 8px 16px rgba(0, 102, 108, 0.12))"/>
+    <circle r="44" fill="#E6F4F4"/>
+    
+    <!-- Tooth / Dental Symbol -->
+    <path d="M0 -22 C-14 -22 -22 -14 -22 2 C-22 14 -16 26 -11 36 C-8 42 -4 42 -3 33 C-2 24 -1 16 0 16 C1 16 2 24 3 33 C4 42 8 42 11 36 C16 26 22 14 22 2 C22 -14 14 -22 0 -22 Z" 
+          fill="url(#brandGrad)"/>
+    <!-- Glint / Highlight -->
+    <circle cx="8" cy="-10" r="2.5" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+  
+  <!-- Text Label -->
+  <text x="300" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#00666C" text-anchor="middle" letter-spacing="1">
+    CLINICAL DOCUMENTATION
+  </text>
+  <text x="300" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#6B7280" text-anchor="middle">
+    CYMOR Super Speciality Dental Clinic
+  </text>
+  <text x="300" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-style="italic" fill="#9CA3AF" text-anchor="middle">
+    Authentic Clinical Record
+  </text>
+</svg>

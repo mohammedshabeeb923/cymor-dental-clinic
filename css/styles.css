@@ -322,6 +322,16 @@ button:active, .btn-action:active {
   cursor: ew-resize;
 }
 
+/* Case Gallery Cards Styling */
+.case-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+.case-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -6px rgba(0, 102, 108, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 102, 108, 0.25);
+}
+
 /* Toast Notifications */
 #toast-container {
   position: fixed;

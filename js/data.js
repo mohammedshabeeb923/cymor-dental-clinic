@@ -5,7 +5,7 @@ const CYMOR_DATA = {
     name: "CYMOR Super Speciality Dental Clinic",
     tagline: "Confident Smiles. Expert Dental Care.",
     established: 2002,
-    emergencyPhone: "+919995268787",
+    emergencyPhone: "+917380774477",
     landlinePhone: "04952665366",
     whatsappNumber: "919995268787",
     email: "cymordental@gmail.com",
@@ -19,7 +19,7 @@ const CYMOR_DATA = {
       name: "Ponnani Flagship Clinic",
       badge: "Main Super Speciality Centre",
       address: "Marva Building, Near AV Higher Secondary School, Ponnani, Malappuram - 679577",
-      phone: "+91 99952 68787 / 0495 2665366",
+      phone: "+91 73807 74477 / 0495 2665366",
       timings: "Mon - Sat: 9:00 AM - 7:00 PM (Sun: Emergency)",
       mapEmbed: "https://maps.google.com/?q=CYMOR+Dental+Clinic+Ponnani",
       facilities: ["3D Digital Scanner", "Class-B Autoclave", "Microscopic Endodontics", "Implant Surgical Suite"]
@@ -29,7 +29,7 @@ const CYMOR_DATA = {
       name: "Purangu Branch",
       badge: "Branch Clinic",
       address: "Main Road Junction, Near Juma Masjid, Purangu, Kerala",
-      phone: "+91 99952 68787",
+      phone: "+91 73807 74477",
       timings: "Mon - Sat: 9:30 AM - 6:30 PM",
       mapEmbed: "https://maps.google.com/?q=Purangu+Kerala",
       facilities: ["Digital Radiography", "Routine & Preventive Dentistry", "Orthodontic Aligners"]
@@ -39,19 +39,19 @@ const CYMOR_DATA = {
       name: "Naripparambu Branch",
       badge: "Branch Clinic",
       address: "City Centre Complex, Naripparambu, Malappuram, Kerala",
-      phone: "+91 99952 68787",
+      phone: "+91 73807 74477",
       timings: "Mon - Sat: 9:30 AM - 6:30 PM",
       mapEmbed: "https://maps.google.com/?q=Naripparambu+Kerala",
       facilities: ["Crown & Bridge Prosthetics", "Cosmetic Dentistry", "Dental X-Ray"]
     },
     {
-      id: "mandalamkunnu",
-      name: "Mandalamkunnu Branch",
-      badge: "Coastal Branch Clinic",
-      address: "Near Post Office, Mandalamkunnu, Thrissur/Malappuram Border, Kerala",
-      phone: "+91 99952 68787",
+      id: "andhetode",
+      name: "ANDHETODE BRANCH",
+      badge: "Branch Clinic",
+      address: "AK COMPLEX, Andhetode, Kerala",
+      phone: "+91 73807 74477",
       timings: "Mon - Sat: 10:00 AM - 6:00 PM",
-      mapEmbed: "https://maps.google.com/?q=Mandalamkunnu+Kerala",
+      mapEmbed: "https://maps.google.com/?q=AK+COMPLEX+Andhetode+Kerala",
       facilities: ["Family Dental Care", "Emergency Triage", "Teeth Whitening"]
     }
   ],
@@ -220,6 +220,22 @@ const CYMOR_DATA = {
       suitableFor: ["Adults with crooked or overlapping teeth", "Teens seeking discrete teeth alignment", "Overbite, underbite, and spacing issues"]
     },
     {
+      id: "orthodontic-brackets",
+      category: "ortho",
+      categoryName: "Orthodontics",
+      badge: "Fixed Braces",
+      icon: "dentistry",
+      image: "images/treatments/orthodontic-brackets.jpg",
+      title: "Orthodontic Brackets",
+      shortDesc: "Modern bracket-based orthodontic treatment designed to correct tooth alignment and improve bite function and smile aesthetics.",
+      fullDesc: "Modern bracket-based orthodontic treatment designed to correct tooth alignment and improve bite function and smile aesthetics. Utilizing precision metal and ceramic bracket systems engineered for efficient tooth movement, minimal discomfort, and reliable long-term stability.",
+      duration: "12 to 24 Months",
+      sessions: "Follow-up adjustment every 4 to 6 weeks",
+      benefits: ["Highly effective for complex crowding, bite discrepancies, and tooth rotations", "Robust, proven metal and aesthetic ceramic bracket options", "Custom archwire sequencing for gentle, continuous biological forces", "Supervised throughout by Chief Orthodontist Dr. Nazeer P. Chittayil (MDS)"],
+      procedureSteps: ["Comprehensive Diagnostic Casts, Radiographs & Cephalometric Analysis", "Precision Tooth Conditioning & Individual Bracket Bonding", "Archwire Engagement & Systematic Realignment Phases", "De-bonding, Polishing & Custom Retention Appliance Delivery"],
+      suitableFor: ["Teens and adults with moderate to severe malocclusion", "Deep bites, open bites, crossbites, and severe crowding", "Patients desiring reliable, proven fixed orthodontic correction"]
+    },
+    {
       id: "dental-implants",
       category: "surgery",
       categoryName: "Surgical & Implants",
@@ -285,9 +301,10 @@ const CYMOR_DATA = {
       categoryName: "Preventive & Pediatric",
       badge: "Kid Friendly",
       icon: "child_care",
-      title: "Pediatric Dental Care",
-      shortDesc: "Fear-free visits for children, pit and fissure cavity sealants, topical fluoride, habit-breaking appliances, and interceptive orthodontic guidance.",
-      fullDesc: "We create a warm, non-threatening atmosphere for our young champions. From cavity prevention sealants and gentle fillings to thumbsucking habit appliances and early orthodontic guidance.",
+      image: "images/treatments/pediatric-dentistry.jpg",
+      title: "Pediatric Dentistry",
+      shortDesc: "Gentle, preventive and child-friendly dental care designed to build healthy smiles from an early age.",
+      fullDesc: "Gentle, preventive and child-friendly dental care designed to build healthy smiles from an early age. We create a warm, non-threatening atmosphere for our young champions. From cavity prevention sealants and gentle fillings to thumbsucking habit appliances and early orthodontic guidance.",
       duration: "30 Minutes",
       sessions: "Every 6 months routine checkup",
       benefits: ["Fear-free, compassionate kid-friendly environment", "Prevents childhood dental cavities early", "Early guidance for healthy permanent tooth eruption", "Cavity-shielding fluoride treatments"],
@@ -298,76 +315,82 @@ const CYMOR_DATA = {
 
   cases: [
     {
-      id: "case-ortho-crowding",
-      title: "Arch Realignment & Spacing Correction",
-      treatmentType: "Orthodontics & Clear Aligners",
-      duration: "8 Months",
-      technique: "3D Digital Clear Aligners",
+      id: "case-ortho-brackets",
+      category: "ortho",
+      tag: "Orthodontic Treatment",
+      title: "Fixed Orthodontic Bracket Realignment",
+      duration: "14 Months",
+      technique: "Self-Ligating Bracket Appliance",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
-      beforeImg: "images/cases/ortho-before.jpg",
-      afterImg: "images/cases/ortho-after.jpg",
-      patientQuote: "I was conscious about my crooked teeth in photos. Within 8 months with Dr. Nazeer's aligners, I smile with full confidence. Highly professional care.",
-      description: "Patient from Ponnani presented with anterior spacing and malocclusion. Treated with customized digital clear aligners without any tooth extractions."
+      beforeImg: "images/before-after/brackets-before.jpg",
+      afterImg: "images/before-after/brackets-after.jpg",
+      patientQuote: "My teeth alignment completely changed with Dr. Nazeer's bracket treatment. Systematic and pain-free.",
+      description: "Severe anterior crowding and rotation corrected using modern precision orthodontic brackets with biological force control."
+    },
+    {
+      id: "case-ortho-aligners",
+      category: "ortho",
+      tag: "Smile Alignment",
+      title: "Digital Clear Aligner Spacing Correction",
+      duration: "8 Months",
+      technique: "Custom 3D Digital Clear Aligners",
+      doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      beforeImg: "images/before-after/ortho-before.jpg",
+      afterImg: "images/before-after/ortho-after.jpg",
+      patientQuote: "I was conscious about my gaps. Within 8 months with Dr. Nazeer's clear aligners, I smile with complete confidence.",
+      description: "Anterior spacing and midline malocclusion resolved with customized digital clear aligners without extractions."
     },
     {
       id: "case-implant-restoration",
+      category: "surgery",
+      tag: "Dental Implants",
       title: "Missing Anterior Tooth Replacement",
-      treatmentType: "Dental Implants & Bridges",
       duration: "3 Months",
       technique: "Titanium Fixture & Zirconia Crown",
       doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
-      beforeImg: "images/cases/implant-before.jpg",
-      afterImg: "images/cases/implant-after.jpg",
-      patientQuote: "Lost my front tooth in an accident. Dr. Najeer restored it completely. It looks and functions 100% like my natural tooth!",
-      description: "Single-stage computer-guided titanium implant fixture followed by a custom monolithic zirconia crown matching adjacent shade perfectly."
+      beforeImg: "images/before-after/implant-before.jpg",
+      afterImg: "images/before-after/implant-after.jpg",
+      patientQuote: "Lost my front tooth in an accident. Dr. Najeer restored it completely with an implant. Looks and bites naturally!",
+      description: "Single-stage computer-guided titanium implant fixture followed by a custom monolithic zirconia crown matching adjacent shade."
     },
     {
       id: "case-veneers-makeover",
+      category: "cosmetic",
+      tag: "Smile Makeovers",
       title: "Cosmetic E-Max Porcelain Smile Design",
-      treatmentType: "Smile Makeovers & Veneers",
       duration: "10 Days",
       technique: "Minimal Prep E-Max Porcelain Veneers",
-      doctor: "Dr. Sharath Gopinath & Dr. Vinu K. Cheriyan",
-      beforeImg: "images/cases/veneers-before.jpg",
-      afterImg: "images/cases/veneers-after.jpg",
-      patientQuote: "Travelled from the UAE for my wedding smile makeover at CYMOR. In just under 2 weeks, they gave me the radiant, symmetrical smile I always dreamed of.",
-      description: "Severe enamel fluorosis and midline asymmetry corrected with 6 ultra-thin handcrafted porcelain laminate veneers."
+      doctor: "Dr. Sharath Gopinath & Clinical Team",
+      beforeImg: "images/before-after/veneers-before.jpg",
+      afterImg: "images/before-after/veneers-after.jpg",
+      patientQuote: "Travelled from the UAE for my wedding smile makeover at CYMOR. Beautiful, natural-looking porcelain veneers.",
+      description: "Enamel fluorosis and incisal asymmetry corrected with ultra-thin handcrafted porcelain laminate veneers."
     },
     {
       id: "case-root-canal",
-      title: "Decay Debridement & Molar Crown Salvage",
-      treatmentType: "Root Canal Treatment (RCT)",
-      duration: "1 Single Sitting (50 mins)",
+      category: "restorative",
+      tag: "Root Canal Treatment",
+      title: "Microscopic Rotary Endodontic Salvage",
+      duration: "Single Sitting",
       technique: "Microscopic Rotary Endodontics",
       doctor: "Dr. Sharath Gopinath (MDS Endodontics)",
-      beforeImg: "images/cases/rct-before.jpg",
-      afterImg: "images/cases/rct-after.jpg",
-      patientQuote: "I had severe, unbearable toothache for 3 nights. Dr. Sharath treated it completely painlessly in a single sitting.",
-      description: "Deep dental caries reaching the vascular pulp tissue. Fully decontaminated, laser disinfected, sealed, and reinforced with a custom porcelain crown."
-    },
-    {
-      id: "case-periodontics-gum",
-      title: "Laser Gum Therapy & Deep Scaling",
-      treatmentType: "Periodontics & Laser Gum Therapy",
-      duration: "2 Visits",
-      technique: "Diode Laser Pocket Decontamination",
-      doctor: "Dr. Mohammed Najeer (MDS Periodontics)",
-      beforeImg: "images/cases/perio-before.jpg",
-      afterImg: "images/cases/perio-after.jpg",
-      patientQuote: "My bleeding gums and sensitivity stopped completely within a week. The laser cleaning was so gentle.",
-      description: "Subgingival calculus and bacterial pocketing treated with ultrasonic root planing and diode laser decontamination, restoring firm pink gingiva."
+      beforeImg: "images/before-after/rct-before.jpg",
+      afterImg: "images/before-after/rct-after.jpg",
+      patientQuote: "Had unbearable toothache for 3 nights. Dr. Sharath treated it completely painlessly in a single sitting.",
+      description: "Deep dental caries reaching vascular pulp tissue. Laser disinfected, sealed, and reinforced with a custom protective crown."
     },
     {
       id: "case-pediatric-care",
-      title: "Pediatric Enamel Restoration & Cavity Shield",
-      treatmentType: "Pediatric Dental Care",
+      category: "pediatric",
+      tag: "Pediatric Dentistry",
+      title: "Pediatric Preventive Care & Restoration",
       duration: "30 Minutes",
       technique: "Composite Restoration & Fluoride Shield",
-      doctor: "Dr. Vinu K. Cheriyan & Clinical Team",
-      beforeImg: "images/cases/pedia-before.jpg",
-      afterImg: "images/cases/pedia-after.jpg",
+      doctor: "Dr. Nazeer P. Chittayil & Pediatric Team",
+      beforeImg: "images/before-after/pediatric-before.jpg",
+      afterImg: "images/before-after/pediatric-after.jpg",
       patientQuote: "My 6-year-old child was never afraid once at CYMOR. The doctors are so friendly and gentle with children.",
-      description: "Early childhood caries restored with tooth-colored biocompatible composites and protective pit and fissure sealants."
+      description: "Gentle, fear-free child dental care with biocompatible tooth restorations and protective enamel shield sealants."
     }
   ],
 
@@ -419,7 +442,7 @@ const CYMOR_DATA = {
         "Gently floss to remove any trapped food debris around the aching tooth.",
         "Take an over-the-counter pain reliever like Paracetamol/Ibuprofen (Never place aspirin directly on gums).",
         "Apply a cold compress on your cheek outside the painful area to reduce throbbing.",
-        "Call CYMOR Emergency Hotline +91 99952 68787 immediately for same-day triage."
+        "Call CYMOR Emergency Hotline +91 73807 74477 immediately for same-day triage."
       ]
     },
     {
@@ -442,7 +465,7 @@ const CYMOR_DATA = {
         "Apply firm, continuous pressure with a clean sterile gauze or cotton cloth for 15-20 minutes.",
         "Keep the head elevated above the heart level to reduce blood pressure.",
         "Apply an ice pack to the outside of the lip/face to minimize swelling.",
-        "If bleeding does not stop after 20 minutes of firm pressure, call +91 99952 68787 immediately."
+        "If bleeding does not stop after 20 minutes of firm pressure, call +91 73807 74477 immediately."
       ]
     },
     {
