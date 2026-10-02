@@ -313,6 +313,51 @@ const CYMOR_DATA = {
     }
   ],
 
+  transformationCases: [
+    {
+      id: 1,
+      tag: "Case 01",
+      title: "Smile Transformation",
+      treatment: "Orthodontic Treatment",
+      duration: "14 Months",
+      technique: "Precision Bracket Realignment",
+      doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-01-before.jpg",
+      after: "images/before-after/case-01-after.jpg",
+      beforeImg: "images/before-after/case-01-before.jpg",
+      afterImg: "images/before-after/case-01-after.jpg",
+      description: "Precision bracket realignment addressing severe crowding and anterior rotation for biological bite symmetry."
+    },
+    {
+      id: 2,
+      tag: "Case 02",
+      title: "Smile Transformation",
+      treatment: "Smile Alignment",
+      duration: "8 Months",
+      technique: "Custom 3D Digital Clear Aligners",
+      doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-02-before.jpg",
+      after: "images/before-after/case-02-after.jpg",
+      beforeImg: "images/before-after/case-02-before.jpg",
+      afterImg: "images/before-after/case-02-after.jpg",
+      description: "Clear aligner therapy correcting midline deviation and anterior spacing with zero tooth extractions."
+    },
+    {
+      id: 3,
+      tag: "Case 03",
+      title: "Smile Transformation",
+      treatment: "Dental Transformation",
+      duration: "3 Months",
+      technique: "Titanium Fixture & Zirconia Crown",
+      doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
+      before: "images/before-after/case-03-before.jpg",
+      after: "images/before-after/case-03-after.jpg",
+      beforeImg: "images/before-after/case-03-before.jpg",
+      afterImg: "images/before-after/case-03-after.jpg",
+      description: "Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration."
+    }
+  ],
+
   cases: [
     {
       id: "case-01",
@@ -322,6 +367,8 @@ const CYMOR_DATA = {
       duration: "14 Months",
       technique: "Precision Bracket Realignment",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-01-before.jpg",
+      after: "images/before-after/case-01-after.jpg",
       beforeImg: "images/before-after/case-01-before.jpg",
       afterImg: "images/before-after/case-01-after.jpg",
       patientQuote: "My teeth alignment completely changed with Dr. Nazeer's treatment. Systematic, comfortable, and pain-free.",
@@ -335,6 +382,8 @@ const CYMOR_DATA = {
       duration: "8 Months",
       technique: "Custom 3D Digital Clear Aligners",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-02-before.jpg",
+      after: "images/before-after/case-02-after.jpg",
       beforeImg: "images/before-after/case-02-before.jpg",
       afterImg: "images/before-after/case-02-after.jpg",
       patientQuote: "I was conscious about my gaps. Within 8 months with Dr. Nazeer's clear aligners, I smile with complete confidence.",
@@ -348,6 +397,8 @@ const CYMOR_DATA = {
       duration: "3 Months",
       technique: "Titanium Fixture & Zirconia Crown",
       doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
+      before: "images/before-after/case-03-before.jpg",
+      after: "images/before-after/case-03-after.jpg",
       beforeImg: "images/before-after/case-03-before.jpg",
       afterImg: "images/before-after/case-03-after.jpg",
       patientQuote: "Lost my front tooth in an accident. Dr. Najeer restored it completely with an implant. Looks and bites naturally!",

@@ -62,82 +62,202 @@ function initDateRestrictions() {
   }
 }
 
-// 2. CLINICAL CASE GALLERY (BEFORE & AFTER REAL SMILE TRANSFORMATIONS)
-function initCaseGallery() {
-  const galleryGrid = document.getElementById('cases-gallery-grid');
-  if (!galleryGrid) return;
+// 2. INTERACTIVE BEFORE → AFTER COMPARISON SLIDER & TRANSFORMATION GALLERY
+let currentCaseIndex = 0;
+let isSliderDragging = false;
+let currentSliderPercentage = 50;
 
-  // If cards are already pre-rendered statically in index.html, preserve them
-  if (galleryGrid.children.length > 0) {
-    return;
+function updateSliderPosition(percentage) {
+  const beforeImg = document.getElementById('slider-before-img');
+  const dividerLine = document.getElementById('slider-divider-line');
+  const handle = document.getElementById('slider-handle');
+
+  if (!beforeImg || !dividerLine || !handle) return;
+
+  // Clamp between 0.5% and 99.5% so handle stays neatly visible within the rounded frame
+  currentSliderPercentage = Math.max(0.5, Math.min(99.5, percentage));
+
+  // Top BEFORE image is clipped according to slider position:
+  // 0% -> shows 0% of BEFORE (all AFTER)
+  // 50% -> shows 50% of BEFORE (half BEFORE / half AFTER)
+  // 100% -> shows 100% of BEFORE (all BEFORE)
+  beforeImg.style.clipPath = `polygon(0 0, ${currentSliderPercentage}% 0, ${currentSliderPercentage}% 100%, 0 100%)`;
+  
+  // Divider line position
+  dividerLine.style.left = `${currentSliderPercentage}%`;
+  
+  // Accessibility update
+  handle.setAttribute('aria-valuenow', Math.round(currentSliderPercentage));
+
+  // Hide the initial drag hint when user interacts
+  if (isSliderDragging) {
+    const hint = document.getElementById('slider-drag-hint');
+    if (hint) hint.style.opacity = '0';
   }
-
-  if (!CYMOR_DATA.cases) return;
-
-  function renderCases(casesToRender) {
-    galleryGrid.innerHTML = casesToRender.map((c) => `
-      <div class="case-card bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:shadow-md">
-        <div>
-          <!-- Top Label Header: BEFORE | AFTER with Divider -->
-          <div class="grid grid-cols-2 text-center border-b border-border-subtle bg-surface-tint">
-            <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-text-muted flex items-center justify-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-              <span>BEFORE</span>
-            </div>
-            <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-primary border-l border-border-subtle flex items-center justify-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-              <span>AFTER</span>
-            </div>
-          </div>
-
-          <!-- Side-by-Side Images with Clear Vertical Divider Line -->
-          <div class="relative grid grid-cols-2 bg-slate-50">
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img src="${c.beforeImg}" alt="${c.title} - Before" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
-            </div>
-            <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-slate-300 z-10 pointer-events-none"></div>
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img src="${c.afterImg}" alt="${c.title} - After" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
-            </div>
-          </div>
-
-          <!-- Case Details / Caption -->
-          <div class="p-5 sm:p-6">
-            <div class="flex items-center justify-between gap-2 mb-2.5">
-              <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
-                ${c.tag}
-              </span>
-              <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
-                <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
-                ${c.duration}
-              </span>
-            </div>
-            <h3 class="text-lg font-bold text-text-main mb-1.5 leading-snug">${c.title}</h3>
-            <p class="text-[13px] text-text-muted leading-relaxed">${c.description}</p>
-          </div>
-        </div>
-
-        <!-- Doctor Reference & Consultation Link -->
-        <div class="p-5 sm:p-6 pt-0">
-          <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
-            <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
-              <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
-              <span class="truncate">${c.doctor}</span>
-            </div>
-            <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
-              Consult
-            </a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  renderCases(CYMOR_DATA.cases);
 }
 
+function initComparisonSlider() {
+  const container = document.getElementById('comparison-slider-container');
+  const handle = document.getElementById('slider-handle');
+
+  if (!container || !handle) return;
+
+  // Preload all transformation case images for instantaneous switching
+  const allCases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
+  allCases.forEach(c => {
+    if (c.before || c.beforeImg) { const b = new Image(); b.src = c.before || c.beforeImg; }
+    if (c.after || c.afterImg) { const a = new Image(); a.src = c.after || c.afterImg; }
+  });
+
+  function getPercentage(e) {
+    const rect = container.getBoundingClientRect();
+    if (!rect.width) return 50;
+    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const offsetX = clientX - rect.left;
+    return (offsetX / rect.width) * 100;
+  }
+
+  function handlePointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    isSliderDragging = true;
+    container.style.touchAction = 'none';
+    document.body.style.userSelect = 'none';
+
+    try {
+      container.setPointerCapture(e.pointerId);
+    } catch (_) {}
+
+    updateSliderPosition(getPercentage(e));
+    e.preventDefault();
+  }
+
+  function handlePointerMove(e) {
+    if (!isSliderDragging) return;
+    updateSliderPosition(getPercentage(e));
+    e.preventDefault();
+  }
+
+  function handlePointerUp(e) {
+    if (!isSliderDragging) return;
+    isSliderDragging = false;
+    container.style.touchAction = '';
+    document.body.style.userSelect = '';
+
+    try {
+      container.releasePointerCapture(e.pointerId);
+    } catch (_) {}
+  }
+
+  container.addEventListener('pointerdown', handlePointerDown);
+  container.addEventListener('pointermove', handlePointerMove);
+  container.addEventListener('pointerup', handlePointerUp);
+  container.addEventListener('pointercancel', handlePointerUp);
+
+  // Keyboard accessibility on handle
+  handle.addEventListener('keydown', (e) => {
+    let delta = 0;
+    if (e.key === 'ArrowLeft') delta = -5;
+    else if (e.key === 'ArrowRight') delta = 5;
+    else if (e.key === 'Home') {
+      updateSliderPosition(0);
+      e.preventDefault();
+      return;
+    } else if (e.key === 'End') {
+      updateSliderPosition(100);
+      e.preventDefault();
+      return;
+    }
+
+    if (delta !== 0) {
+      updateSliderPosition(currentSliderPercentage + delta);
+      e.preventDefault();
+    }
+  });
+
+  // Initial slider position at 50%
+  updateSliderPosition(50);
+
+  // Initialize first case display
+  renderCaseData(0);
+}
+
+function renderCaseData(index) {
+  const cases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
+  if (!cases.length) return;
+
+  if (index < 0) index = cases.length - 1;
+  if (index >= cases.length) index = 0;
+  currentCaseIndex = index;
+  const c = cases[currentCaseIndex];
+
+  const beforeImg = document.getElementById('slider-before-img');
+  const afterImg = document.getElementById('slider-after-img');
+  const caseTag = document.getElementById('case-tag');
+  const caseDuration = document.getElementById('case-duration');
+  const caseTreatment = document.getElementById('case-treatment');
+  const caseDoctor = document.getElementById('case-doctor');
+  const caseDescription = document.getElementById('case-description');
+  const caseCounter = document.getElementById('case-counter');
+
+  if (beforeImg) {
+    beforeImg.src = c.before || c.beforeImg;
+    beforeImg.alt = `${c.treatment || c.title} - Before`;
+  }
+  if (afterImg) {
+    afterImg.src = c.after || c.afterImg;
+    afterImg.alt = `${c.treatment || c.title} - After`;
+  }
+  if (caseTag) caseTag.textContent = c.tag || `Case 0${index + 1}`;
+  if (caseDuration) {
+    caseDuration.innerHTML = `
+      <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+      <span>${c.duration}</span>
+    `;
+  }
+  if (caseTreatment) caseTreatment.textContent = c.treatment || c.title;
+  if (caseDoctor) caseDoctor.textContent = c.doctor || "";
+  if (caseDescription) caseDescription.textContent = c.description || "";
+  if (caseCounter) {
+    const num = (index + 1).toString().padStart(2, '0');
+    const total = cases.length.toString().padStart(2, '0');
+    caseCounter.textContent = `${num} / ${total}`;
+  }
+
+  // Update pills styling
+  const pills = document.querySelectorAll('.case-pill');
+  pills.forEach((pill, i) => {
+    if (i === currentCaseIndex) {
+      pill.className = 'case-pill px-3 py-1.5 rounded-full text-[12px] font-bold transition-all bg-primary text-white shadow-xs cursor-pointer';
+    } else {
+      pill.className = 'case-pill px-3 py-1.5 rounded-full text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer';
+    }
+  });
+
+  // Reset slider position to 50% for fresh comparison
+  updateSliderPosition(50);
+}
+
+function nextCase() {
+  renderCaseData(currentCaseIndex + 1);
+}
+
+function prevCase() {
+  renderCaseData(currentCaseIndex - 1);
+}
+
+function goToCase(index) {
+  renderCaseData(index);
+}
+
+window.nextCase = nextCase;
+window.prevCase = prevCase;
+window.goToCase = goToCase;
+window.initComparisonSlider = initComparisonSlider;
+window.updateSliderPosition = updateSliderPosition;
+
 function openCaseLightbox(caseId, activeType) {
-  const c = CYMOR_DATA.cases.find(item => item.id === caseId);
+  const cases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
+  const c = cases.find(item => item.id == caseId || item.tag === caseId);
   if (!c) return;
 
   const modal = document.getElementById('generic-modal');
@@ -148,7 +268,7 @@ function openCaseLightbox(caseId, activeType) {
     <div class="flex items-start justify-between gap-4 pb-4 border-b border-border-subtle">
       <div>
         <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-1">${c.tag}</span>
-        <h3 class="text-xl font-bold text-text-main">${c.title}</h3>
+        <h3 class="text-xl font-bold text-text-main">${c.treatment || c.title}</h3>
       </div>
       <button onclick="closeGenericModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer">
         <span class="material-symbols-outlined text-[20px]">close</span>
@@ -164,7 +284,7 @@ function openCaseLightbox(caseId, activeType) {
             <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-white text-[10px] font-extrabold">BEFORE</span>
           </div>
           <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-border-subtle shadow-sm">
-            <img src="${c.beforeImg}" alt="Before: ${c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+            <img src="${c.before || c.beforeImg}" alt="Before: ${c.treatment || c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
           </div>
         </div>
 
@@ -175,7 +295,7 @@ function openCaseLightbox(caseId, activeType) {
             <span class="px-2.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-extrabold">AFTER</span>
           </div>
           <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border-2 border-primary/30 shadow-sm">
-            <img src="${c.afterImg}" alt="After: ${c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+            <img src="${c.after || c.afterImg}" alt="After: ${c.treatment || c.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
           </div>
         </div>
       </div>
@@ -197,12 +317,6 @@ function openCaseLightbox(caseId, activeType) {
       </div>
 
       <p class="text-[13px] text-text-body leading-relaxed">${c.description}</p>
-      
-      ${c.patientQuote ? `
-        <div class="p-3.5 rounded-2xl bg-primary-subtle border-l-4 border-primary text-text-body text-[13px] italic leading-relaxed">
-          "${c.patientQuote}"
-        </div>
-      ` : ''}
     </div>
 
     <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
@@ -218,10 +332,6 @@ function openCaseLightbox(caseId, activeType) {
   modal.classList.add('flex');
 }
 window.openCaseLightbox = openCaseLightbox;
-
-function initComparisonSlider() {
-  initCaseGallery();
-}
 
 // 3. TREATMENT DIRECTORY FILTERING
 function initTreatmentFilters() {
