@@ -662,34 +662,249 @@
       </div>
     </section>
 
-    <!-- SECTION 6: REAL SMILE TRANSFORMATIONS (CLINICAL CASE GALLERY) -->
+    <!-- SECTION 6: REAL SMILE TRANSFORMATIONS (BEFORE & AFTER) -->
     <section class="py-16 md:py-24 bg-surface-base scroll-mt-16 reveal" id="transformations-section">
       <div class="max-w-container-max mx-auto px-4 sm:px-6">
         
         <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span class="text-[12px] font-extrabold text-primary tracking-wider uppercase mb-1 block">Clinical Case Gallery</span>
           <h2 class="reveal-text text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-main tracking-tight mb-2">
-            SMILES THAT SPEAK FOR THEMSELVES
+            Real Transformations
           </h2>
           <p class="text-base text-text-muted font-medium">
-            Real treatment journeys. Real transformations.
+            Real patients. Real treatment journeys. Real smiles.
           </p>
         </div>
 
-        <!-- Case Category Filter Bar -->
-        <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 -mx-4 sm:mx-0 px-4 sm:px-0 scrollbar-none mb-8 sm:mb-10" id="case-gallery-filter">
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-primary text-white shadow-xs transition-all cursor-pointer" data-filter="all">All Treatments</button>
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-surface-card text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle transition-all cursor-pointer" data-filter="ortho">Orthodontics &amp; Brackets</button>
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-surface-card text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle transition-all cursor-pointer" data-filter="surgery">Dental Implants</button>
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-surface-card text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle transition-all cursor-pointer" data-filter="cosmetic">Smile Makeovers</button>
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-surface-card text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle transition-all cursor-pointer" data-filter="restorative">Root Canal &amp; Restorative</button>
-          <button class="case-filter-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-[13px] font-bold bg-surface-card text-text-muted hover:bg-primary-subtle hover:text-primary border border-border-subtle transition-all cursor-pointer" data-filter="pediatric">Pediatric Care</button>
-        </div>
+        <!-- Cases Grid: Exactly 3 Clinical Transformations with Side-by-Side Before/After and Vertical Divider -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8" id="cases-gallery-grid">
+          
+          <!-- Case 01: Orthodontic Treatment -->
+          <div class="case-card bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:shadow-md">
+            <div>
+              <!-- Top Label Header: BEFORE | AFTER with Divider -->
+              <div class="grid grid-cols-2 text-center border-b border-border-subtle bg-surface-tint">
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-text-muted flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                  <span>BEFORE</span>
+                </div>
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-primary border-l border-border-subtle flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span>AFTER</span>
+                </div>
+              </div>
 
-        <!-- Cases Grid (Populated via js/app.js from CYMOR_DATA.cases with lazy loading & error fallbacks) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="cases-gallery-grid">
-          <!-- Populated dynamically via initCaseGallery() in js/app.js -->
+              <!-- Side-by-Side Images with Clear Vertical Divider Line -->
+              <div class="relative grid grid-cols-2 bg-slate-50">
+                <!-- Before Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-01-before.jpg" 
+                    alt="Orthodontic Treatment - Before" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+
+                <!-- Clear Vertical Divider Line extending through the entire image area -->
+                <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-slate-300 z-10 pointer-events-none"></div>
+
+                <!-- After Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-01-after.jpg" 
+                    alt="Orthodontic Treatment - After" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+              </div>
+
+              <!-- Case Details / Caption -->
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
+                    Case 01
+                  </span>
+                  <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                    14 Months
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-text-main mb-1.5 leading-snug">Orthodontic Treatment</h3>
+                <p class="text-[13px] text-text-muted leading-relaxed">
+                  Precision bracket realignment addressing severe crowding and anterior rotation for biological bite symmetry.
+                </p>
+              </div>
+            </div>
+
+            <!-- Doctor Reference & Consultation Link -->
+            <div class="p-5 sm:p-6 pt-0">
+              <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
+                  <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
+                  <span class="truncate">Dr. Nazeer P. Chittayil</span>
+                </div>
+                <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
+                  Consult
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 02: Smile Alignment -->
+          <div class="case-card bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:shadow-md">
+            <div>
+              <!-- Top Label Header: BEFORE | AFTER with Divider -->
+              <div class="grid grid-cols-2 text-center border-b border-border-subtle bg-surface-tint">
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-text-muted flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                  <span>BEFORE</span>
+                </div>
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-primary border-l border-border-subtle flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span>AFTER</span>
+                </div>
+              </div>
+
+              <!-- Side-by-Side Images with Clear Vertical Divider Line -->
+              <div class="relative grid grid-cols-2 bg-slate-50">
+                <!-- Before Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-02-before.jpg" 
+                    alt="Smile Alignment - Before" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+
+                <!-- Clear Vertical Divider Line extending through the entire image area -->
+                <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-slate-300 z-10 pointer-events-none"></div>
+
+                <!-- After Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-02-after.jpg" 
+                    alt="Smile Alignment - After" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+              </div>
+
+              <!-- Case Details / Caption -->
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
+                    Case 02
+                  </span>
+                  <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                    8 Months
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-text-main mb-1.5 leading-snug">Smile Alignment</h3>
+                <p class="text-[13px] text-text-muted leading-relaxed">
+                  Clear aligner therapy correcting midline deviation and anterior spacing with zero tooth extractions.
+                </p>
+              </div>
+            </div>
+
+            <!-- Doctor Reference & Consultation Link -->
+            <div class="p-5 sm:p-6 pt-0">
+              <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
+                  <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
+                  <span class="truncate">Dr. Nazeer P. Chittayil</span>
+                </div>
+                <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
+                  Consult
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 03: Dental Transformation -->
+          <div class="case-card bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:shadow-md">
+            <div>
+              <!-- Top Label Header: BEFORE | AFTER with Divider -->
+              <div class="grid grid-cols-2 text-center border-b border-border-subtle bg-surface-tint">
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-text-muted flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                  <span>BEFORE</span>
+                </div>
+                <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-primary border-l border-border-subtle flex items-center justify-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span>AFTER</span>
+                </div>
+              </div>
+
+              <!-- Side-by-Side Images with Clear Vertical Divider Line -->
+              <div class="relative grid grid-cols-2 bg-slate-50">
+                <!-- Before Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-03-before.jpg" 
+                    alt="Dental Transformation - Before" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+
+                <!-- Clear Vertical Divider Line extending through the entire image area -->
+                <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-slate-300 z-10 pointer-events-none"></div>
+
+                <!-- After Photo -->
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src="images/before-after/case-03-after.jpg" 
+                    alt="Dental Transformation - After" 
+                    loading="lazy" 
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
+                  />
+                </div>
+              </div>
+
+              <!-- Case Details / Caption -->
+              <div class="p-5 sm:p-6">
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
+                    Case 03
+                  </span>
+                  <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                    3 Months
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-text-main mb-1.5 leading-snug">Dental Transformation</h3>
+                <p class="text-[13px] text-text-muted leading-relaxed">
+                  Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration.
+                </p>
+              </div>
+            </div>
+
+            <!-- Doctor Reference & Consultation Link -->
+            <div class="p-5 sm:p-6 pt-0">
+              <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
+                <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
+                  <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
+                  <span class="truncate">Dr. Mohammed Najeer</span>
+                </div>
+                <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
+                  Consult
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- Clinical Photography Quality Assurance & Consultation CTA Bar -->
@@ -701,7 +916,7 @@
             <div>
               <h4 class="text-[15px] font-bold text-text-main">Authentic Clinical Records Only</h4>
               <p class="text-[13px] text-text-muted leading-relaxed">
-                All clinical documentation shown represents real patients treated at CYMOR Super Speciality Dental Clinic under professional medical standards.
+                All clinical documentation shown represents real patient treatment journeys at CYMOR Super Speciality Dental Clinic under professional medical standards.
               </p>
             </div>
           </div>

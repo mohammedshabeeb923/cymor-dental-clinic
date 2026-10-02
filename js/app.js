@@ -65,95 +65,75 @@ function initDateRestrictions() {
 // 2. CLINICAL CASE GALLERY (BEFORE & AFTER REAL SMILE TRANSFORMATIONS)
 function initCaseGallery() {
   const galleryGrid = document.getElementById('cases-gallery-grid');
-  const filterContainer = document.getElementById('case-gallery-filter');
+  if (!galleryGrid) return;
 
-  if (!galleryGrid || !CYMOR_DATA.cases) return;
+  // If cards are already pre-rendered statically in index.html, preserve them
+  if (galleryGrid.children.length > 0) {
+    return;
+  }
 
-  function renderCases(filteredCases) {
-    galleryGrid.innerHTML = filteredCases.map((c) => `
-      <div class="case-card hover-lift p-5 sm:p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between transition-all" data-category="${c.category}">
+  if (!CYMOR_DATA.cases) return;
+
+  function renderCases(casesToRender) {
+    galleryGrid.innerHTML = casesToRender.map((c) => `
+      <div class="case-card bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:shadow-md">
         <div>
-          <!-- Tag & Duration -->
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="inline-block px-3 py-1 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
-              ${c.tag || 'Clinical Result'}
-            </span>
-            <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
-              <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
-              ${c.duration}
-            </span>
-          </div>
-
-          <h3 class="text-base font-bold text-text-main mb-3 leading-snug">${c.title}</h3>
-
-          <!-- Side-by-side Before & After Images -->
-          <div class="grid grid-cols-2 gap-2.5 mb-4">
-            <!-- BEFORE -->
-            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-border-subtle group cursor-pointer" onclick="openCaseLightbox('${c.id}', 'before')">
-              <img src="${c.beforeImg}" alt="Before: ${c.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-slate-900/80 text-white text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-xs">
-                BEFORE
-              </span>
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <span class="material-symbols-outlined text-white text-[20px] drop-shadow-md">zoom_in</span>
-              </div>
+          <!-- Top Label Header: BEFORE | AFTER with Divider -->
+          <div class="grid grid-cols-2 text-center border-b border-border-subtle bg-surface-tint">
+            <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-text-muted flex items-center justify-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+              <span>BEFORE</span>
             </div>
-
-            <!-- AFTER -->
-            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-surface-tint border border-primary/20 group cursor-pointer" onclick="openCaseLightbox('${c.id}', 'after')">
-              <img src="${c.afterImg}" alt="After: ${c.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-primary text-white text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
-                AFTER
-              </span>
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <span class="material-symbols-outlined text-white text-[20px] drop-shadow-md">zoom_in</span>
-              </div>
+            <div class="py-2.5 px-3 text-[11px] font-extrabold tracking-wider uppercase text-primary border-l border-border-subtle flex items-center justify-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              <span>AFTER</span>
             </div>
           </div>
 
-          <p class="text-[13px] text-text-muted leading-relaxed mb-4">
-            ${c.description}
-          </p>
+          <!-- Side-by-Side Images with Clear Vertical Divider Line -->
+          <div class="relative grid grid-cols-2 bg-slate-50">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="${c.beforeImg}" alt="${c.title} - Before" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+            </div>
+            <div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-slate-300 z-10 pointer-events-none"></div>
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="${c.afterImg}" alt="${c.title} - After" loading="lazy" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';">
+            </div>
+          </div>
+
+          <!-- Case Details / Caption -->
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
+                ${c.tag}
+              </span>
+              <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                ${c.duration}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-text-main mb-1.5 leading-snug">${c.title}</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed">${c.description}</p>
+          </div>
         </div>
 
-        <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
-          <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
-            <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
-            <span class="truncate">${c.doctor}</span>
+        <!-- Doctor Reference & Consultation Link -->
+        <div class="p-5 sm:p-6 pt-0">
+          <div class="pt-4 border-t border-border-subtle flex items-center justify-between gap-2">
+            <div class="flex items-center gap-1.5 text-[12px] text-text-body font-semibold truncate">
+              <span class="material-symbols-outlined text-primary text-[16px] shrink-0">verified_user</span>
+              <span class="truncate">${c.doctor}</span>
+            </div>
+            <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
+              Consult
+            </a>
           </div>
-          <a href="#appointment-section" class="shrink-0 px-3 py-1.5 rounded-full bg-primary-subtle hover:bg-primary text-primary hover:text-white text-[12px] font-bold transition-colors cursor-pointer">
-            Consult
-          </a>
         </div>
       </div>
     `).join('');
   }
 
-  // Initial render
   renderCases(CYMOR_DATA.cases);
-
-  // Filter interaction
-  if (filterContainer) {
-    const filterBtns = filterContainer.querySelectorAll('.case-filter-btn');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-primary', 'text-white', 'shadow-xs');
-          b.classList.add('bg-surface-card', 'text-text-muted', 'border', 'border-border-subtle');
-        });
-        btn.classList.add('bg-primary', 'text-white', 'shadow-xs');
-        btn.classList.remove('bg-surface-card', 'text-text-muted', 'border', 'border-border-subtle');
-
-        if (filter === 'all') {
-          renderCases(CYMOR_DATA.cases);
-        } else {
-          const filtered = CYMOR_DATA.cases.filter(c => c.category === filter);
-          renderCases(filtered);
-        }
-      });
-    });
-  }
 }
 
 function openCaseLightbox(caseId, activeType) {

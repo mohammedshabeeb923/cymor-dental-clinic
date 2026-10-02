@@ -315,82 +315,43 @@ const CYMOR_DATA = {
 
   cases: [
     {
-      id: "case-ortho-brackets",
+      id: "case-01",
       category: "ortho",
-      tag: "Orthodontic Treatment",
-      title: "Fixed Orthodontic Bracket Realignment",
+      tag: "Case 01",
+      title: "Orthodontic Treatment",
       duration: "14 Months",
-      technique: "Self-Ligating Bracket Appliance",
+      technique: "Precision Bracket Realignment",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
-      beforeImg: "images/before-after/brackets-before.jpg",
-      afterImg: "images/before-after/brackets-after.jpg",
-      patientQuote: "My teeth alignment completely changed with Dr. Nazeer's bracket treatment. Systematic and pain-free.",
-      description: "Severe anterior crowding and rotation corrected using modern precision orthodontic brackets with biological force control."
+      beforeImg: "images/before-after/case-01-before.jpg",
+      afterImg: "images/before-after/case-01-after.jpg",
+      patientQuote: "My teeth alignment completely changed with Dr. Nazeer's treatment. Systematic, comfortable, and pain-free.",
+      description: "Precision bracket realignment addressing severe crowding and anterior rotation for biological bite symmetry."
     },
     {
-      id: "case-ortho-aligners",
+      id: "case-02",
       category: "ortho",
-      tag: "Smile Alignment",
-      title: "Digital Clear Aligner Spacing Correction",
+      tag: "Case 02",
+      title: "Smile Alignment",
       duration: "8 Months",
       technique: "Custom 3D Digital Clear Aligners",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
-      beforeImg: "images/before-after/ortho-before.jpg",
-      afterImg: "images/before-after/ortho-after.jpg",
+      beforeImg: "images/before-after/case-02-before.jpg",
+      afterImg: "images/before-after/case-02-after.jpg",
       patientQuote: "I was conscious about my gaps. Within 8 months with Dr. Nazeer's clear aligners, I smile with complete confidence.",
-      description: "Anterior spacing and midline malocclusion resolved with customized digital clear aligners without extractions."
+      description: "Clear aligner therapy correcting midline deviation and anterior spacing with zero tooth extractions."
     },
     {
-      id: "case-implant-restoration",
+      id: "case-03",
       category: "surgery",
-      tag: "Dental Implants",
-      title: "Missing Anterior Tooth Replacement",
+      tag: "Case 03",
+      title: "Dental Transformation",
       duration: "3 Months",
       technique: "Titanium Fixture & Zirconia Crown",
       doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
-      beforeImg: "images/before-after/implant-before.jpg",
-      afterImg: "images/before-after/implant-after.jpg",
+      beforeImg: "images/before-after/case-03-before.jpg",
+      afterImg: "images/before-after/case-03-after.jpg",
       patientQuote: "Lost my front tooth in an accident. Dr. Najeer restored it completely with an implant. Looks and bites naturally!",
-      description: "Single-stage computer-guided titanium implant fixture followed by a custom monolithic zirconia crown matching adjacent shade."
-    },
-    {
-      id: "case-veneers-makeover",
-      category: "cosmetic",
-      tag: "Smile Makeovers",
-      title: "Cosmetic E-Max Porcelain Smile Design",
-      duration: "10 Days",
-      technique: "Minimal Prep E-Max Porcelain Veneers",
-      doctor: "Dr. Sharath Gopinath & Clinical Team",
-      beforeImg: "images/before-after/veneers-before.jpg",
-      afterImg: "images/before-after/veneers-after.jpg",
-      patientQuote: "Travelled from the UAE for my wedding smile makeover at CYMOR. Beautiful, natural-looking porcelain veneers.",
-      description: "Enamel fluorosis and incisal asymmetry corrected with ultra-thin handcrafted porcelain laminate veneers."
-    },
-    {
-      id: "case-root-canal",
-      category: "restorative",
-      tag: "Root Canal Treatment",
-      title: "Microscopic Rotary Endodontic Salvage",
-      duration: "Single Sitting",
-      technique: "Microscopic Rotary Endodontics",
-      doctor: "Dr. Sharath Gopinath (MDS Endodontics)",
-      beforeImg: "images/before-after/rct-before.jpg",
-      afterImg: "images/before-after/rct-after.jpg",
-      patientQuote: "Had unbearable toothache for 3 nights. Dr. Sharath treated it completely painlessly in a single sitting.",
-      description: "Deep dental caries reaching vascular pulp tissue. Laser disinfected, sealed, and reinforced with a custom protective crown."
-    },
-    {
-      id: "case-pediatric-care",
-      category: "pediatric",
-      tag: "Pediatric Dentistry",
-      title: "Pediatric Preventive Care & Restoration",
-      duration: "30 Minutes",
-      technique: "Composite Restoration & Fluoride Shield",
-      doctor: "Dr. Nazeer P. Chittayil & Pediatric Team",
-      beforeImg: "images/before-after/pediatric-before.jpg",
-      afterImg: "images/before-after/pediatric-after.jpg",
-      patientQuote: "My 6-year-old child was never afraid once at CYMOR. The doctors are so friendly and gentle with children.",
-      description: "Gentle, fear-free child dental care with biocompatible tooth restorations and protective enamel shield sealants."
+      description: "Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration."
     }
   ],
 
