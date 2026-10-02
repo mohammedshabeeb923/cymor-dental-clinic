@@ -101,8 +101,6 @@ function initComparisonSlider() {
   const container = document.getElementById('comparison-slider-container');
   const handle = document.getElementById('slider-handle');
 
-  if (!container || !handle) return;
-
   // Preload all transformation case images for instantaneous switching
   const allCases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
   allCases.forEach(c => {
@@ -110,75 +108,77 @@ function initComparisonSlider() {
     if (c.after || c.afterImg) { const a = new Image(); a.src = c.after || c.afterImg; }
   });
 
-  function getPercentage(e) {
-    const rect = container.getBoundingClientRect();
-    if (!rect.width) return 50;
-    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    const offsetX = clientX - rect.left;
-    return (offsetX / rect.width) * 100;
-  }
-
-  function handlePointerDown(e) {
-    if (e.button !== undefined && e.button !== 0) return;
-    isSliderDragging = true;
-    container.style.touchAction = 'none';
-    document.body.style.userSelect = 'none';
-
-    try {
-      container.setPointerCapture(e.pointerId);
-    } catch (_) {}
-
-    updateSliderPosition(getPercentage(e));
-    e.preventDefault();
-  }
-
-  function handlePointerMove(e) {
-    if (!isSliderDragging) return;
-    updateSliderPosition(getPercentage(e));
-    e.preventDefault();
-  }
-
-  function handlePointerUp(e) {
-    if (!isSliderDragging) return;
-    isSliderDragging = false;
-    container.style.touchAction = '';
-    document.body.style.userSelect = '';
-
-    try {
-      container.releasePointerCapture(e.pointerId);
-    } catch (_) {}
-  }
-
-  container.addEventListener('pointerdown', handlePointerDown);
-  container.addEventListener('pointermove', handlePointerMove);
-  container.addEventListener('pointerup', handlePointerUp);
-  container.addEventListener('pointercancel', handlePointerUp);
-
-  // Keyboard accessibility on handle
-  handle.addEventListener('keydown', (e) => {
-    let delta = 0;
-    if (e.key === 'ArrowLeft') delta = -5;
-    else if (e.key === 'ArrowRight') delta = 5;
-    else if (e.key === 'Home') {
-      updateSliderPosition(0);
-      e.preventDefault();
-      return;
-    } else if (e.key === 'End') {
-      updateSliderPosition(100);
-      e.preventDefault();
-      return;
+  if (container && handle) {
+    function getPercentage(e) {
+      const rect = container.getBoundingClientRect();
+      if (!rect.width) return 50;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      const offsetX = clientX - rect.left;
+      return (offsetX / rect.width) * 100;
     }
 
-    if (delta !== 0) {
-      updateSliderPosition(currentSliderPercentage + delta);
+    function handlePointerDown(e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      isSliderDragging = true;
+      container.style.touchAction = 'none';
+      document.body.style.userSelect = 'none';
+
+      try {
+        container.setPointerCapture(e.pointerId);
+      } catch (_) {}
+
+      updateSliderPosition(getPercentage(e));
       e.preventDefault();
     }
-  });
 
-  // Initial slider position at 50%
-  updateSliderPosition(50);
+    function handlePointerMove(e) {
+      if (!isSliderDragging) return;
+      updateSliderPosition(getPercentage(e));
+      e.preventDefault();
+    }
 
-  // Initialize first case display
+    function handlePointerUp(e) {
+      if (!isSliderDragging) return;
+      isSliderDragging = false;
+      container.style.touchAction = '';
+      document.body.style.userSelect = '';
+
+      try {
+        container.releasePointerCapture(e.pointerId);
+      } catch (_) {}
+    }
+
+    container.addEventListener('pointerdown', handlePointerDown);
+    container.addEventListener('pointermove', handlePointerMove);
+    container.addEventListener('pointerup', handlePointerUp);
+    container.addEventListener('pointercancel', handlePointerUp);
+
+    // Keyboard accessibility on handle
+    handle.addEventListener('keydown', (e) => {
+      let delta = 0;
+      if (e.key === 'ArrowLeft') delta = -5;
+      else if (e.key === 'ArrowRight') delta = 5;
+      else if (e.key === 'Home') {
+        updateSliderPosition(0);
+        e.preventDefault();
+        return;
+      } else if (e.key === 'End') {
+        updateSliderPosition(100);
+        e.preventDefault();
+        return;
+      }
+
+      if (delta !== 0) {
+        updateSliderPosition(currentSliderPercentage + delta);
+        e.preventDefault();
+      }
+    });
+
+    // Initial slider position at 50%
+    updateSliderPosition(50);
+  }
+
+  // Always initialize first case display (works for both vertical stack & slider layouts)
   renderCaseData(0);
 }
 
@@ -191,22 +191,24 @@ function renderCaseData(index) {
   currentCaseIndex = index;
   const c = cases[currentCaseIndex];
 
-  const beforeImg = document.getElementById('slider-before-img');
-  const afterImg = document.getElementById('slider-after-img');
+  const beforeImg = document.getElementById('case-before-img') || document.getElementById('slider-before-img');
+  const afterImg = document.getElementById('case-after-img') || document.getElementById('slider-after-img');
   const caseTag = document.getElementById('case-tag');
   const caseDuration = document.getElementById('case-duration');
+  const caseDurationBadge = document.getElementById('case-duration-badge');
   const caseTreatment = document.getElementById('case-treatment');
   const caseDoctor = document.getElementById('case-doctor');
   const caseDescription = document.getElementById('case-description');
   const caseCounter = document.getElementById('case-counter');
+  const caseTransitionLabel = document.getElementById('case-transition-label');
 
   if (beforeImg) {
     beforeImg.src = c.before || c.beforeImg;
-    beforeImg.alt = `${c.treatment || c.title} - Before`;
+    beforeImg.alt = `${c.treatment || c.title} - Initial Condition Before Treatment`;
   }
   if (afterImg) {
     afterImg.src = c.after || c.afterImg;
-    afterImg.alt = `${c.treatment || c.title} - After`;
+    afterImg.alt = `${c.treatment || c.title} - Clinical Result After Treatment`;
   }
   if (caseTag) caseTag.textContent = c.tag || `Case 0${index + 1}`;
   if (caseDuration) {
@@ -215,9 +217,16 @@ function renderCaseData(index) {
       <span>${c.duration}</span>
     `;
   }
+  if (caseDurationBadge) caseDurationBadge.textContent = c.duration || "";
   if (caseTreatment) caseTreatment.textContent = c.treatment || c.title;
-  if (caseDoctor) caseDoctor.textContent = c.doctor || "";
+  if (caseDoctor) {
+    caseDoctor.innerHTML = `
+      <span class="material-symbols-outlined text-[15px] text-primary">person</span>
+      <span>${c.doctor || ""}</span>
+    `;
+  }
   if (caseDescription) caseDescription.textContent = c.description || "";
+  if (caseTransitionLabel) caseTransitionLabel.textContent = c.technique || "CYMOR Precision Protocol";
   if (caseCounter) {
     const num = (index + 1).toString().padStart(2, '0');
     const total = cases.length.toString().padStart(2, '0');
@@ -228,14 +237,16 @@ function renderCaseData(index) {
   const pills = document.querySelectorAll('.case-pill');
   pills.forEach((pill, i) => {
     if (i === currentCaseIndex) {
-      pill.className = 'case-pill px-3 py-1.5 rounded-full text-[12px] font-bold transition-all bg-primary text-white shadow-xs cursor-pointer';
+      pill.className = 'case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all bg-primary text-white shadow-xs cursor-pointer';
     } else {
-      pill.className = 'case-pill px-3 py-1.5 rounded-full text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer';
+      pill.className = 'case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer';
     }
   });
 
-  // Reset slider position to 50% for fresh comparison
-  updateSliderPosition(50);
+  // Reset slider position to 50% if slider exists
+  if (document.getElementById('slider-handle')) {
+    updateSliderPosition(50);
+  }
 }
 
 function nextCase() {
@@ -931,9 +942,9 @@ function openEmergencyModal(e) {
       <div class="p-4 rounded-2xl bg-red-50/70 border border-red-200 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div>
           <span class="text-[11px] uppercase font-bold text-secondary block">On-Call Duty Doctor Line</span>
-          <span class="text-lg font-black text-text-main">+91 73807 74477</span>
+          <span class="text-lg font-black text-text-main">+91 99952 68787</span>
         </div>
-        <a href="tel:+917380774477" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-secondary hover:bg-secondary-hover text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-sm">
+        <a href="tel:+919995268787" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-secondary hover:bg-secondary-hover text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-sm">
           <span class="material-symbols-outlined text-[18px]">phone_in_talk</span>
           <span>Call Doctor Now</span>
         </a>

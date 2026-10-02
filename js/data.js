@@ -5,7 +5,7 @@ const CYMOR_DATA = {
     name: "CYMOR Super Speciality Dental Clinic",
     tagline: "Confident Smiles. Expert Dental Care.",
     established: 2002,
-    emergencyPhone: "+917380774477",
+    emergencyPhone: "+919995268787",
     landlinePhone: "04952665366",
     whatsappNumber: "919995268787",
     email: "cymordental@gmail.com",
@@ -397,12 +397,27 @@ const CYMOR_DATA = {
       duration: "3 Months",
       technique: "Titanium Fixture & Zirconia Crown",
       doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
-      before: "images/before-after/case-03-before.jpg?v=3.0",
-      after: "images/before-after/case-03-after.jpg?v=3.0",
-      beforeImg: "images/before-after/case-03-before.jpg?v=3.0",
-      afterImg: "images/before-after/case-03-after.jpg?v=3.0",
+      before: "images/before-after/case-03-before.jpg?v=3.3",
+      after: "images/before-after/case-03-after.jpg?v=3.3",
+      beforeImg: "images/before-after/case-03-before.jpg?v=3.3",
+      afterImg: "images/before-after/case-03-after.jpg?v=3.3",
       patientQuote: "Lost my front tooth in an accident. Dr. Najeer restored it completely with an implant. Looks and bites naturally!",
       description: "Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration."
+    },
+    {
+      id: "case-04",
+      category: "ortho",
+      tag: "Case 04",
+      title: "Pediatric Brackets & Realignment",
+      duration: "10 Months",
+      technique: "Pediatric Interceptive Orthodontic Brackets",
+      doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-04-pediatric-before.jpg?v=3.3",
+      after: "images/before-after/case-04-pediatric-after.jpg?v=3.3",
+      beforeImg: "images/before-after/case-04-pediatric-before.jpg?v=3.3",
+      afterImg: "images/before-after/case-04-pediatric-after.jpg?v=3.3",
+      patientQuote: "Our child had severe crowding and crooked mixed teeth. Dr. Nazeer guided the gentle bracket treatment with amazing care.",
+      description: "Interceptive pediatric orthodontic brackets correcting severe anterior crowding and mixed-dentition rotation for a balanced juvenile dental arch."
     }
   ],
 
@@ -454,7 +469,7 @@ const CYMOR_DATA = {
         "Gently floss to remove any trapped food debris around the aching tooth.",
         "Take an over-the-counter pain reliever like Paracetamol/Ibuprofen (Never place aspirin directly on gums).",
         "Apply a cold compress on your cheek outside the painful area to reduce throbbing.",
-        "Call CYMOR Emergency Hotline +91 73807 74477 immediately for same-day triage."
+        "Call CYMOR Emergency Hotline +91 99952 68787 immediately for same-day triage."
       ]
     },
     {
