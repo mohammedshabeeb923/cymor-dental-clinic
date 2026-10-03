@@ -1499,7 +1499,7 @@ function initWelcomeScreen() {
   if (!welcomeScreen) return;
 
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const targetDuration = prefersReducedMotion ? 250 : 850;
+  const targetDuration = prefersReducedMotion ? 400 : 2300;
   let isDismissed = false;
 
   function dismissWelcome() {
@@ -1512,20 +1512,22 @@ function initWelcomeScreen() {
       if (welcomeScreen.parentNode) {
         welcomeScreen.parentNode.removeChild(welcomeScreen);
       }
-    }, 550);
+    }, 700);
   }
 
-  // Smooth natural reveal after brief clinical brand impression (850ms)
+  // Allow full clinical dental animation (tooth sketch, sparkle glint, smile curve, progress bar) to play
   setTimeout(dismissWelcome, targetDuration);
 
-  // Instant dismissal on any user gesture (click, tap, scroll, keypress)
+  // Instant dismissal on user click or tap to skip
   welcomeScreen.addEventListener('click', dismissWelcome, { passive: true });
   welcomeScreen.addEventListener('touchstart', dismissWelcome, { passive: true });
-  window.addEventListener('keydown', dismissWelcome, { once: true });
-  window.addEventListener('wheel', dismissWelcome, { passive: true, once: true });
 
-  // Absolute hard safety timeout (1400ms max) - guarantees site is never blocked
-  setTimeout(dismissWelcome, 1400);
+  // Window load safety fallback
+  window.addEventListener('load', () => {
+    setTimeout(dismissWelcome, targetDuration);
+  });
+  // Hard safety timeout
+  setTimeout(dismissWelcome, 3500);
 }
 
 
