@@ -78,7 +78,7 @@ const CYMOR_DATA = {
       specialties: ["General Dental Surgery", "Preventive & Family Care", "Restorative Aesthetics"],
       regNo: "5610",
       experience: "Dental Surgeon",
-      image: "images/doctors/dr-shalina.svg",
+      image: "images/doctors/dr-shalina.jpg",
       bio: "Dr. Shalina Nazeer provides comprehensive dental surgery, restorative solutions, and preventive dental care with a gentle, patient-focused approach for the whole family.",
       availability: "Monday to Saturday",
       treatmentKey: "general"
