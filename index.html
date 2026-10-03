@@ -213,7 +213,7 @@
     </aside>
 
     <!-- SECTION 2: CINEMATIC DENTAL TREATMENT HERO -->
-    <section id="hero-section" class="relative min-h-[90vh] lg:min-h-[860px] w-full flex items-center overflow-hidden bg-slate-950 text-white select-none">
+    <section id="hero-section" class="relative min-h-[90vh] lg:min-h-[860px] w-full flex items-center overflow-hidden bg-black text-white select-none">
       
       <!-- BACKGROUND VISUAL LAYER: IMMERSIVE FULL-WIDTH DENTAL VIDEO & POSTER FALLBACK -->
       <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -235,19 +235,15 @@
           <source src="assets/hero-dental.webm" type="video/webm">
         </video>
 
-        <!-- Desktop: Cinematic horizontal gradient dark on left, revealing patient & dentist on right -->
-        <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-transparent"></div>
-        <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-slate-950/40"></div>
-        
-        <!-- Mobile/Tablet: Vertical gradient ensuring 100% text readability -->
-        <div class="lg:hidden absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/70 to-slate-950/95"></div>
+        <!-- Pure Neutral Transparent Black Gradient for Desktop Text Contrast ONLY (Zero Blue Cast; Completely Clear Over Video Subject) -->
+        <div class="hidden lg:block absolute inset-0 pointer-events-none" style="background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 35%, rgba(0, 0, 0, 0.1) 58%, rgba(0, 0, 0, 0) 72%);"></div>
 
-        <!-- Subtle Clinic Teal Brand Ambient Tint -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#00383d]/60 via-transparent to-teal-900/15 mix-blend-multiply"></div>
-        
-        <!-- Top & Bottom Edge Vignette -->
-        <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-slate-950/70 to-transparent"></div>
-        <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-950 to-transparent"></div>
+        <!-- Pure Neutral Transparent Black Gradient for Mobile/Tablet Text Contrast ONLY (Zero Blue Cast) -->
+        <div class="lg:hidden absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.6) 100%);"></div>
+
+        <!-- Very Subtle Neutral Edge Transitions (Top & Bottom, Pure Neutral Black) -->
+        <div class="absolute top-0 inset-x-0 h-20 pointer-events-none" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);"></div>
+        <div class="absolute bottom-0 inset-x-0 h-24 pointer-events-none" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);"></div>
       </div>
 
       <!-- FOREGROUND CONTENT CONTAINER -->
@@ -299,10 +295,10 @@
             </div>
 
             <!-- Floating Video/Doctor Glass Card (matching reference bottom-left element) -->
-            <div class="hidden sm:flex items-center gap-3.5 p-3 pr-5 rounded-2xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/15 shadow-2xl transition-all hover:-translate-y-1 group">
-              <div class="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/20 bg-slate-800">
+            <div class="hidden sm:flex items-center gap-3.5 p-3 pr-5 rounded-2xl bg-black/50 hover:bg-black/70 backdrop-blur-xl border border-white/15 shadow-2xl transition-all hover:-translate-y-1 group">
+              <div class="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/20 bg-neutral-900">
                 <img src="images/dr-nazeer-with-kid.jpg" alt="Dr Nazeer gentle family care" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-primary/20"></div>
+                <div class="absolute inset-0 bg-black/10"></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                   <span class="w-6 h-6 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-sm">
                     <span class="material-symbols-outlined text-[14px]">verified</span>
@@ -365,7 +361,7 @@
             </div>
 
             <!-- Mobile Only: Quick Stats Mini Bar -->
-            <div class="sm:hidden flex items-center justify-between w-full p-3 rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 text-[12px]">
+            <div class="sm:hidden flex items-center justify-between w-full p-3 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-[12px]">
               <div class="flex items-center gap-2">
                 <span class="text-amber-400 font-extrabold">★ 4.9</span>
                 <span class="text-white/80">1,850+ Smiles</span>
