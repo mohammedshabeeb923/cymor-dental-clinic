@@ -1,6 +1,7 @@
 function initAll() {
   const subsystems = [
     { name: 'Welcome Screen', fn: initWelcomeScreen },
+    { name: 'Hero Video', fn: initHeroVideo },
     { name: 'Particles', fn: initParticles },
     { name: 'Number Counters', fn: initNumberCounters },
     { name: 'Date Restrictions', fn: initDateRestrictions },
@@ -1529,5 +1530,31 @@ function initWelcomeScreen() {
   // Hard safety timeout
   setTimeout(dismissWelcome, 3500);
 }
+
+// 16. CINEMATIC HERO VIDEO & FALLBACK ENGINE
+function initHeroVideo() {
+  const video = document.getElementById('hero-bg-video');
+  if (!video) return;
+
+  // Listen for playback start to smoothly transition from poster to video
+  video.addEventListener('playing', () => {
+    video.classList.remove('opacity-0');
+    video.classList.add('opacity-100');
+  });
+
+  // Attempt autoplay
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      video.classList.remove('opacity-0');
+      video.classList.add('opacity-100');
+    }).catch(() => {
+      // Autoplay suppressed by browser policy or video file not yet added to assets/
+      // Gracefully maintains high-resolution cinematic poster image
+      video.classList.add('opacity-0');
+    });
+  }
+}
+
 
 

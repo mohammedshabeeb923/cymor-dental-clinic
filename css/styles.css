@@ -744,3 +744,52 @@ input:focus, select:focus, textarea:focus {
   touch-action: none;
 }
 
+/* ========================================================
+   CINEMATIC DENTAL TREATMENT HERO SECTION
+   ======================================================== */
+.hero-cinematic-bg {
+  animation: heroCinematicDrift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroCinematicDrift {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.04) translate(-0.5%, -0.5%);
+  }
+  100% {
+    transform: scale(1.02) translate(0.5%, 0.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinematic-bg {
+    animation: none !important;
+  }
+}
+
+.hero-chip {
+  text-decoration: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hero-chip:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta-btn {
+  text-decoration: none !important;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+

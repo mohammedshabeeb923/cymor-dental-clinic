@@ -212,135 +212,186 @@
       </div>
     </aside>
 
-    <!-- SECTION 2: HERO SECTION -->
-    <section id="hero-section" class="relative bg-gradient-to-b from-surface-tint via-white to-surface-base overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24">
-      <div class="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-teal-100/40 blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-10 left-10 w-96 h-96 rounded-full bg-emerald-50/50 blur-2xl pointer-events-none"></div>
-
-      <!-- Floating Health Cross (+) Brand Accents -->
-      <div class="absolute top-16 left-6 sm:left-14 text-primary/25 animate-float pointer-events-none select-none">
-        <svg class="w-7 h-7 sm:w-9 sm:h-9 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
-      </div>
-      <div class="absolute top-1/4 right-6 sm:right-16 text-teal-400/30 animate-float-delayed pointer-events-none select-none">
-        <svg class="w-8 h-8 sm:w-11 sm:h-11 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
-      </div>
-      <div class="absolute bottom-12 left-1/3 text-emerald-500/20 animate-float pointer-events-none select-none hidden sm:block">
-        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
-      </div>
+    <!-- SECTION 2: CINEMATIC DENTAL TREATMENT HERO -->
+    <section id="hero-section" class="relative min-h-[90vh] lg:min-h-[860px] w-full flex items-center overflow-hidden bg-slate-950 text-white select-none">
       
-      <div class="max-w-container-max mx-auto px-4 sm:px-6 relative">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <!-- BACKGROUND VISUAL LAYER: IMMERSIVE FULL-WIDTH DENTAL VIDEO & POSTER FALLBACK -->
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        
+        <!-- Base High-Resolution Cinematic Poster Fallback Image -->
+        <img id="hero-poster-img"
+             src="images/hero-cinematic-dental.jpg"
+             alt="CYMOR Dental Clinic - Cinematic Dental Treatment"
+             class="absolute inset-0 w-full h-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center hero-cinematic-bg transition-transform duration-1000 ease-out" />
+
+        <!-- HTML5 Native Background Video Layer -->
+        <!-- Future MP4/WebM video can simply be added to assets/hero-dental.mp4 -->
+        <video id="hero-bg-video"
+               class="absolute inset-0 w-full h-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center opacity-0 transition-opacity duration-1000 ease-out pointer-events-none"
+               autoplay muted loop playsinline
+               poster="images/hero-cinematic-dental.jpg"
+               aria-hidden="true">
+          <source src="assets/hero-dental.mp4" type="video/mp4">
+          <source src="assets/hero-dental.webm" type="video/webm">
+        </video>
+
+        <!-- Desktop: Cinematic horizontal gradient dark on left, revealing patient & dentist on right -->
+        <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-transparent"></div>
+        <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-slate-950/40"></div>
+        
+        <!-- Mobile/Tablet: Vertical gradient ensuring 100% text readability -->
+        <div class="lg:hidden absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/70 to-slate-950/95"></div>
+
+        <!-- Subtle Clinic Teal Brand Ambient Tint -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#00383d]/60 via-transparent to-teal-900/15 mix-blend-multiply"></div>
+        
+        <!-- Top & Bottom Edge Vignette -->
+        <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-slate-950/70 to-transparent"></div>
+        <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-slate-950 to-transparent"></div>
+      </div>
+
+      <!-- FOREGROUND CONTENT CONTAINER -->
+      <div class="relative z-10 w-full max-w-container-max mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 flex flex-col justify-between min-h-[90vh] lg:min-h-[860px]">
+        
+        <!-- Top Spacer for header breathing room -->
+        <div class="hidden sm:block h-4 lg:h-8"></div>
+
+        <!-- Main Hero Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
           
-          <!-- Left Column -->
-          <div class="lg:col-span-7 flex flex-col items-start text-left">
+          <!-- Left Column: Primary Copy & CTAs -->
+          <div class="lg:col-span-7 xl:col-span-8 flex flex-col items-start text-left">
             
-            <!-- Top Excellence Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 text-primary text-xs font-extrabold uppercase tracking-wider mb-5 shadow-2xs">
-              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              <span>Excellence in Modern Dentistry</span>
+            <!-- Frosted Glass Status / Excellence Pill -->
+            <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 text-teal-200 text-xs font-extrabold uppercase tracking-widest mb-5 shadow-lg transition-colors">
+              <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+              <span>Super Speciality Dental Clinic &bull; Since 2002</span>
             </div>
 
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-main tracking-tight leading-[1.12] mb-5">
-              Crafting Confident <br/>
-              <span class="text-shimmer relative inline-block">
-                Smiles
-                <span class="absolute left-0 -bottom-1 w-full h-1.5 bg-primary/30 rounded-full"></span>
-              </span> for Life.
+            <!-- Primary Headline -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-[64px] font-extrabold text-white tracking-tight leading-[1.12] mb-5 drop-shadow-md">
+              Family-Friendly <br class="hidden sm:inline"/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-200 via-white to-teal-100">
+                Dental Care.
+              </span>
             </h1>
 
-            <p class="text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed mb-8 font-normal">
-              We combine 20+ years of advanced dental technology with a gentle touch to provide exceptional, painless care for you and your family in Ponnani, Kerala.
+            <!-- Supporting Paragraph -->
+            <p class="text-base sm:text-lg text-slate-200/90 max-w-xl leading-relaxed mb-8 font-normal drop-shadow-sm">
+              Crafting confident smiles for life. We combine 20+ years of advanced dental technology with a gentle touch to provide exceptional, painless care for you and your family in Ponnani, Kerala.
             </p>
 
-            <!-- Action Buttons Group -->
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
-              <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-primary hover:bg-primary-hover text-white text-[15px] font-bold px-7 py-3.5 rounded-full transition-all shadow-[0_6px_20px_rgba(0,102,108,0.25)] hover:shadow-[0_8px_25px_rgba(0,102,108,0.35)] hover:-translate-y-0.5 leading-none text-center" href="#appointment-section">
-                <span class="material-symbols-outlined text-[20px] shrink-0">calendar_month</span>
-                <span>Book Appointment</span>
+            <!-- Action Buttons Group (Primary + Secondary) -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8 sm:mb-10">
+              <!-- Primary CTA (White Pill with Circle Arrow, matching reference) -->
+              <a href="#appointment-section" class="hero-cta-btn group w-full sm:w-auto inline-flex items-center justify-between sm:justify-center gap-4 bg-white hover:bg-teal-50 text-slate-900 text-[15px] font-bold pl-7 pr-2.5 py-2.5 rounded-full transition-all shadow-[0_10px_25px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_30px_rgba(0,102,108,0.4)] leading-none">
+                <span>Book an Appointment</span>
+                <span class="w-9 h-9 rounded-full bg-primary group-hover:bg-primary-hover text-white flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-0.5 shadow-sm">
+                  <span class="material-symbols-outlined text-[19px]">arrow_forward</span>
+                </span>
               </a>
-              <a href="tel:+917380774477" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-surface-card hover:bg-surface-tint border border-border-subtle text-primary text-[15px] font-bold px-6 py-3.5 rounded-full transition-all shadow-2xs hover:shadow-xs leading-none text-center">
-                <span class="material-symbols-outlined text-[20px] shrink-0 text-primary">phone_in_talk</span>
+
+              <!-- Secondary CTA (Glass Call Button) -->
+              <a href="tel:+917380774477" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[15px] font-bold px-6 py-3.5 rounded-full transition-all shadow-sm leading-none">
+                <span class="material-symbols-outlined text-[19px] text-teal-300">phone_in_talk</span>
                 <span>Call Clinic: 73807 74477</span>
               </a>
             </div>
 
-            <!-- 4 Features Horizontal Strip -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 pt-6 border-t border-border-subtle w-full">
-              <div class="flex items-center gap-2.5 hover-lift p-2 rounded-xl">
-                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
-                  <span class="material-symbols-outlined text-[20px]">dentistry</span>
+            <!-- Floating Video/Doctor Glass Card (matching reference bottom-left element) -->
+            <div class="hidden sm:flex items-center gap-3.5 p-3 pr-5 rounded-2xl bg-slate-900/60 hover:bg-slate-900/80 backdrop-blur-xl border border-white/15 shadow-2xl transition-all hover:-translate-y-1 group">
+              <div class="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/20 bg-slate-800">
+                <img src="images/dr-nazeer-with-kid.jpg" alt="Dr Nazeer gentle family care" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-primary/20"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="w-6 h-6 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-sm">
+                    <span class="material-symbols-outlined text-[14px]">verified</span>
+                  </span>
                 </div>
-                <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight break-words">Modern<br/>Technology</span>
               </div>
-
-              <div class="flex items-center gap-2.5 hover-lift p-2 rounded-xl">
-                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
-                  <span class="material-symbols-outlined text-[20px]">verified_user</span>
+              <div class="flex flex-col min-w-0">
+                <p class="text-[13px] font-bold text-white leading-snug">
+                  Restore natural healthy confident dental growth.
+                </p>
+                <div class="flex items-center gap-2 mt-1">
+                  <div class="flex items-center text-amber-400 text-[12px] font-extrabold gap-1">
+                    <span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span>4.9 [Rating]</span>
+                  </div>
+                  <span class="text-white/40 text-[11px]">&bull;</span>
+                  <a href="#about-section" class="text-teal-300 hover:text-teal-200 text-[11px] font-semibold flex items-center gap-0.5 hover:underline">
+                    <span>Dr. Nazeer P. Chittayil</span>
+                    <span class="material-symbols-outlined text-[13px]">arrow_outward</span>
+                  </a>
                 </div>
-                <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight break-words">Safe &amp;<br/>Trusted</span>
-              </div>
-
-              <div class="flex items-center gap-2.5 hover-lift p-2 rounded-xl">
-                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
-                  <span class="material-symbols-outlined text-[20px]">groups</span>
-                </div>
-                <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight break-words">Experienced<br/>Team</span>
-              </div>
-
-              <div class="flex items-center gap-2.5 hover-lift p-2 rounded-xl">
-                <div class="w-9 h-9 rounded-xl bg-primary-subtle text-primary flex items-center justify-center shrink-0">
-                  <span class="material-symbols-outlined text-[20px]">favorite</span>
-                </div>
-                <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight break-words">Comfortable<br/>Care</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Right Column -->
-          <div class="lg:col-span-5 relative mt-4 lg:mt-0 reveal-right w-full">
-            <div class="relative mx-auto max-w-md lg:max-w-none">
-              
-              <div class="absolute -right-4 -bottom-6 w-32 h-32 bg-dot-pattern opacity-30 pointer-events-none hidden sm:block"></div>
+          <!-- Right Column: Interactive Treatment Pills & Clinical Highlights (matching reference bottom-right) -->
+          <div class="lg:col-span-5 xl:col-span-4 flex flex-col items-start lg:items-end justify-end gap-6 pt-2 lg:pt-0">
+            
+            <!-- Treatment Pills Cluster (inspired by reference right-side chips) -->
+            <div class="w-full flex flex-col items-start lg:items-end gap-3">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-teal-300/90 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">medical_services</span>
+                <span>Specialized Treatments</span>
+              </span>
 
-              <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-primary-subtle border-4 border-white">
-                <img class="w-full h-[380px] sm:h-[480px] object-cover object-center" alt="Dr. Nazeer P. Chittayil with child dental patient" src="images/dr-nazeer-with-kid.jpg"/>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent"></div>
-                
-                <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-3 sm:p-4 rounded-2xl bg-surface-card/95 backdrop-blur-md shadow-lg border border-white/60 flex items-center justify-between gap-2">
-                  <div class="pr-2 min-w-0 flex-1">
-                    <p class="text-[13px] font-bold text-primary leading-snug truncate">Dr. Nazeer P. Chittayil</p>
-                    <p class="text-[11px] text-text-muted mt-0.5 leading-tight line-clamp-1 sm:line-clamp-none">Founder &amp; Chief Specialist &bull; Gentle Family Care</p>
-                  </div>
-                  <button onclick="selectDoctorAndBook('orthodontics', 'Dr. Nazeer P. Chittayil')" class="w-9 h-9 rounded-full bg-primary hover:bg-primary-hover text-white flex items-center justify-center shrink-0 shadow-sm transition-colors cursor-pointer" aria-label="Book with Dr. Nazeer">
-                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                  </button>
-                </div>
+              <div class="flex flex-wrap gap-2 justify-start lg:justify-end max-w-sm">
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Dental Checkup
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Teeth Cleaning
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Orthodontics &amp; Braces
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Clear Aligners
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Dental Implants
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Painless RCT
+                </a>
+                <a href="#treatments-section" class="hero-chip px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-[12px] font-semibold shadow-sm">
+                  Smile Makeovers
+                </a>
               </div>
-
-              <!-- Floating Trust Badges -->
-              <div class="animate-float absolute -top-3 left-2 sm:-top-4 sm:-left-4 bg-surface-card/95 backdrop-blur-md shadow-lg p-2.5 sm:p-3 rounded-2xl border border-border-subtle flex items-center gap-2 sm:gap-3 z-20 max-w-[calc(100%-1.5rem)]">
-                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary text-white flex items-center justify-center text-sm sm:text-base font-black shrink-0">
-                  20+
-                </div>
-                <div class="flex flex-col min-w-0">
-                  <span class="text-[12px] sm:text-[13px] font-bold text-text-main leading-tight whitespace-nowrap">Years of Trust</span>
-                  <span class="text-[10px] sm:text-[11px] text-text-muted whitespace-nowrap">Since 2002</span>
-                </div>
-              </div>
-
-              <div class="animate-float-delayed absolute top-1/4 right-2 sm:-right-4 bg-surface-card/95 backdrop-blur-md shadow-lg px-3 py-2 sm:px-4 sm:py-2.5 rounded-2xl border border-border-subtle flex items-center gap-2 sm:gap-2.5 z-20 max-w-[calc(100%-1.5rem)]">
-                <span class="material-symbols-outlined text-accent-star text-[18px] sm:text-[22px] shrink-0" style="font-variation-settings: 'FILL' 1;">star</span>
-                <div class="flex flex-col min-w-0">
-                  <span class="text-[12px] sm:text-[14px] font-extrabold text-text-main leading-tight whitespace-nowrap">4.9 / 5.0</span>
-                  <span class="text-[10px] sm:text-[11px] text-text-muted whitespace-nowrap">1,850+ Smiles</span>
-                </div>
-              </div>
-
             </div>
+
+            <!-- Mobile Only: Quick Stats Mini Bar -->
+            <div class="sm:hidden flex items-center justify-between w-full p-3 rounded-2xl bg-slate-900/70 backdrop-blur-md border border-white/15 text-[12px]">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-400 font-extrabold">★ 4.9</span>
+                <span class="text-white/80">1,850+ Smiles</span>
+              </div>
+              <span class="text-white/40">|</span>
+              <div class="text-teal-300 font-bold">20+ Years Trust</div>
+            </div>
+
           </div>
 
         </div>
+
+        <!-- Bottom Status Line / Scroll Indicator (matching reference footer bar) -->
+        <div class="pt-6 sm:pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-slate-300/80 font-medium">
+          <div class="flex items-center gap-3">
+            <span class="tracking-wide">Your Teeth. Our Science.</span>
+            <span class="text-white/30 hidden sm:inline">&bull;</span>
+            <span class="hidden sm:inline text-teal-300 font-bold">4 Clinic Centres: Ponnani &bull; Purangu &bull; Naripparambu &bull; Andethode</span>
+          </div>
+
+          <a href="#about-section" class="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer group">
+            <span>Scroll to Explore</span>
+            <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-y-0.5">arrow_downward</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
