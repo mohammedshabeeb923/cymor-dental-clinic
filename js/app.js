@@ -461,7 +461,7 @@ function openDoctorModal(doctorId) {
         <div>
           <span class="inline-block px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase mb-1">${doctor.role}</span>
           <h3 class="text-xl font-bold text-text-main">${doctor.name}</h3>
-          <p class="text-[13px] text-primary font-bold">${doctor.qualification} <span class="text-text-muted font-semibold text-[12px] ml-1.5">• Reg. No: ${doctor.regNo}</span></p>
+          <p class="text-[13px] text-primary font-bold">${doctor.qualification}${doctor.regNo ? ` <span class="text-text-muted font-semibold text-[12px] ml-1.5">• Reg. No: ${doctor.regNo}</span>` : ''}</p>
         </div>
       </div>
       <button onclick="closeGenericModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer">
@@ -576,6 +576,33 @@ function openDoctorModal(doctorId) {
             `).join('')}
           </div>
         </div>
+
+        ${doctor.location ? `
+          <div class="p-3.5 rounded-2xl bg-surface-tint border border-border-subtle text-[12.5px] space-y-2 mt-3">
+            <h4 class="text-xs font-extrabold uppercase tracking-wider text-primary flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px]">domain</span>
+              <span>Consultation &amp; Practice Information</span>
+            </h4>
+            <div class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">location_on</span>
+              <span class="text-text-main font-medium">${doctor.location}</span>
+            </div>
+            ${doctor.languages ? `
+              <div class="flex items-center gap-2 text-text-muted">
+                <span class="material-symbols-outlined text-primary text-[18px] shrink-0">translate</span>
+                <span>Languages: <strong class="text-text-main">${doctor.languages}</strong></span>
+              </div>
+            ` : ''}
+            ${doctor.whatsapp ? `
+              <div class="pt-1">
+                <a href="${doctor.whatsapp}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200 font-bold text-[12px] transition-colors">
+                  <span class="material-symbols-outlined text-[#25D366] text-[18px]">chat</span>
+                  <span>Direct Booking / WhatsApp: ${doctor.phone || '+91 62352 22111'} &rarr;</span>
+                </a>
+              </div>
+            ` : ''}
+          </div>
+        ` : ''}
       `}
     </div>
 

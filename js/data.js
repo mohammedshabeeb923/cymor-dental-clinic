@@ -71,6 +71,30 @@ const CYMOR_DATA = {
       treatmentKey: "orthodontics"
     },
     {
+      id: "dr-asif",
+      name: "Dr. Asif",
+      qualification: "Chief Aesthetic Dentist",
+      role: "Chief Aesthetic Dentist",
+      specialties: [
+        "Smile Designing (Personalised Digital Smile Architecture)",
+        "Hollywood Smile Makeovers",
+        "Veneers & Esthetic Ceramic Crowns",
+        "Tooth Preservation & Minimally Invasive Aesthetics"
+      ],
+      clinic: "Toothsuite Dental Clinic and CYMOR",
+      department: "Cosmetic Dentistry & Smile Architecture",
+      experience: "Chief Aesthetic Dentist",
+      image: "images/doctors/dr-asif.jpg",
+      bio: "Chief Aesthetic Dentist at Toothsuite Dental Clinic and CYMOR, specializing in Cosmetic Dentistry & Smile Architecture. Dedicated to personalized digital smile architecture designed to harmonize with individual facial features, Hollywood smile makeovers, ultra-thin porcelain veneers, and tooth-preserving aesthetic restorations.",
+      location: "Toothsuite Dental Clinic, Mankavu Road, Near Aster MIMS Hospital, Govindapuram, Kozhikode (Calicut), Kerala – 673007",
+      availability: "Monday – Sunday: 9:00 AM – 11:00 PM",
+      languages: "English, Malayalam, Hindi",
+      whatsapp: "https://wa.me/916235222111",
+      phone: "+91 62352 22111",
+      treatmentKey: "cosmetic",
+      note: "Per the clinic’s official public roster, formal postgraduate degree acronyms such as BDS/MDS are maintained directly through in-clinic records and consultation appointments."
+    },
+    {
       id: "dr-shalina",
       name: "Dr. Shalina Nazeer",
       qualification: "BDS",
