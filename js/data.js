@@ -408,16 +408,16 @@ const CYMOR_DATA = {
       id: "case-04",
       category: "ortho",
       tag: "Case 04",
-      title: "Pediatric Brackets & Realignment",
+      title: "Fixed Orthodontic Realignment",
       duration: "10 Months",
-      technique: "Pediatric Interceptive Orthodontic Brackets",
+      technique: "Precision Orthodontic Bracket Therapy",
       doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
       before: "images/before-after/case-04-pediatric-before.jpg?v=3.3",
       after: "images/before-after/case-04-pediatric-after.jpg?v=3.3",
       beforeImg: "images/before-after/case-04-pediatric-before.jpg?v=3.3",
       afterImg: "images/before-after/case-04-pediatric-after.jpg?v=3.3",
-      patientQuote: "Our child had severe crowding and crooked mixed teeth. Dr. Nazeer guided the gentle bracket treatment with amazing care.",
-      description: "Interceptive pediatric orthodontic brackets correcting severe anterior crowding and mixed-dentition rotation for a balanced juvenile dental arch."
+      patientQuote: "My crowded teeth were corrected with precision brackets under Dr. Nazeer's care. Completely transformed my smile.",
+      description: "Orthodontic bracket alignment resolving severe anterior crowding, rotation, and arch asymmetry for symmetrical smile aesthetics."
     }
   ],
 

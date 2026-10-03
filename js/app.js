@@ -63,54 +63,37 @@ function initDateRestrictions() {
   }
 }
 
-// 2. INTERACTIVE BEFORE → AFTER COMPARISON SLIDER & TRANSFORMATION GALLERY
-let currentCaseIndex = 0;
-let isSliderDragging = false;
-let currentSliderPercentage = 50;
-
-function updateSliderPosition(percentage) {
-  const beforeImg = document.getElementById('slider-before-img');
-  const dividerLine = document.getElementById('slider-divider-line');
-  const handle = document.getElementById('slider-handle');
-
-  if (!beforeImg || !dividerLine || !handle) return;
-
-  // Clamp between 0.5% and 99.5% so handle stays neatly visible within the rounded frame
-  currentSliderPercentage = Math.max(0.5, Math.min(99.5, percentage));
-
-  // Top BEFORE image is clipped according to slider position:
-  // 0% -> shows 0% of BEFORE (all AFTER)
-  // 50% -> shows 50% of BEFORE (half BEFORE / half AFTER)
-  // 100% -> shows 100% of BEFORE (all BEFORE)
-  beforeImg.style.clipPath = `polygon(0 0, ${currentSliderPercentage}% 0, ${currentSliderPercentage}% 100%, 0 100%)`;
-  
-  // Divider line position
-  dividerLine.style.left = `${currentSliderPercentage}%`;
-  
-  // Accessibility update
-  handle.setAttribute('aria-valuenow', Math.round(currentSliderPercentage));
-
-  // Hide the initial drag hint when user interacts
-  if (isSliderDragging) {
-    const hint = document.getElementById('slider-drag-hint');
-    if (hint) hint.style.opacity = '0';
-  }
-}
-
+// 2. INTERACTIVE BEFORE → AFTER COMPARISON SLIDERS (4 INDEPENDENT VERTICAL CASES)
 function initComparisonSlider() {
-  const container = document.getElementById('comparison-slider-container');
-  const handle = document.getElementById('slider-handle');
-
-  // Preload all transformation case images for instantaneous switching
-  const allCases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
+  const wrappers = document.querySelectorAll('.case-slider-wrapper');
+  
+  // Preload all 4 transformation cases images for instantaneous display
+  const allCases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.cases || CYMOR_DATA.transformationCases)) || [];
   allCases.forEach(c => {
     if (c.before || c.beforeImg) { const b = new Image(); b.src = c.before || c.beforeImg; }
     if (c.after || c.afterImg) { const a = new Image(); a.src = c.after || c.afterImg; }
   });
 
-  if (container && handle) {
+  wrappers.forEach((wrapper) => {
+    const beforeImg = wrapper.querySelector('.case-before-img');
+    const dividerLine = wrapper.querySelector('.case-divider-line');
+    const handle = wrapper.querySelector('.case-slider-handle');
+
+    if (!beforeImg || !dividerLine || !handle) return;
+
+    let isDragging = false;
+    let currentPercentage = 50;
+
+    function setPosition(percent) {
+      // Clamp between 0.5% and 99.5% so handle stays neatly visible within rounded frame
+      currentPercentage = Math.max(0.5, Math.min(99.5, percent));
+      beforeImg.style.clipPath = `polygon(0 0, ${currentPercentage}% 0, ${currentPercentage}% 100%, 0 100%)`;
+      dividerLine.style.left = `${currentPercentage}%`;
+      handle.setAttribute('aria-valuenow', Math.round(currentPercentage));
+    }
+
     function getPercentage(e) {
-      const rect = container.getBoundingClientRect();
+      const rect = wrapper.getBoundingClientRect();
       if (!rect.width) return 50;
       const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
       const offsetX = clientX - rect.left;
@@ -119,39 +102,39 @@ function initComparisonSlider() {
 
     function handlePointerDown(e) {
       if (e.button !== undefined && e.button !== 0) return;
-      isSliderDragging = true;
-      container.style.touchAction = 'none';
+      isDragging = true;
+      wrapper.style.touchAction = 'none';
       document.body.style.userSelect = 'none';
 
       try {
-        container.setPointerCapture(e.pointerId);
+        wrapper.setPointerCapture(e.pointerId);
       } catch (_) {}
 
-      updateSliderPosition(getPercentage(e));
+      setPosition(getPercentage(e));
       e.preventDefault();
     }
 
     function handlePointerMove(e) {
-      if (!isSliderDragging) return;
-      updateSliderPosition(getPercentage(e));
+      if (!isDragging) return;
+      setPosition(getPercentage(e));
       e.preventDefault();
     }
 
     function handlePointerUp(e) {
-      if (!isSliderDragging) return;
-      isSliderDragging = false;
-      container.style.touchAction = '';
+      if (!isDragging) return;
+      isDragging = false;
+      wrapper.style.touchAction = '';
       document.body.style.userSelect = '';
 
       try {
-        container.releasePointerCapture(e.pointerId);
+        wrapper.releasePointerCapture(e.pointerId);
       } catch (_) {}
     }
 
-    container.addEventListener('pointerdown', handlePointerDown);
-    container.addEventListener('pointermove', handlePointerMove);
-    container.addEventListener('pointerup', handlePointerUp);
-    container.addEventListener('pointercancel', handlePointerUp);
+    wrapper.addEventListener('pointerdown', handlePointerDown);
+    wrapper.addEventListener('pointermove', handlePointerMove);
+    wrapper.addEventListener('pointerup', handlePointerUp);
+    wrapper.addEventListener('pointercancel', handlePointerUp);
 
     // Keyboard accessibility on handle
     handle.addEventListener('keydown', (e) => {
@@ -159,113 +142,59 @@ function initComparisonSlider() {
       if (e.key === 'ArrowLeft') delta = -5;
       else if (e.key === 'ArrowRight') delta = 5;
       else if (e.key === 'Home') {
-        updateSliderPosition(0);
+        setPosition(0);
         e.preventDefault();
         return;
       } else if (e.key === 'End') {
-        updateSliderPosition(100);
+        setPosition(100);
         e.preventDefault();
         return;
       }
 
       if (delta !== 0) {
-        updateSliderPosition(currentSliderPercentage + delta);
+        setPosition(currentPercentage + delta);
         e.preventDefault();
       }
     });
 
-    // Initial slider position at 50%
-    updateSliderPosition(50);
-  }
-
-  // Always initialize first case display (works for both vertical stack & slider layouts)
-  renderCaseData(0);
-}
-
-function renderCaseData(index) {
-  const cases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];
-  if (!cases.length) return;
-
-  if (index < 0) index = cases.length - 1;
-  if (index >= cases.length) index = 0;
-  currentCaseIndex = index;
-  const c = cases[currentCaseIndex];
-
-  const beforeImg = document.getElementById('case-before-img') || document.getElementById('slider-before-img');
-  const afterImg = document.getElementById('case-after-img') || document.getElementById('slider-after-img');
-  const caseTag = document.getElementById('case-tag');
-  const caseDuration = document.getElementById('case-duration');
-  const caseDurationBadge = document.getElementById('case-duration-badge');
-  const caseTreatment = document.getElementById('case-treatment');
-  const caseDoctor = document.getElementById('case-doctor');
-  const caseDescription = document.getElementById('case-description');
-  const caseCounter = document.getElementById('case-counter');
-  const caseTransitionLabel = document.getElementById('case-transition-label');
-
-  if (beforeImg) {
-    beforeImg.src = c.before || c.beforeImg;
-    beforeImg.alt = `${c.treatment || c.title} - Initial Condition Before Treatment`;
-  }
-  if (afterImg) {
-    afterImg.src = c.after || c.afterImg;
-    afterImg.alt = `${c.treatment || c.title} - Clinical Result After Treatment`;
-  }
-  if (caseTag) caseTag.textContent = c.tag || `Case 0${index + 1}`;
-  if (caseDuration) {
-    caseDuration.innerHTML = `
-      <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
-      <span>${c.duration}</span>
-    `;
-  }
-  if (caseDurationBadge) caseDurationBadge.textContent = c.duration || "";
-  if (caseTreatment) caseTreatment.textContent = c.treatment || c.title;
-  if (caseDoctor) {
-    caseDoctor.innerHTML = `
-      <span class="material-symbols-outlined text-[15px] text-primary">person</span>
-      <span>${c.doctor || ""}</span>
-    `;
-  }
-  if (caseDescription) caseDescription.textContent = c.description || "";
-  if (caseTransitionLabel) caseTransitionLabel.textContent = c.technique || "CYMOR Precision Protocol";
-  if (caseCounter) {
-    const num = (index + 1).toString().padStart(2, '0');
-    const total = cases.length.toString().padStart(2, '0');
-    caseCounter.textContent = `${num} / ${total}`;
-  }
-
-  // Update pills styling
-  const pills = document.querySelectorAll('.case-pill');
-  pills.forEach((pill, i) => {
-    if (i === currentCaseIndex) {
-      pill.className = 'case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all bg-primary text-white shadow-xs cursor-pointer';
-    } else {
-      pill.className = 'case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer';
-    }
+    // Initialize at 50%
+    setPosition(50);
   });
 
-  // Reset slider position to 50% if slider exists
-  if (document.getElementById('slider-handle')) {
-    updateSliderPosition(50);
+  // Initialize Scroll Reveal for the 4 transformation cases
+  initTransformationScrollReveal();
+}
+
+function initTransformationScrollReveal() {
+  const caseItems = document.querySelectorAll('.scroll-reveal-case');
+  if (!caseItems.length) return;
+
+  const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion || !('IntersectionObserver' in window)) {
+    caseItems.forEach(item => item.classList.add('is-revealed'));
+    return;
   }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  caseItems.forEach((item, i) => {
+    item.style.transitionDelay = `${(i % 2) * 0.12}s`;
+    observer.observe(item);
+  });
 }
 
-function nextCase() {
-  renderCaseData(currentCaseIndex + 1);
-}
-
-function prevCase() {
-  renderCaseData(currentCaseIndex - 1);
-}
-
-function goToCase(index) {
-  renderCaseData(index);
-}
-
-window.nextCase = nextCase;
-window.prevCase = prevCase;
-window.goToCase = goToCase;
 window.initComparisonSlider = initComparisonSlider;
-window.updateSliderPosition = updateSliderPosition;
+window.initTransformationScrollReveal = initTransformationScrollReveal;
 
 function openCaseLightbox(caseId, activeType) {
   const cases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.transformationCases || CYMOR_DATA.cases)) || [];

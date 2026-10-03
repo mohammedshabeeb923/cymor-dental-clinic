@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..600,0..1,-25..200" rel="stylesheet"/>
   
-  <link rel="stylesheet" href="css/styles.css?v=3.3"/>
+  <link rel="stylesheet" href="css/styles.css?v=3.4"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
@@ -530,8 +530,8 @@
 
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="ortho">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">linear_scale</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/orthodontic-brackets.jpg" alt="Orthodontic Brackets Treatment" class="w-full h-full object-cover" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Fixed Orthodontics</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Orthodontic Brackets</h3>
@@ -640,13 +640,13 @@
 
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="all">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">child_care</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-primary-subtle border border-border-subtle shadow-2xs">
+                <img src="images/services/pediatric-dentistry.webp" onerror="this.onerror=null; this.src='images/services/pediatric-dentistry.svg';" alt="Pediatric Dentistry - Image Placeholder" class="w-full h-full object-cover" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Kid Friendly</span>
-              <h3 class="text-lg font-bold text-text-main mb-2">Pediatric Dentistry</h3>
+              <h3 class="text-lg font-bold text-text-main mb-2">PEDIATRIC DENTISTRY</h3>
               <p class="text-sm text-text-muted leading-relaxed mb-6">
-                Gentle, preventive and child-friendly dental care designed to build healthy smiles from an early age.
+                Gentle, child-friendly dental care focused on healthy smiles from an early age.
               </p>
             </div>
             <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
@@ -679,147 +679,276 @@
           </p>
         </div>
 
-        <!-- Featured Independent Vertical Transformation Gallery -->
-        <div class="max-w-4xl mx-auto">
+        <!-- Four Vertically Arranged Transformation Cases with Independent Interactive Sliders -->
+        <div class="max-w-4xl mx-auto space-y-12 sm:space-y-16" id="transformation-cases-list">
           
-          <div class="bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle p-4 sm:p-7 shadow-xs">
-
-            <!-- Gallery Header & Case Switcher Tabs -->
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-border-subtle">
-              <div class="flex flex-wrap items-center gap-1.5 p-1 rounded-2xl bg-surface-tint border border-border-subtle" id="case-pills-container">
-                <button onclick="goToCase(0)" class="case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all bg-primary text-white shadow-xs cursor-pointer" data-case="0">01 Braces</button>
-                <button onclick="goToCase(1)" class="case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer" data-case="1">02 Aligners</button>
-                <button onclick="goToCase(2)" class="case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer" data-case="2">03 Implants</button>
-                <button onclick="goToCase(3)" class="case-pill px-3.5 py-1.5 rounded-xl text-[12px] font-bold transition-all text-text-muted hover:text-primary cursor-pointer" data-case="3">04 Pediatric Brackets</button>
+          <!-- CASE 01 -->
+          <article class="transformation-case-item scroll-reveal-case bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle p-5 sm:p-7 shadow-xs" data-case-index="0">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">Case 01</span>
+                <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                  <span>14 Months</span>
+                </span>
+                <span class="text-text-muted/40">•</span>
+                <span class="text-[12px] font-semibold text-text-muted">Dr. Nazeer P. Chittayil (MDS Orthodontics)</span>
               </div>
-
-              <!-- Previous / Next Controls -->
-              <div class="flex items-center gap-2 ml-auto">
-                <button 
-                  id="case-prev-btn" 
-                  onclick="prevCase()"
-                  class="w-9 h-9 rounded-full bg-surface-card border border-border-subtle hover:border-primary text-text-main hover:text-primary flex items-center justify-center transition-all shadow-xs hover:shadow-sm cursor-pointer"
-                  aria-label="Previous Transformation Case"
-                >
-                  <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                </button>
-
-                <div class="px-3 py-1 rounded-full bg-surface-tint border border-border-subtle text-[11px] font-extrabold text-text-main min-w-[60px] text-center shadow-xs">
-                  <span id="case-counter">01 / 04</span>
-                </div>
-
-                <button 
-                  id="case-next-btn" 
-                  onclick="nextCase()"
-                  class="w-9 h-9 rounded-full bg-surface-card border border-border-subtle hover:border-primary text-text-main hover:text-primary flex items-center justify-center transition-all shadow-xs hover:shadow-sm cursor-pointer"
-                  aria-label="Next Transformation Case"
-                >
-                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </button>
-              </div>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Verified Result</span>
             </div>
 
-            <!-- Independent Pictures in Vertical Order -->
-            <div class="flex flex-col gap-5 sm:gap-6">
-              
-              <!-- TOP PICTURE: BEFORE (Independent Card) -->
-              <div class="space-y-2">
-                <div class="flex items-center justify-between px-1">
-                  <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs">
-                      <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-                      <span>BEFORE</span>
-                    </span>
-                    <span class="text-[12px] font-semibold text-text-muted">Pre-Treatment Clinical State</span>
+            <h3 class="text-xl font-bold text-text-main mb-1.5">Orthodontic Treatment</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed mb-5 max-w-2xl">
+              Precision bracket realignment addressing severe crowding and anterior rotation for biological bite symmetry.
+            </p>
+
+            <!-- Interactive Comparison Slider Frame -->
+            <div class="case-slider-wrapper relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl border border-border-subtle shadow-xs select-none touch-pan-y cursor-ew-resize bg-slate-900 group">
+              <!-- Bottom Layer: AFTER Image (Full Width) -->
+              <img src="images/before-after/case-01-after.jpg?v=3.3" alt="Orthodontic Treatment - Treatment Result After" loading="lazy" draggable="false" class="case-after-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- Top Layer: BEFORE Image (Clipped overlay) -->
+              <img src="images/before-after/case-01-before.jpg?v=3.3" alt="Orthodontic Treatment - Initial Condition Before" loading="lazy" draggable="false" class="case-before-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- BEFORE Label (Upper Left) -->
+              <div class="absolute top-3.5 left-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  <span>BEFORE</span>
+                </span>
+              </div>
+
+              <!-- AFTER Label (Upper Right) -->
+              <div class="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-teal-300/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>
+                  <span>AFTER</span>
+                </span>
+              </div>
+
+              <!-- Thin Vertical Divider Line & Draggable Handle -->
+              <div class="case-divider-line absolute inset-y-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20 pointer-events-none -translate-x-1/2" style="left: 50%;">
+                <div role="slider" tabindex="0" aria-label="Case 01 comparison slider. Drag horizontally to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" class="case-slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-primary border-2 border-primary shadow-xl flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-4 focus:ring-primary/40 pointer-events-auto transition-transform duration-100 hover:scale-110 active:scale-95 z-30">
+                  <div class="absolute -inset-2"></div>
+                  <div class="flex items-center gap-0.5 text-primary pointer-events-none select-none">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mx-0.5"></div>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                   </div>
-                  <span class="text-[11px] font-bold text-text-muted hidden sm:inline">Initial Condition</span>
-                </div>
-
-                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden bg-slate-950 border border-slate-200/80 shadow-xs">
-                  <img 
-                    id="case-before-img" 
-                    src="images/before-after/case-01-before.jpg?v=3.3" 
-                    alt="Clinical Initial Condition - Before" 
-                    loading="lazy" 
-                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
-                  />
                 </div>
               </div>
+            </div>
 
-              <!-- CENTRAL VERTICAL CONNECTOR & PROTOCOL BADGE -->
-              <div class="flex items-center justify-center -my-1 sm:-my-2 relative z-10">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border-teal shadow-2xs text-[12px] font-bold text-text-main">
-                  <span class="material-symbols-outlined text-primary text-[18px] animate-bounce">arrow_downward</span>
-                  <span id="case-transition-label" class="text-primary font-extrabold">CYMOR Precision Realignment</span>
-                  <span class="text-text-muted/40">•</span>
-                  <span id="case-duration-badge" class="text-text-muted font-semibold">14 Months</span>
-                </div>
+            <!-- Footer Action -->
+            <div class="mt-4 pt-4 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[13px]">
+              <span class="text-text-muted italic">"My teeth alignment completely changed with Dr. Nazeer's treatment. Systematic, comfortable, and pain-free."</span>
+              <a href="#appointment-section" onclick="selectTreatmentAndBook('ortho')" class="shrink-0 px-4 py-1.5 rounded-xl bg-primary-subtle hover:bg-primary text-primary hover:text-white font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                <span>Consult on Braces</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- CASE 02 -->
+          <article class="transformation-case-item scroll-reveal-case bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle p-5 sm:p-7 shadow-xs" data-case-index="1">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">Case 02</span>
+                <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                  <span>8 Months</span>
+                </span>
+                <span class="text-text-muted/40">•</span>
+                <span class="text-[12px] font-semibold text-text-muted">Dr. Nazeer P. Chittayil (MDS Orthodontics)</span>
+              </div>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Verified Result</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-text-main mb-1.5">Smile Alignment</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed mb-5 max-w-2xl">
+              Clear aligner therapy correcting midline deviation and anterior spacing with zero tooth extractions.
+            </p>
+
+            <!-- Interactive Comparison Slider Frame -->
+            <div class="case-slider-wrapper relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl border border-border-subtle shadow-xs select-none touch-pan-y cursor-ew-resize bg-slate-900 group">
+              <!-- Bottom Layer: AFTER Image (Full Width) -->
+              <img src="images/before-after/case-02-after.jpg?v=3.3" alt="Smile Alignment - Treatment Result After" loading="lazy" draggable="false" class="case-after-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- Top Layer: BEFORE Image (Clipped overlay) -->
+              <img src="images/before-after/case-02-before.jpg?v=3.3" alt="Smile Alignment - Initial Condition Before" loading="lazy" draggable="false" class="case-before-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- BEFORE Label (Upper Left) -->
+              <div class="absolute top-3.5 left-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  <span>BEFORE</span>
+                </span>
               </div>
 
-              <!-- BOTTOM PICTURE: AFTER (Independent Card) -->
-              <div class="space-y-2">
-                <div class="flex items-center justify-between px-1">
-                  <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-teal-200/20">
-                      <span class="w-1.5 h-1.5 rounded-full bg-teal-200 animate-pulse"></span>
-                      <span>AFTER</span>
-                    </span>
-                    <span class="text-[12px] font-semibold text-primary">Post-Treatment Clinical Result</span>
+              <!-- AFTER Label (Upper Right) -->
+              <div class="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-teal-300/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>
+                  <span>AFTER</span>
+                </span>
+              </div>
+
+              <!-- Thin Vertical Divider Line & Draggable Handle -->
+              <div class="case-divider-line absolute inset-y-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20 pointer-events-none -translate-x-1/2" style="left: 50%;">
+                <div role="slider" tabindex="0" aria-label="Case 02 comparison slider. Drag horizontally to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" class="case-slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-primary border-2 border-primary shadow-xl flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-4 focus:ring-primary/40 pointer-events-auto transition-transform duration-100 hover:scale-110 active:scale-95 z-30">
+                  <div class="absolute -inset-2"></div>
+                  <div class="flex items-center gap-0.5 text-primary pointer-events-none select-none">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mx-0.5"></div>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                   </div>
-                  <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full hidden sm:inline">Verified Result</span>
-                </div>
-
-                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden bg-slate-950 border-2 border-primary/30 shadow-sm">
-                  <img 
-                    id="case-after-img" 
-                    src="images/before-after/case-01-after.jpg?v=3.3" 
-                    alt="Clinical Treatment Result - After" 
-                    loading="lazy" 
-                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-[1.02]"
-                    onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';"
-                  />
                 </div>
               </div>
-
             </div>
 
-            <!-- Case Details & Clinical Metadata -->
-            <div class="mt-6 pt-5 border-t border-border-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-              
-              <div class="flex-1">
-                <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                  <span id="case-tag" class="px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">
-                    Case 01
-                  </span>
-                  <span id="case-duration" class="text-[12px] font-bold text-text-muted flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
-                    <span>14 Months</span>
-                  </span>
-                  <span class="text-text-muted/40">•</span>
-                  <span id="case-doctor" class="text-[12px] font-semibold text-text-muted">
-                    Dr. Nazeer P. Chittayil (MDS Orthodontics)
-                  </span>
-                </div>
-                <h3 id="case-treatment" class="text-xl font-bold text-text-main leading-snug">
-                  Orthodontic Treatment
-                </h3>
-                <p id="case-description" class="text-[13px] text-text-muted leading-relaxed mt-1 max-w-2xl">
-                  Precision bracket realignment addressing severe crowding and anterior rotation for biological bite symmetry.
-                </p>
-              </div>
+            <!-- Footer Action -->
+            <div class="mt-4 pt-4 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[13px]">
+              <span class="text-text-muted italic">"I was conscious about my gaps. Within 8 months with Dr. Nazeer's clear aligners, I smile with complete confidence."</span>
+              <a href="#appointment-section" onclick="selectTreatmentAndBook('ortho')" class="shrink-0 px-4 py-1.5 rounded-xl bg-primary-subtle hover:bg-primary text-primary hover:text-white font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                <span>Consult on Aligners</span>
+              </a>
+            </div>
+          </article>
 
-              <div class="flex items-center gap-2.5 shrink-0 w-full md:w-auto">
-                <a href="#appointment-section" onclick="selectTreatmentAndBook('ortho')" class="w-full md:w-auto px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-hover text-white text-[13px] font-bold flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer">
-                  <span class="material-symbols-outlined text-[18px]">calendar_month</span>
-                  <span>Book Consultation</span>
-                </a>
+          <!-- CASE 03 -->
+          <article class="transformation-case-item scroll-reveal-case bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle p-5 sm:p-7 shadow-xs" data-case-index="2">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">Case 03</span>
+                <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                  <span>3 Months</span>
+                </span>
+                <span class="text-text-muted/40">•</span>
+                <span class="text-[12px] font-semibold text-text-muted">Dr. Mohammed Najeer (MDS Periodontics &amp; Implants)</span>
               </div>
-
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Verified Result</span>
             </div>
 
-          </div>
+            <h3 class="text-xl font-bold text-text-main mb-1.5">Dental Transformation</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed mb-5 max-w-2xl">
+              Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration.
+            </p>
 
+            <!-- Interactive Comparison Slider Frame -->
+            <div class="case-slider-wrapper relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl border border-border-subtle shadow-xs select-none touch-pan-y cursor-ew-resize bg-slate-900 group">
+              <!-- Bottom Layer: AFTER Image (Full Width) -->
+              <img src="images/before-after/case-03-after.jpg?v=3.3" alt="Dental Transformation - Treatment Result After" loading="lazy" draggable="false" class="case-after-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- Top Layer: BEFORE Image (Clipped overlay) -->
+              <img src="images/before-after/case-03-before.jpg?v=3.3" alt="Dental Transformation - Initial Condition Before" loading="lazy" draggable="false" class="case-before-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- BEFORE Label (Upper Left) -->
+              <div class="absolute top-3.5 left-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  <span>BEFORE</span>
+                </span>
+              </div>
+
+              <!-- AFTER Label (Upper Right) -->
+              <div class="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-teal-300/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>
+                  <span>AFTER</span>
+                </span>
+              </div>
+
+              <!-- Thin Vertical Divider Line & Draggable Handle -->
+              <div class="case-divider-line absolute inset-y-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20 pointer-events-none -translate-x-1/2" style="left: 50%;">
+                <div role="slider" tabindex="0" aria-label="Case 03 comparison slider. Drag horizontally to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" class="case-slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-primary border-2 border-primary shadow-xl flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-4 focus:ring-primary/40 pointer-events-auto transition-transform duration-100 hover:scale-110 active:scale-95 z-30">
+                  <div class="absolute -inset-2"></div>
+                  <div class="flex items-center gap-0.5 text-primary pointer-events-none select-none">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mx-0.5"></div>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="mt-4 pt-4 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[13px]">
+              <span class="text-text-muted italic">"Lost my front tooth in an accident. Dr. Najeer restored it completely with an implant. Looks and bites naturally!"</span>
+              <a href="#appointment-section" onclick="selectTreatmentAndBook('surgery')" class="shrink-0 px-4 py-1.5 rounded-xl bg-primary-subtle hover:bg-primary text-primary hover:text-white font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                <span>Consult on Implants</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- CASE 04 -->
+          <article class="transformation-case-item scroll-reveal-case bg-surface-card rounded-2xl sm:rounded-3xl border border-border-subtle p-5 sm:p-7 shadow-xs" data-case-index="3">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary text-[11px] font-extrabold uppercase tracking-wider border border-border-teal">Case 04</span>
+                <span class="text-[12px] font-bold text-text-muted flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                  <span>10 Months</span>
+                </span>
+                <span class="text-text-muted/40">•</span>
+                <span class="text-[12px] font-semibold text-text-muted">Dr. Nazeer P. Chittayil (MDS Orthodontics)</span>
+              </div>
+              <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Verified Result</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-text-main mb-1.5">Fixed Orthodontic Realignment</h3>
+            <p class="text-[13px] text-text-muted leading-relaxed mb-5 max-w-2xl">
+              Orthodontic bracket alignment resolving severe anterior crowding, rotation, and arch asymmetry for symmetrical smile aesthetics.
+            </p>
+
+            <!-- Interactive Comparison Slider Frame -->
+            <div class="case-slider-wrapper relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-xl sm:rounded-2xl border border-border-subtle shadow-xs select-none touch-pan-y cursor-ew-resize bg-slate-900 group">
+              <!-- Bottom Layer: AFTER Image (Full Width) -->
+              <img src="images/before-after/case-04-pediatric-after.jpg?v=3.3" alt="Fixed Orthodontic Realignment - Treatment Result After" loading="lazy" draggable="false" class="case-after-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- Top Layer: BEFORE Image (Clipped overlay) -->
+              <img src="images/before-after/case-04-pediatric-before.jpg?v=3.3" alt="Fixed Orthodontic Realignment - Initial Condition Before" loading="lazy" draggable="false" class="case-before-img absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-10" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);" onerror="this.onerror=null; this.src='images/before-after/placeholder-case.svg';" />
+
+              <!-- BEFORE Label (Upper Left) -->
+              <div class="absolute top-3.5 left-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-white/10">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                  <span>BEFORE</span>
+                </span>
+              </div>
+
+              <!-- AFTER Label (Upper Right) -->
+              <div class="absolute top-3.5 right-3.5 z-20 pointer-events-none">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/90 backdrop-blur-md text-white text-[11px] font-extrabold tracking-wider uppercase shadow-xs border border-teal-300/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>
+                  <span>AFTER</span>
+                </span>
+              </div>
+
+              <!-- Thin Vertical Divider Line & Draggable Handle -->
+              <div class="case-divider-line absolute inset-y-0 w-0.5 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20 pointer-events-none -translate-x-1/2" style="left: 50%;">
+                <div role="slider" tabindex="0" aria-label="Case 04 comparison slider. Drag horizontally to compare." aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" class="case-slider-handle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-primary border-2 border-primary shadow-xl flex items-center justify-center cursor-ew-resize focus:outline-none focus:ring-4 focus:ring-primary/40 pointer-events-auto transition-transform duration-100 hover:scale-110 active:scale-95 z-30">
+                  <div class="absolute -inset-2"></div>
+                  <div class="flex items-center gap-0.5 text-primary pointer-events-none select-none">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mx-0.5"></div>
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="mt-4 pt-4 border-t border-border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[13px]">
+              <span class="text-text-muted italic">"My crowded teeth were corrected with precision brackets under Dr. Nazeer's care. Completely transformed my smile."</span>
+              <a href="#appointment-section" onclick="selectTreatmentAndBook('ortho')" class="shrink-0 px-4 py-1.5 rounded-xl bg-primary-subtle hover:bg-primary text-primary hover:text-white font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                <span>Consult on Braces</span>
+              </a>
+            </div>
+          </article>
 
         </div>
 
@@ -1597,7 +1726,7 @@
   </div>
 
   <!-- SCRIPTS -->
-  <script src="js/data.js?v=3.3"></script>
-  <script src="js/app.js?v=3.3"></script>
+  <script src="js/data.js?v=3.4"></script>
+  <script src="js/app.js?v=3.4"></script>
 </body>
 </html>

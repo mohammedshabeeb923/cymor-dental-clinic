@@ -697,3 +697,49 @@ input:focus, select:focus, textarea:focus {
     transform: none !important;
   }
 }
+
+/* ========================================================
+   BEFORE & AFTER 4-CASE VERTICAL COMPARISON SLIDERS & SCROLL REVEAL
+   ======================================================== */
+.transformation-case-item {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal-case {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal-case.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-case {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+.case-slider-wrapper {
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.case-slider-wrapper img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.case-slider-handle {
+  touch-action: none;
+}
+
