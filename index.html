@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..600,0..1,-25..200" rel="stylesheet"/>
   
-  <link rel="stylesheet" href="css/styles.css?v=3.4"/>
+  <link rel="stylesheet" href="css/styles.css?v=3.5"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
@@ -506,10 +506,11 @@
         <!-- Treatment Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="treatment-grid">
           
+          <!-- 1. Orthodontics & Clear Aligners -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="ortho">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">grid_goldenratio</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/clear-aligners.jpg" alt="Orthodontics & Clear Aligners" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Chief Speciality</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Orthodontics &amp; Clear Aligners</h3>
@@ -528,10 +529,11 @@
             </div>
           </div>
 
+          <!-- 2. Orthodontic Brackets -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="ortho">
             <div>
               <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
-                <img src="images/treatments/orthodontic-brackets.jpg" alt="Orthodontic Brackets Treatment" class="w-full h-full object-cover" />
+                <img src="images/treatments/orthodontic-brackets.jpg" alt="Orthodontic Brackets Treatment" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Fixed Orthodontics</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Orthodontic Brackets</h3>
@@ -550,10 +552,11 @@
             </div>
           </div>
 
+          <!-- 3. Dental Implants & Bridges -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="surgery">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">hardware</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/dental-implants.jpg" alt="Dental Implants & Bridges" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Titanium Fixtures</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Dental Implants &amp; Bridges</h3>
@@ -572,10 +575,11 @@
             </div>
           </div>
 
+          <!-- 4. Root Canal Treatment (RCT) -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="restorative">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">healing</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/root-canal.jpg" alt="Root Canal Treatment (RCT)" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Painless Single-Sitting</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Root Canal Treatment (RCT)</h3>
@@ -594,10 +598,11 @@
             </div>
           </div>
 
+          <!-- 5. Smile Makeovers & Veneers -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="restorative">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">sentiment_satisfied</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/porcelain-veneers.jpg" alt="Smile Makeovers & Veneers" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Aesthetic Design</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Smile Makeovers &amp; Veneers</h3>
@@ -616,10 +621,11 @@
             </div>
           </div>
 
+          <!-- 6. Periodontics & Gum Care -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="surgery">
             <div>
-              <div class="w-12 h-12 rounded-2xl bg-primary-subtle text-primary flex items-center justify-center mb-4">
-                <span class="material-symbols-outlined text-[26px]">water_drop</span>
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/periodontics-gum-care.jpg" alt="Periodontics & Gum Care" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Gum Speciality</span>
               <h3 class="text-lg font-bold text-text-main mb-2">Periodontics &amp; Gum Care</h3>
@@ -638,10 +644,11 @@
             </div>
           </div>
 
+          <!-- 7. Pediatric Dentistry -->
           <div class="treatment-card hover-lift p-6 rounded-3xl bg-surface-card border border-border-subtle shadow-xs flex flex-col justify-between" data-category="all">
             <div>
-              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-primary-subtle border border-border-subtle shadow-2xs">
-                <img src="images/services/pediatric-dentistry.webp" onerror="this.onerror=null; this.src='images/services/pediatric-dentistry.svg';" alt="Pediatric Dentistry - Image Placeholder" class="w-full h-full object-cover" />
+              <div class="aspect-[16/10] w-full rounded-2xl overflow-hidden mb-4 bg-surface-tint border border-border-subtle shadow-2xs">
+                <img src="images/treatments/pediatric-dentistry.jpg" alt="Pediatric Dentistry - Child Friendly Dental Care" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <span class="inline-block px-2.5 py-0.5 rounded-full bg-border-teal text-primary text-[11px] font-extrabold uppercase tracking-wider mb-2">Kid Friendly</span>
               <h3 class="text-lg font-bold text-text-main mb-2">PEDIATRIC DENTISTRY</h3>
@@ -1726,7 +1733,7 @@
   </div>
 
   <!-- SCRIPTS -->
-  <script src="js/data.js?v=3.4"></script>
-  <script src="js/app.js?v=3.4"></script>
+  <script src="js/data.js?v=3.5"></script>
+  <script src="js/app.js?v=3.5"></script>
 </body>
 </html>
