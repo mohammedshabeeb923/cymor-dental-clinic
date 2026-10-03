@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400..600,0..1,-25..200" rel="stylesheet"/>
   
-  <link rel="stylesheet" href="css/styles.css?v=3.6"/>
+  <link rel="stylesheet" href="css/styles.css?v=3.7"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
@@ -51,7 +51,7 @@
 <body class="bg-surface-base font-sans text-text-body antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col">
 
   <!-- ==================== CYMOR WELCOME & LOADING SCREEN ==================== -->
-  <div id="cymor-welcome-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white select-none" role="status" aria-label="CYMOR Super Speciality Dental Clinic">
+  <div id="cymor-welcome-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white select-none cursor-pointer" role="status" aria-label="CYMOR Super Speciality Dental Clinic">
     <!-- Subtle clinical gradient backdrop -->
     <div class="absolute inset-0 bg-gradient-to-b from-teal-50/50 via-white to-surface-base pointer-events-none"></div>
 
@@ -93,11 +93,14 @@
         <div class="welcome-progress-bar h-full bg-gradient-to-r from-primary via-[#00838f] to-primary rounded-full"></div>
       </div>
 
-      <!-- Subtle Status Indicator -->
+      <!-- Subtle Status Indicator & Skip CTA -->
       <div class="welcome-status-line mt-4 flex items-center gap-2">
         <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
         <span class="text-[11px] tracking-wider uppercase text-text-muted font-bold">Excellence in Dental Care</span>
       </div>
+      <button type="button" onclick="document.getElementById('cymor-welcome-screen').classList.add('welcome-dismissed')" class="mt-3.5 px-4 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-text-muted hover:text-text-main text-[11px] font-semibold transition-colors cursor-pointer border border-slate-200/60 shadow-2xs">
+        Enter Clinic &rarr;
+      </button>
 
     </div>
   </div>
@@ -1733,7 +1736,7 @@
   </div>
 
   <!-- SCRIPTS -->
-  <script src="js/data.js?v=3.6"></script>
-  <script src="js/app.js?v=3.6"></script>
+  <script src="js/data.js?v=3.7"></script>
+  <script src="js/app.js?v=3.7"></script>
 </body>
 </html>

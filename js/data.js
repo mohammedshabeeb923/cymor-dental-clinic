@@ -355,11 +355,25 @@ const CYMOR_DATA = {
       duration: "3 Months",
       technique: "Titanium Fixture & Zirconia Crown",
       doctor: "Dr. Mohammed Najeer (MDS Periodontics & Implants)",
-      before: "images/before-after/case-03-before.jpg?v=3.0",
-      after: "images/before-after/case-03-after.jpg?v=3.0",
-      beforeImg: "images/before-after/case-03-before.jpg?v=3.0",
-      afterImg: "images/before-after/case-03-after.jpg?v=3.0",
+      before: "images/before-after/case-03-before.jpg?v=3.7",
+      after: "images/before-after/case-03-after.jpg?v=3.7",
+      beforeImg: "images/before-after/case-03-before.jpg?v=3.7",
+      afterImg: "images/before-after/case-03-after.jpg?v=3.7",
       description: "Comprehensive aesthetic rehabilitation with precision implant fixture and custom ceramic crown integration."
+    },
+    {
+      id: 4,
+      tag: "Case 04",
+      title: "Smile Transformation",
+      treatment: "Fixed Orthodontic Realignment",
+      duration: "10 Months",
+      technique: "Precision Orthodontic Bracket Therapy",
+      doctor: "Dr. Nazeer P. Chittayil (MDS Orthodontics)",
+      before: "images/before-after/case-04-pediatric-before.jpg?v=3.7",
+      after: "images/before-after/case-04-pediatric-after.jpg?v=3.7",
+      beforeImg: "images/before-after/case-04-pediatric-before.jpg?v=3.7",
+      afterImg: "images/before-after/case-04-pediatric-after.jpg?v=3.7",
+      description: "Orthodontic bracket alignment resolving severe anterior crowding, rotation, and arch asymmetry for symmetrical smile aesthetics."
     }
   ],
 

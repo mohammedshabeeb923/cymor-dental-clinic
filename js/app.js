@@ -1,20 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-  initWelcomeScreen();
-  initParticles();
-  initNumberCounters();
-  initDateRestrictions();
-  initComparisonSlider();
-  initTreatmentFilters();
-  initModals();
-  initAppointmentBooking();
-  initDentalTourismCalculator();
-  initEmergencyWizard();
-  initBranchSelector();
-  initMobileMenu();
-  initNavbarScrollSpy();
-  initAppointmentsViewer();
-  initScrollReveal();
-});
+function initAll() {
+  const subsystems = [
+    { name: 'Welcome Screen', fn: initWelcomeScreen },
+    { name: 'Particles', fn: initParticles },
+    { name: 'Number Counters', fn: initNumberCounters },
+    { name: 'Date Restrictions', fn: initDateRestrictions },
+    { name: 'Comparison Sliders', fn: initComparisonSlider },
+    { name: 'Treatment Filters', fn: initTreatmentFilters },
+    { name: 'Modals', fn: initModals },
+    { name: 'Appointment Booking', fn: initAppointmentBooking },
+    { name: 'Dental Tourism Calculator', fn: initDentalTourismCalculator },
+    { name: 'Emergency Wizard', fn: initEmergencyWizard },
+    { name: 'Branch Selector', fn: initBranchSelector },
+    { name: 'Mobile Menu', fn: initMobileMenu },
+    { name: 'Navbar ScrollSpy', fn: initNavbarScrollSpy },
+    { name: 'Appointments Viewer', fn: initAppointmentsViewer },
+    { name: 'Scroll Reveal', fn: initScrollReveal }
+  ];
+
+  subsystems.forEach(({ name, fn }) => {
+    try {
+      if (typeof fn === 'function') fn();
+    } catch (err) {
+      console.warn(`[CYMOR Init] Note: ${name} initialization notice:`, err);
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  // DOM is already parsed / loaded, execute immediately
+  initAll();
+}
 
 // Toast notification helper
 function showToast(message, type = 'success') {
@@ -69,10 +86,14 @@ function initComparisonSlider() {
   
   // Preload all 4 transformation cases images for instantaneous display
   const allCases = (typeof CYMOR_DATA !== 'undefined' && (CYMOR_DATA.cases || CYMOR_DATA.transformationCases)) || [];
-  allCases.forEach(c => {
-    if (c.before || c.beforeImg) { const b = new Image(); b.src = c.before || c.beforeImg; }
-    if (c.after || c.afterImg) { const a = new Image(); a.src = c.after || c.afterImg; }
-  });
+  if (typeof Image !== 'undefined') {
+    allCases.forEach(c => {
+      try {
+        if (c.before || c.beforeImg) { const b = new Image(); b.src = c.before || c.beforeImg; }
+        if (c.after || c.afterImg) { const a = new Image(); a.src = c.after || c.afterImg; }
+      } catch (_) {}
+    });
+  }
 
   wrappers.forEach((wrapper) => {
     const beforeImg = wrapper.querySelector('.case-before-img');
@@ -107,17 +128,21 @@ function initComparisonSlider() {
       document.body.style.userSelect = 'none';
 
       try {
-        wrapper.setPointerCapture(e.pointerId);
+        if (e.pointerId !== undefined) {
+          wrapper.setPointerCapture(e.pointerId);
+        }
       } catch (_) {}
 
       setPosition(getPercentage(e));
-      e.preventDefault();
+      if (e.pointerType === 'mouse' || e.target === handle || handle.contains(e.target)) {
+        if (e.cancelable) e.preventDefault();
+      }
     }
 
     function handlePointerMove(e) {
       if (!isDragging) return;
       setPosition(getPercentage(e));
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
     }
 
     function handlePointerUp(e) {
@@ -127,7 +152,9 @@ function initComparisonSlider() {
       document.body.style.userSelect = '';
 
       try {
-        wrapper.releasePointerCapture(e.pointerId);
+        if (e.pointerId !== undefined) {
+          wrapper.releasePointerCapture(e.pointerId);
+        }
       } catch (_) {}
     }
 
@@ -135,6 +162,8 @@ function initComparisonSlider() {
     wrapper.addEventListener('pointermove', handlePointerMove);
     wrapper.addEventListener('pointerup', handlePointerUp);
     wrapper.addEventListener('pointercancel', handlePointerUp);
+    wrapper.addEventListener('lostpointercapture', handlePointerUp);
+    window.addEventListener('pointerup', handlePointerUp);
 
     // Keyboard accessibility on handle
     handle.addEventListener('keydown', (e) => {
@@ -169,9 +198,13 @@ function initTransformationScrollReveal() {
   const caseItems = document.querySelectorAll('.scroll-reveal-case');
   if (!caseItems.length) return;
 
+  const revealAllCases = () => {
+    caseItems.forEach(item => item.classList.add('is-revealed'));
+  };
+
   const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isReducedMotion || !('IntersectionObserver' in window)) {
-    caseItems.forEach(item => item.classList.add('is-revealed'));
+    revealAllCases();
     return;
   }
 
@@ -183,14 +216,22 @@ function initTransformationScrollReveal() {
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '100px 0px 50px 0px'
   });
 
   caseItems.forEach((item, i) => {
     item.style.transitionDelay = `${(i % 2) * 0.12}s`;
-    observer.observe(item);
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
+      item.classList.add('is-revealed');
+    } else {
+      observer.observe(item);
+    }
   });
+
+  // Safety fallback guarantees all cases reveal within 1.5 seconds
+  setTimeout(revealAllCases, 1500);
 }
 
 window.initComparisonSlider = initComparisonSlider;
@@ -1139,7 +1180,7 @@ function openMyAppointmentsModal() {
             <p class="text-[11px] text-text-muted">${b.clinicName} • ${b.timeLabel}</p>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick='reopenBooking(${JSON.stringify(b)})' class="px-3 py-1.5 rounded-xl bg-primary-subtle text-primary font-bold text-[12px] hover:bg-primary hover:text-white transition-colors cursor-pointer">View Pass</button>
+            <button onclick="reopenBookingByToken('${b.token}')" class="px-3 py-1.5 rounded-xl bg-primary-subtle text-primary font-bold text-[12px] hover:bg-primary hover:text-white transition-colors cursor-pointer">View Pass</button>
           </div>
         </div>
       `).join('')}
@@ -1158,12 +1199,17 @@ function openMyAppointmentsModal() {
 }
 window.openMyAppointmentsModal = openMyAppointmentsModal;
 
-function reopenBooking(b) {
-  latestBooking = b;
-  closeGenericModal();
-  openReceiptModal(b);
+function reopenBookingByToken(token) {
+  const bookings = JSON.parse(localStorage.getItem('cymor_appointments') || '[]');
+  const b = bookings.find(x => x.token === token) || latestBooking;
+  if (b) {
+    latestBooking = b;
+    closeGenericModal();
+    openReceiptModal(b);
+  }
 }
-window.reopenBooking = reopenBooking;
+window.reopenBookingByToken = reopenBookingByToken;
+window.reopenBooking = reopenBookingByToken;
 
 function clearAllAppointments() {
   if (confirm('Are you sure you want to clear your local appointment history?')) {
@@ -1179,6 +1225,10 @@ function initScrollReveal() {
   document.body.classList.add('js-reveal');
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-text');
   
+  const activateAll = () => {
+    revealElements.forEach(el => el.classList.add('reveal-active'));
+  };
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -1189,22 +1239,24 @@ function initScrollReveal() {
       });
     }, {
       root: null,
-      threshold: 0.05,
-      rootMargin: '50px 0px -20px 0px'
+      threshold: 0.02,
+      rootMargin: '80px 0px 40px 0px'
     });
 
     revealElements.forEach(el => {
       // If element is already in the viewport on page load, activate immediately
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
+      if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
         el.classList.add('reveal-active');
       } else {
         observer.observe(el);
       }
     });
+
+    // Safety fallback guarantees all sections reveal within 1.6s
+    setTimeout(activateAll, 1600);
   } else {
-    // Fallback if IntersectionObserver is not supported
-    revealElements.forEach(el => el.classList.add('reveal-active'));
+    activateAll();
   }
 }
 
@@ -1230,9 +1282,10 @@ window.closeVideoModal = closeVideoModal;
 // 13. FLOATING AMBIENT PARTICLES & HEALTH CROSSES (+) ANIMATION
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
+  if (!canvas || !canvas.getContext) return;
 
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
   let width, height;
   let particles = [];
   const particleCount = Math.min(50, Math.floor(window.innerWidth / 26));
@@ -1368,13 +1421,15 @@ function initNumberCounters() {
   if (!counterElements.length) return;
 
   const countUp = (el) => {
-    const target = parseFloat(el.getAttribute('data-counter'));
+    const rawTarget = el.getAttribute('data-counter');
+    const target = parseFloat(rawTarget);
+    if (isNaN(target)) return;
     const isYear = target > 1900;
     const startValue = isYear ? 1990 : 0;
     const duration = 1800; // ms
-    const startTime = performance.now();
-    const originalText = el.textContent;
-    const suffix = originalText.replace(/^[0-9.]+/, '') || '';
+    const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    const originalText = (el.textContent || '').trim();
+    const suffix = originalText.replace(/^[0-9.,+]+/, '') || '';
 
     function updateCounter(currentTime) {
       const elapsed = currentTime - startTime;
@@ -1416,24 +1471,34 @@ function initWelcomeScreen() {
   const welcomeScreen = document.getElementById('cymor-welcome-screen');
   if (!welcomeScreen) return;
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const targetDuration = prefersReducedMotion ? 400 : 2250;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targetDuration = prefersReducedMotion ? 250 : 850;
+  let isDismissed = false;
 
   function dismissWelcome() {
-    if (welcomeScreen.classList.contains('welcome-dismissed')) return;
+    if (isDismissed) return;
+    isDismissed = true;
+    welcomeScreen.style.pointerEvents = 'none';
     welcomeScreen.classList.add('welcome-dismissed');
     setTimeout(() => {
       welcomeScreen.style.display = 'none';
-    }, 700);
+      if (welcomeScreen.parentNode) {
+        welcomeScreen.parentNode.removeChild(welcomeScreen);
+      }
+    }, 550);
   }
 
-  // Allow natural animation to complete in ~2.2 seconds
+  // Smooth natural reveal after brief clinical brand impression (850ms)
   setTimeout(dismissWelcome, targetDuration);
 
-  // Safety fallback: ensure screen is dismissed if page load completes
-  window.addEventListener('load', () => {
-    setTimeout(dismissWelcome, targetDuration);
-  });
+  // Instant dismissal on any user gesture (click, tap, scroll, keypress)
+  welcomeScreen.addEventListener('click', dismissWelcome, { passive: true });
+  welcomeScreen.addEventListener('touchstart', dismissWelcome, { passive: true });
+  window.addEventListener('keydown', dismissWelcome, { once: true });
+  window.addEventListener('wheel', dismissWelcome, { passive: true, once: true });
+
+  // Absolute hard safety timeout (1400ms max) - guarantees site is never blocked
+  setTimeout(dismissWelcome, 1400);
 }
 
 
