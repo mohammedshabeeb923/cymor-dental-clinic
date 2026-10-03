@@ -45,13 +45,13 @@ const CYMOR_DATA = {
       facilities: ["Crown & Bridge Prosthetics", "Cosmetic Dentistry", "Dental X-Ray"]
     },
     {
-      id: "andhetode",
-      name: "ANDHETODE BRANCH",
+      id: "andethode",
+      name: "ANDETHODE BRANCH",
       badge: "Branch Clinic",
-      address: "AK COMPLEX, Andhetode, Kerala",
+      address: "AK COMPLEX, Andethode, Kerala",
       phone: "+91 73807 74477",
       timings: "Mon - Sat: 10:00 AM - 6:00 PM",
-      mapEmbed: "https://maps.google.com/?q=AK+COMPLEX+Andhetode+Kerala",
+      mapEmbed: "https://maps.google.com/?q=AK+COMPLEX+Andethode+Kerala",
       facilities: ["Family Dental Care", "Emergency Triage", "Teeth Whitening"]
     }
   ],
