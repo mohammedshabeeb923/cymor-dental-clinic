@@ -1536,22 +1536,28 @@ function initHeroVideo() {
   const video = document.getElementById('hero-bg-video');
   if (!video) return;
 
-  // Listen for playback start to smoothly transition from poster to video
-  video.addEventListener('playing', () => {
+  function revealVideo() {
     video.classList.remove('opacity-0');
     video.classList.add('opacity-100');
+  }
+
+  video.addEventListener('playing', revealVideo);
+  video.addEventListener('timeupdate', revealVideo, { once: true });
+  video.addEventListener('canplaythrough', () => {
+    video.play().catch(() => {});
   });
+
+  if (!video.paused && video.currentTime > 0) {
+    revealVideo();
+  }
 
   // Attempt autoplay
   const playPromise = video.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
-      video.classList.remove('opacity-0');
-      video.classList.add('opacity-100');
+      revealVideo();
     }).catch(() => {
-      // Autoplay suppressed by browser policy or video file not yet added to assets/
-      // Gracefully maintains high-resolution cinematic poster image
-      video.classList.add('opacity-0');
+      // Browser autoplay policy might require user interaction
     });
   }
 }
